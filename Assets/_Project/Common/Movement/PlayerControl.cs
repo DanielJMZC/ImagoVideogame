@@ -9,6 +9,8 @@ public class PlayerControl : MonoBehaviour
     private float xInputLast, yInputLast;
     public bool moving;
 
+    public bool inAction;
+
     Animator animatorController;
 
 
@@ -17,6 +19,7 @@ public class PlayerControl : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animatorController = GetComponent<Animator>();
+        inAction = false;
 
         
     }
@@ -24,36 +27,38 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xInput = 0;
-        if(Keyboard.current.aKey.isPressed)
-        {
-            xInput = -1f;
-            xInputLast = -1f;
-            yInputLast = 0f;
-        } else if (Keyboard.current.dKey.isPressed)
-        {
-            xInput = 1f;
-            xInputLast = 1f;
-            yInputLast = 0f;
-        }
-        
-        yInput = 0;
-
-        if (Keyboard.current.wKey.isPressed)
-        {
-            yInput = 1f;
-            yInputLast = 1f;
-            xInputLast = 0f;
-
+        if (!inAction) {
+            xInput = 0;
+            if(Keyboard.current.aKey.isPressed)
+            {
+                xInput = -1f;
+                xInputLast = -1f;
+                yInputLast = 0f;
+            } else if (Keyboard.current.dKey.isPressed)
+            {
+                xInput = 1f;
+                xInputLast = 1f;
+                yInputLast = 0f;
+            }
             
-        }     else if (Keyboard.current.sKey.isPressed)
-        {
-            yInput = -1f;
-            yInputLast = -1f;
-            xInputLast = 0f;
-        }    
+            yInput = 0;
 
-        UpdatePlayerAnimation();
+            if (Keyboard.current.wKey.isPressed)
+            {
+                yInput = 1f;
+                yInputLast = 1f;
+                xInputLast = 0f;
+
+                
+            }     else if (Keyboard.current.sKey.isPressed)
+            {
+                yInput = -1f;
+                yInputLast = -1f;
+                xInputLast = 0f;
+            }    
+
+            UpdatePlayerAnimation();
+        }
         
     }
 
