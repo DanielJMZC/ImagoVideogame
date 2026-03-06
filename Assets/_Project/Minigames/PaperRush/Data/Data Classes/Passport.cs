@@ -1,10 +1,8 @@
 using System;
 using UnityEngine;
 
-public class Passport
+public class Passport: Document
 {
-    public string firstNames;
-    public string lastNames;
     public string nationality;
     public string sex;
     public Texture2D photo;
@@ -12,4 +10,5 @@ public class Passport
     public DateTime issueDate;
     public DateTime expiryDate;
     public int passportNumber;
+    public int errorNumber;
 }

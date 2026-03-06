@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9393c66e2189437fb04cadb2ac08c92, type: 3}
+  m_Name: Destination
+  m_EditorClassIdentifier: Project.PaperRush::DestinationDatabase
+  destinations:
+  - 'Mexico City, MEX, Mexico City International Airport '
+  - 'New York, NYC, John F. Kennedy International Airport '
+  - 'Miami, MIA, Miami International Airport '
+  - 'Los Angeles, LAX, Los Angeles International Airport '
+  - 'Toronto, YTO, Toronto Pearson International Airport '
+  - "Montreal, YMQ, Montr\xE9al\u2013Trudeau International Airport "
+  - "Madrid, MAD, Adolfo Su\xE1rez Madrid\u2013Barajas Airport "
+  - "Barcelona, BCN, Barcelona\u2013El Prat Airport "
+  - 'London, LON, London Heathrow Airport '
+  - 'Paris, PAR, Charles de Gaulle Airport '
+  - "San Jos\xE9, SJO, Juan Santamar\xEDa International Airport "
+  - 'Panama City, PTY, Tocumen International Airport '
+  - 'Managua, MGA, Augusto C. Sandino International Airport '
+  - 'Quito, UIO, Mariscal Sucre International Airport '
+  - "Guayaquil, GYE, Jos\xE9 Joaqu\xEDn de Olmedo International Airport "
+  - "Lima, LIM, Jorge Ch\xE1vez International Airport "
+  - 'Buenos Aires, BUE, Ministro Pistarini International Airport '
+  - "Santiago, SCL, Arturo Merino Ben\xEDtez International Airport "
+  - "S\xE3o Paulo, SAO, S\xE3o Paulo/Guarulhos International Airport "
+  - "Caracas, CCS, Sim\xF3n Bol\xEDvar International Airport "

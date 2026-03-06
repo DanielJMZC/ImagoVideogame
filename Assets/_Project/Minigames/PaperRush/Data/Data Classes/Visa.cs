@@ -1,13 +1,12 @@
 using System;
 using UnityEngine;
 
-public class Visa
+public class Visa: Document
 {
     public string placeOfExpedition;
-    public string firstNames;
-    public string lastNames;
+
     public string numberOfEntries;
-    public int documentNumber;
+    public string documentNumber;
     public string type;
     public int passportNumber;
 
@@ -18,5 +17,7 @@ public class Visa
     public DateTime expireDate;
     public DateTime validDate;
     public Texture2D photo;
-    
+
+    public int errorNumber;
+
 }
