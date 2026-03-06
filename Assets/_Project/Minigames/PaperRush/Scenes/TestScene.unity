@@ -149,8 +149,60 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 942034180}
+  - {fileID: 1448913330}
+  - {fileID: 1165149112}
+  - {fileID: 46979014}
+  - {fileID: 771052206}
+  - {fileID: 1537758525}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &46979013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 46979014}
+  - component: {fileID: 46979015}
+  m_Layer: 0
+  m_Name: PlaneTicketGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &46979014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46979013}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3532286}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &46979015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46979013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692a5ca0ae4f54c61a3916d92532322d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Project.PaperRush::PlaneTicketGenerator
+  nameDatabase: {fileID: 11400000, guid: a2f5f809cbc234fe89197366e27f9b3f, type: 2}
+  photoDatabase: {fileID: 11400000, guid: 90eeb6ffa36c44ad1b94ffdd9919d52d, type: 2}
+  destinationDatabase: {fileID: 11400000, guid: 6bfbc2324838c48d39cd37607dd0ec81, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +424,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &771052205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771052206}
+  - component: {fileID: 771052207}
+  m_Layer: 0
+  m_Name: TravelInsuranceGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &771052206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771052205}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3532286}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &771052207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771052205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c1ba693b501447a0929a1f482a30f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Project.PaperRush::TravelInsuranceGenerator
+  nameDatabase: {fileID: 11400000, guid: a2f5f809cbc234fe89197366e27f9b3f, type: 2}
+  photoDatabase: {fileID: 11400000, guid: 90eeb6ffa36c44ad1b94ffdd9919d52d, type: 2}
 --- !u!1 &942034178
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +516,144 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3532286}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1165149111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1165149112}
+  - component: {fileID: 1165149113}
+  m_Layer: 0
+  m_Name: VisaGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1165149112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165149111}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3532286}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1165149113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165149111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bc36296f0634bc59ccbf7902851228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Project.PaperRush::VisaGenerator
+  nameDatabase: {fileID: 11400000, guid: a2f5f809cbc234fe89197366e27f9b3f, type: 2}
+  photoDatabase: {fileID: 11400000, guid: 90eeb6ffa36c44ad1b94ffdd9919d52d, type: 2}
+--- !u!1 &1448913329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1448913330}
+  - component: {fileID: 1448913331}
+  m_Layer: 0
+  m_Name: CharacterGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1448913330
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448913329}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3532286}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1448913331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448913329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5678a4cc487ca413c90113888a8c70d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Project.PaperRush::CharacterGenerator
+  nameDatabase: {fileID: 11400000, guid: a2f5f809cbc234fe89197366e27f9b3f, type: 2}
+  photoDatabase: {fileID: 11400000, guid: 90eeb6ffa36c44ad1b94ffdd9919d52d, type: 2}
+--- !u!1 &1537758524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1537758525}
+  - component: {fileID: 1537758526}
+  m_Layer: 0
+  m_Name: AcceptanceLetterGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1537758525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537758524}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3532286}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1537758526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537758524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb24ad5a5a4248db87e3824ebe85ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Project.PaperRush::AcceptanceLetterGenerator
+  nameDatabase: {fileID: 11400000, guid: a2f5f809cbc234fe89197366e27f9b3f, type: 2}
+  photoDatabase: {fileID: 11400000, guid: 90eeb6ffa36c44ad1b94ffdd9919d52d, type: 2}
 --- !u!1 &1902791907
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +683,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1b4531e15e34a2e835d3f9c978696b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.PaperRush::PassportTester
-  generator: {fileID: 942034179}
+  passportGenerator: {fileID: 942034179}
+  characterGenerator: {fileID: 1448913331}
 --- !u!4 &1902791909
 Transform:
   m_ObjectHideFlags: 0
