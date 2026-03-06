@@ -12,6 +12,7 @@ public class AcceptanceLetterGenerator : BaseGenerator
         l.lastNames = c.lastNames;
         l.startDate = arrival.arrivalTime;
         l.endDate = departure.departureTime;
+        l.documentType = "Acceptance Letter";
       
         return l;
 
@@ -25,6 +26,8 @@ public class AcceptanceLetterGenerator : BaseGenerator
         l.lastNames = letter.lastNames;
         l.startDate = letter.startDate;
         l.endDate = letter.endDate;
+
+        l.documentType = "Acceptance Letter";
 
         l.errorNumber = 1;
         List<String> data = new List<String>() {"firstNames", "lastNames", "date"};

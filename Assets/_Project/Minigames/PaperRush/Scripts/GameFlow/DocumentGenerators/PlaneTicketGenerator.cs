@@ -40,6 +40,8 @@ public class PlaneTicketGenerator : BaseGenerator
        p.flightNumber = UnityEngine.Random.Range(1000, 10000);
        p.errorNumber = 0;
 
+       p.documentType = "Plane Ticket";
+
        return p;
 
     }
@@ -80,6 +82,9 @@ public class PlaneTicketGenerator : BaseGenerator
        p.flightNumber = UnityEngine.Random.Range(1000, 10000);
        p.errorNumber = 0;
 
+        p.documentType = "Plane Ticket";
+
+
        return p;
 
     }
@@ -102,6 +107,9 @@ public class PlaneTicketGenerator : BaseGenerator
         p.group = ticket.group;
         p.flightNumber = ticket.flightNumber;
         p.errorNumber = UnityEngine.Random.Range(1, 3);
+
+        p.documentType = "Plane Ticket";
+
 
         List<String> data = new List<String>() {"firstNames", "lastNames", "destination", "time"};
         int errors = p.errorNumber;
