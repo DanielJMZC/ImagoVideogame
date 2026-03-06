@@ -17,6 +17,8 @@ public class TravelInsuranceGenerator : BaseGenerator
         i.passportNumber = p.passportNumber;
         i.agencyNumber = UnityEngine.Random.Range(1000, 10000);
         i.errorNumber = 0;
+
+        i.documentType = "Travel Insurance";
         
 
         return i;
@@ -26,6 +28,18 @@ public class TravelInsuranceGenerator : BaseGenerator
     public TravelInsurance GenerateFakeTravelInsurance(TravelInsurance insurance)
     {
         TravelInsurance i = new TravelInsurance();
+        i.firstNames = insurance.firstNames;
+        i.lastNames = insurance.lastNames;
+        i.product = insurance.product;
+        i.issueDate = insurance.issueDate;
+        i.startDate = insurance.startDate;
+        i.endDate = insurance.endDate;
+        i.insuranceNumber = insurance.insuranceNumber;
+        i.passportNumber = insurance.passportNumber;
+        i.agencyNumber = insurance.agencyNumber;
+    
+        i.documentType = "Travel Insurance";
+
 
        
 

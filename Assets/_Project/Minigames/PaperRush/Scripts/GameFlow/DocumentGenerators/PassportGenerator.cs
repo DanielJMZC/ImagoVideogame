@@ -29,6 +29,8 @@ public class PassportGenerator : BaseGenerator
 
         p.errorNumber = 0;
 
+        p.documentType = "Passport";
+
         return p;
 
     }
@@ -46,6 +48,8 @@ public class PassportGenerator : BaseGenerator
         p.issueDate = passport.issueDate;
         p.expiryDate = passport.expiryDate;
         p.passportNumber = passport.passportNumber;
+
+        p.documentType = "Passport";
 
         p.errorNumber = UnityEngine.Random.Range(1, 4);
         List<String> data = new List<String>() {"firstNames", "lastNames", "sex", "dateOfBirth", "issueDate", "expiryDate", "photo"};
