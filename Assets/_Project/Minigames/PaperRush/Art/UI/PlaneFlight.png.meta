@@ -1,0 +1,751 @@
+fileFormatVersion: 2
+guid: 2320b0f6199524086ba3231506cfa34c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2492946365200975795
+    second: PlaneFlight_0
+  - first:
+      213: 2864999146771041895
+    second: PlaneFlight_1
+  - first:
+      213: -859896158105767957
+    second: PlaneFlight_2
+  - first:
+      213: 2295143727087287996
+    second: PlaneFlight_3
+  - first:
+      213: -5716425265947680612
+    second: PlaneFlight_4
+  - first:
+      213: 7835293003686742100
+    second: PlaneFlight_5
+  - first:
+      213: -8206412589794140014
+    second: PlaneFlight_6
+  - first:
+      213: -8777323322441532215
+    second: PlaneFlight_7
+  - first:
+      213: 3111919265202517238
+    second: PlaneFlight_8
+  - first:
+      213: -238223897181980798
+    second: PlaneFlight_9
+  - first:
+      213: 4024279543529710754
+    second: PlaneFlight_10
+  - first:
+      213: -146027084174576702
+    second: PlaneFlight_11
+  - first:
+      213: -8980914769513903346
+    second: PlaneFlight_12
+  - first:
+      213: 6118721559807856478
+    second: PlaneFlight_13
+  - first:
+      213: 5392538155264916439
+    second: PlaneFlight_14
+  - first:
+      213: -1345014498961041051
+    second: PlaneFlight_15
+  - first:
+      213: -226467875432619373
+    second: PlaneFlight_16
+  - first:
+      213: -9154589801470085952
+    second: PlaneFlight_17
+  - first:
+      213: 5359770806108508525
+    second: PlaneFlight_18
+  - first:
+      213: -3009780157098317639
+    second: PlaneFlight_19
+  - first:
+      213: 721466497449243673
+    second: PlaneFlight_20
+  - first:
+      213: 7019224081529692898
+    second: PlaneFlight_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PlaneFlight_0
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 1141
+        width: 74
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b7c7edc289b89220800000000000000
+      internalID: 2492946365200975795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_1
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 1160
+        width: 72
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76ec5196b8582c720800000000000000
+      internalID: 2864999146771041895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_2
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 1171
+        width: 70
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: befe16800090114f0800000000000000
+      internalID: -859896158105767957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_3
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 1171
+        width: 71
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbef0814f0df9df10800000000000000
+      internalID: 2295143727087287996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_4
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 1160
+        width: 72
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c90ee1ee18d2ba0b0800000000000000
+      internalID: -5716425265947680612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_5
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 1141
+        width: 74
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4580ad3497d8cbc60800000000000000
+      internalID: 7835293003686742100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_6
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 1080
+        width: 74
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 290e601aa37fc1e80800000000000000
+      internalID: -8206412589794140014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_7
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 1114
+        width: 74
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ccfe1741fea03680800000000000000
+      internalID: -8777323322441532215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_8
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 1114
+        width: 74
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f437148512cf2b20800000000000000
+      internalID: 3111919265202517238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_9
+      rect:
+        serializedVersion: 2
+        x: 1336
+        y: 1080
+        width: 74
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 287757fa0a8a1bcf0800000000000000
+      internalID: -238223897181980798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_10
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 990
+        width: 72
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a4a5fc5cec19d730800000000000000
+      internalID: 4024279543529710754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_11
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 1038
+        width: 73
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c33030042539fdf0800000000000000
+      internalID: -146027084174576702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_12
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 1039
+        width: 73
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b801d99916d5380800000000000000
+      internalID: -8980914769513903346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_13
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 990
+        width: 72
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5f0fdb17d01ae450800000000000000
+      internalID: 6118721559807856478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_14
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 875
+        width: 67
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7db3e4e91e426da40800000000000000
+      internalID: 5392538155264916439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_15
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 936
+        width: 70
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5695dab707c855de0800000000000000
+      internalID: -1345014498961041051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_16
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 936
+        width: 70
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3922dcbcaac6bdcf0800000000000000
+      internalID: -226467875432619373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_17
+      rect:
+        serializedVersion: 2
+        x: 1616
+        y: 875
+        width: 68
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c436f2241d54f080800000000000000
+      internalID: -9154589801470085952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_18
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 739
+        width: 60
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d615b9f962bb16a40800000000000000
+      internalID: 5359770806108508525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_19
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 809
+        width: 64
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b8a224c4ec1b36d0800000000000000
+      internalID: -3009780157098317639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_20
+      rect:
+        serializedVersion: 2
+        x: 1674
+        y: 809
+        width: 64
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 914bec9f4f9230a00800000000000000
+      internalID: 721466497449243673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_21
+      rect:
+        serializedVersion: 2
+        x: 1726
+        y: 739
+        width: 60
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e2e17adc1b496160800000000000000
+      internalID: 7019224081529692898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaneFlight_22
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 502
+        width: 1602
+        height: 793
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e821835482b141309d0fa1b5cd0abb4
+      internalID: -1942619333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6b61399b9fcfe435e91a6f39f8548cf7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PlaneFlight_0: 2492946365200975795
+      PlaneFlight_1: 2864999146771041895
+      PlaneFlight_10: 4024279543529710754
+      PlaneFlight_11: -146027084174576702
+      PlaneFlight_12: -8980914769513903346
+      PlaneFlight_13: 6118721559807856478
+      PlaneFlight_14: 5392538155264916439
+      PlaneFlight_15: -1345014498961041051
+      PlaneFlight_16: -226467875432619373
+      PlaneFlight_17: -9154589801470085952
+      PlaneFlight_18: 5359770806108508525
+      PlaneFlight_19: -3009780157098317639
+      PlaneFlight_2: -859896158105767957
+      PlaneFlight_20: 721466497449243673
+      PlaneFlight_21: 7019224081529692898
+      PlaneFlight_22: -1942619333
+      PlaneFlight_3: 2295143727087287996
+      PlaneFlight_4: -5716425265947680612
+      PlaneFlight_5: 7835293003686742100
+      PlaneFlight_6: -8206412589794140014
+      PlaneFlight_7: -8777323322441532215
+      PlaneFlight_8: 3111919265202517238
+      PlaneFlight_9: -238223897181980798
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

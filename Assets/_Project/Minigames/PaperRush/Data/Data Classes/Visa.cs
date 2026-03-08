@@ -8,11 +8,11 @@ public class Visa: Document
     public string numberOfEntries;
     public string documentNumber;
     public string type;
+
+    public string nationality;
     public int passportNumber;
 
     public string sex;
-
-    public string authority;
     public DateTime dateOfBirth;
     public DateTime expireDate;
     public DateTime validDate;

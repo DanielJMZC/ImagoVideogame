@@ -4,7 +4,7 @@ public class CharacterGenerator : MonoBehaviour
 {
     public NameDatabaseSO nameDatabase;
     public PhotoDatabaseSO photoDatabase;
-    public Character GenerateCharacter()
+    public Character Generate()
     {
         Character c = new Character();
         
@@ -54,39 +54,9 @@ public class CharacterGenerator : MonoBehaviour
         day = UnityEngine.Random.Range(1, 28);
 
         c.calendarDate = new System.DateTime(year, month, day);
-
-
+        
         return c;
 
     }
 
-    public void assignPassport(Character c, Passport p)
-    {
-        c.passport = p;
-    }
-
-    public void assignArrivalTicket(Character c, PlaneTicket ticket)
-    {
-        c.arrivalTicket = ticket;
-    }
-
-    public void assignReturnTicket(Character c, PlaneTicket ticket)
-    {
-        c.returnTicket = ticket;
-    }
-
-    public void assignVisa(Character c, Visa v)
-    {
-        c.visa = v;
-    }
-
-    public void assignTravelInsurance(Character c, TravelInsurance i)
-    {
-        c.insurance = i;
-    }
-
-    public void assignAcceptanceLetter(Character c, AcceptanceLetter l)
-    {
-        c.acceptanceLetter = l;
-    }
 }

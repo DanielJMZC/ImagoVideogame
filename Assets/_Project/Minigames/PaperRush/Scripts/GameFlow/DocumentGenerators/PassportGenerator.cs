@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PassportGenerator : BaseGenerator
+public class PassportGenerator : BaseGenerator<Passport>
 {
-    public Passport GeneratePassport(Character c)
+    public override Passport Generate()
     {
+        Character c = GameController.Instance.character;
         Passport p = new Passport();
 
         p.firstNames = c.firstNames;
@@ -31,13 +32,18 @@ public class PassportGenerator : BaseGenerator
 
         p.documentType = "Passport";
 
+        GameController.Instance.passport = p;
+
         return p;
 
     }
 
-    public Passport GenerateFakePassport(Passport passport, Character c)
+    public override Passport GenerateFake()
     {
         Passport p = new Passport();
+        
+        Character c = GameController.Instance.character;
+        Passport passport = GameController.Instance.passport;
 
         p.firstNames = passport.firstNames;
         p.lastNames = passport.lastNames;

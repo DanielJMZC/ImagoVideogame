@@ -2,37 +2,51 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AcceptanceLetterGenerator : BaseGenerator
+public class AcceptanceLetterGenerator : BaseGenerator<AcceptanceLetter>
 {
-    public AcceptanceLetter GenerateAcceptanceLetter(Character c, PlaneTicket arrival, PlaneTicket departure)
+
+    public LetterDatabase letterDatabase;
+    public override AcceptanceLetter Generate()
     {
        AcceptanceLetter l = new AcceptanceLetter();
+
+       Character c = GameController.Instance.character;
+       PlaneTicket arrival = GameController.Instance.arrivalTicket;
+       PlaneTicket departure = GameController.Instance.returnTicket;
 
         l.firstNames = c.firstNames;
         l.lastNames = c.lastNames;
         l.startDate = arrival.arrivalTime;
         l.endDate = departure.departureTime;
+        l.sendDate = c.calendarDate.AddMonths(-1);
         l.documentType = "Acceptance Letter";
+        l.subject = "Aceptación al Programa de Prácticas AWAQ Campus Internship";
+        l.program = "Programa de Prácticas AWAQ Campus Internship (ACI)";
+        l.signature = "Equipo AWAQ";
+
+        GameController.Instance.acceptanceLetter = l;
       
         return l;
-
     }
 
-    public AcceptanceLetter GenerateFakeAcceptanceLetter(AcceptanceLetter letter)
+    public override AcceptanceLetter GenerateFake()
     {
         AcceptanceLetter l = new AcceptanceLetter();
+
+        AcceptanceLetter letter = GameController.Instance.acceptanceLetter;
 
         l.firstNames = letter.firstNames;
         l.lastNames = letter.lastNames;
         l.startDate = letter.startDate;
         l.endDate = letter.endDate;
+        l.sendDate = letter.sendDate;
 
         l.documentType = "Acceptance Letter";
 
-        l.errorNumber = 1;
-        List<String> data = new List<String>() {"firstNames", "lastNames", "date"};
+        l.errorNumber = UnityEngine.Random.Range(1, 3);
+        List<String> data = new List<String>() {"firstNames", "lastNames", "date", "program"};
         int errors = l.errorNumber;
-        int possibleErrors = 7;
+        int possibleErrors = 4;
 
         while (errors != 0)
         {
@@ -52,6 +66,16 @@ public class AcceptanceLetterGenerator : BaseGenerator
                 case "date":
                     l.startDate = fakeDate(l.startDate);
                     l.endDate = l.startDate.AddMonths(4);
+                break;
+
+                case "program":
+                    string letters =  letterDatabase.letters[UnityEngine.Random.Range(0, letterDatabase.letters.Count)];
+                    string[] parts = letters.Split(", ");
+
+                    l.subject = parts[0];
+                    l.program = parts[1];
+                    l.signature = parts[2];
+            
                 break;
 
             }

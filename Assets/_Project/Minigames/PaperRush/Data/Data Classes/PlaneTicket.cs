@@ -17,7 +17,11 @@ public class PlaneTicket: Document
 
     public DateTime gateTime;
 
-    public string group;
+    public int gate;
+
+    public string planeClass;
+
+    public string scanCode;
 
     public int flightNumber;
 
