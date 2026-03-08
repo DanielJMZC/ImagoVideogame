@@ -24,34 +24,56 @@ public class GameController : MonoBehaviour
         Passport p = passportGenerator.GeneratePassport(c);
         Visa v = visaGenerator.GenerateVisa(c, p);
 
-       
-        GameObject GO = Instantiate(passportPrefab, allSpawns[0].transform.position, Quaternion.identity);
-        PassportController passport = GO.GetComponent<PassportController>();
-        passport.assignPassport(p);
-         if (allSpawns[0].isVisible == false)
-        {
-            SpriteRenderer sr2= GO.GetComponent<SpriteRenderer>();
-            sr2.enabled = false;
-        }
+        //int max = allSpawns.Count/2 - 2;
+        int max = allSpawns.Count - 2;
 
-        GameObject GO2 = Instantiate(visaPrefab, allSpawns[1].transform.position, Quaternion.identity);
-        VisaController visa = GO2.GetComponent<VisaController>();
-        visa.assignVisa(v);
-        if (allSpawns[1].isVisible == false)
-        {
-            SpriteRenderer sr2= GO2.GetComponent<SpriteRenderer>();
-            sr2.enabled = false;
-        }
+        int n = UnityEngine.Random.Range(0, allSpawns.Count);
 
-        GameObject GO3 = Instantiate(passportPrefab, allSpawns[2].transform.position, Quaternion.identity);
-        PassportController passport2 = GO3.GetComponent<PassportController>();
-        passport2.assignPassport(passportGenerator.GenerateFakePassport(p, c));
-         if (allSpawns[2].isVisible == false)
-        {
-            SpriteRenderer sr3= GO.GetComponent<SpriteRenderer>();
-            sr3.enabled = false;
-        }
+        GameObject mainPass = Instantiate(passportPrefab, allSpawns[n].transform.position, Quaternion.identity);
+        PassportController mainPassport = mainPass.GetComponent<PassportController>();
+        mainPassport.assignPassport(p);
+
+        if (allSpawns[n].isVisible == false)
+            {
+                SpriteRenderer sr = mainPass.GetComponent<SpriteRenderer>();
+                sr.enabled = false;
+            }
+
+        allSpawns.RemoveAt(n);
+
+        n = UnityEngine.Random.Range(0, allSpawns.Count);
+
+        GameObject mainVis = Instantiate(visaPrefab, allSpawns[n].transform.position, Quaternion.identity);
+        VisaController mainVisa = mainVis.GetComponent<VisaController>();
+        mainVisa.assignVisa(v);
+
+        if (allSpawns[n].isVisible == false)
+            {
+                SpriteRenderer sr = mainVis.GetComponent<SpriteRenderer>();
+                sr.enabled = false;
+            }
+
+        allSpawns.RemoveAt(n);
+
+        
+
        
+        for (int i = 0; i < max; i++)
+        {
+            n = UnityEngine.Random.Range(0, allSpawns.Count);
+
+            GameObject GO = Instantiate(passportPrefab, allSpawns[n].transform.position, Quaternion.identity);
+            PassportController passport = GO.GetComponent<PassportController>();
+            Passport fake = passportGenerator.GenerateFakePassport(p,c);
+            passport.assignPassport(fake);
+
+            if (allSpawns[n].isVisible == false)
+            {
+                SpriteRenderer sr = GO.GetComponent<SpriteRenderer>();
+                sr.enabled = false;
+            }
+            allSpawns.RemoveAt(n);
+        }
         
         
 
@@ -60,7 +82,6 @@ public class GameController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         

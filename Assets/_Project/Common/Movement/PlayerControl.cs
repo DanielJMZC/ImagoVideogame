@@ -1,15 +1,27 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Animations;
+using System;
 
 public class PlayerControl : MonoBehaviour
 {
     public float moveSpeed;
     private float xInput, yInput;
     private float xInputLast, yInputLast;
-    public bool moving;
 
+    public float xStart, yStart;
+
+
+    [HideInInspector]
+    public bool moving;
+    [HideInInspector]
     public bool inAction;
+    [HideInInspector]
+    
+    public Interactable currentInteractable;
+
+
+    public CapsuleCollider2D interactHitbox;
 
     Animator animatorController;
 
@@ -19,9 +31,12 @@ public class PlayerControl : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animatorController = GetComponent<Animator>();
-        inAction = false;
-
         
+        inAction = false;
+        xInputLast = xStart;
+        yInputLast = yStart;
+        currentInteractable = null;
+  
     }
 
     // Update is called once per frame
@@ -34,20 +49,27 @@ public class PlayerControl : MonoBehaviour
                 xInput = -1f;
                 xInputLast = -1f;
                 yInputLast = 0f;
+                interactHitbox.size = new Vector2(0.6f, 0.4f);
+                interactHitbox.offset = new Vector2(-0.4f, -0.1f);
+
+
             } else if (Keyboard.current.dKey.isPressed)
             {
                 xInput = 1f;
                 xInputLast = 1f;
                 yInputLast = 0f;
+                interactHitbox.size = new Vector2(0.6f, 0.4f);
+                interactHitbox.offset = new Vector2(0.4f, -0.1f);
             }
             
             yInput = 0;
-
             if (Keyboard.current.wKey.isPressed)
             {
                 yInput = 1f;
                 yInputLast = 1f;
                 xInputLast = 0f;
+                interactHitbox.size = new Vector2(0.5f, 1.1f);
+                interactHitbox.offset = new Vector2(0, 0.4f);
 
                 
             }     else if (Keyboard.current.sKey.isPressed)
@@ -55,7 +77,15 @@ public class PlayerControl : MonoBehaviour
                 yInput = -1f;
                 yInputLast = -1f;
                 xInputLast = 0f;
-            }    
+                interactHitbox.size = new Vector2(0.4f, 0.6f);
+                interactHitbox.offset = new Vector2(0, -0.8f);
+            }   
+
+            if (Keyboard.current.fKey.isPressed && currentInteractable != null)
+            {
+                if (!Interactable.interactionLocked)
+                currentInteractable.Interact();
+            }
 
             UpdatePlayerAnimation();
         }
@@ -101,6 +131,27 @@ public class PlayerControl : MonoBehaviour
                 animatorController.SetFloat("X", xInput);
                 animatorController.SetFloat("Y", yInput);
             break;
+        }
+    }
+
+    public void SetInteractable (Interactable i)
+    {
+        if (currentInteractable == null) {
+            currentInteractable = i;
+        }
+        
+    }
+
+    public void ClearInteractable(Interactable i)
+    {
+        if (currentInteractable == null)
+        {
+            return;
+        }
+
+        if (currentInteractable == i)
+        {
+            currentInteractable = null;
         }
     }
 }
