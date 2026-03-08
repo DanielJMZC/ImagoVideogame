@@ -1,10 +1,14 @@
 using System;
 using UnityEngine;
 
-public class BaseGenerator : MonoBehaviour
+public abstract class BaseGenerator<TDocument> : MonoBehaviour
 {
     public NameDatabaseSO nameDatabase;
     public PhotoDatabaseSO photoDatabase;
+
+    public abstract TDocument Generate();
+
+    public abstract TDocument GenerateFake();
 
     public string fakeFirstNames(string name)
     {
@@ -52,7 +56,6 @@ public class BaseGenerator : MonoBehaviour
     {
         if (sex == "H")
         {
-
             return "M";
         } else {
             

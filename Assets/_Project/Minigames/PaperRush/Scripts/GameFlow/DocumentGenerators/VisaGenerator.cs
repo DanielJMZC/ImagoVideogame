@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VisaGenerator : BaseGenerator
+public class VisaGenerator : BaseGenerator<Visa>
 {
-    public Visa GenerateVisa(Character c, Passport p)
+    public override Visa Generate()
     {
         Visa v = new Visa();
+
+        Character c = GameController.Instance.character;
+        Passport p = GameController.Instance.passport;
 
         v.firstNames = c.firstNames;
         v.lastNames = c.lastNames;
@@ -17,19 +20,32 @@ public class VisaGenerator : BaseGenerator
         v.sex = c.sex;
         v.dateOfBirth = c.dateOfBirth;
         v.passportNumber = p.passportNumber;
-        v.authority = "GIT Visas";
+        
+        if (v.sex == "H")
+        {
+            v.nationality = "Británico";
+        } else
+        {
+            v.nationality = "Británica";
+        }
 
         v.validDate = c.calendarDate.AddMonths(-1);
         v.expireDate = c.calendarDate.AddMonths(11);
         v.photo = c.photo;
         v.errorNumber = 0;
 
+        GameController.Instance.visa = v;
+
+
         return v;
     }
 
-    public Visa GenerateFakeVisa(Visa visa, Character c)
+    public override Visa GenerateFake()
     {
         Visa v = new Visa();
+
+        Visa visa = GameController.Instance.visa;
+        Character c = GameController.Instance.character;
 
         v.firstNames = visa.firstNames;
         v.lastNames = visa.lastNames;
@@ -40,7 +56,7 @@ public class VisaGenerator : BaseGenerator
         v.sex = visa.sex;
         v.dateOfBirth = visa.dateOfBirth;
         v.passportNumber = visa.passportNumber;
-        v.authority = visa.authority;
+        v.nationality = visa.nationality;
 
         v.validDate = visa.validDate;
         v.expireDate = visa.expireDate;
@@ -68,7 +84,15 @@ public class VisaGenerator : BaseGenerator
                 break;
 
                 case "sex":
-                   v.sex = fakeSex(v.sex);
+                    v.sex = fakeSex(v.sex);
+
+                    if (v.sex == "H")
+                    {
+                        v.nationality = "Británico";
+                    } else
+                    {
+                        v.nationality = "Británica";
+                    }
                 break;
 
                 case "dateofBirth":

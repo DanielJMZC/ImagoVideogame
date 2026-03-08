@@ -2,11 +2,17 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TravelInsuranceGenerator : BaseGenerator
+public class TravelInsuranceGenerator : BaseGenerator<TravelInsurance>
 {
-    public TravelInsurance GenerateTravelInsurance(Character c, PlaneTicket arrival, PlaneTicket departure, Passport p)
+    public override TravelInsurance Generate()
     {
         TravelInsurance i = new TravelInsurance();
+
+        Character c = GameController.Instance.character;
+        PlaneTicket arrival = GameController.Instance.arrivalTicket;
+        PlaneTicket departure = GameController.Instance.returnTicket;
+        Passport p = GameController.Instance.passport;
+
         i.firstNames = c.firstNames;
         i.lastNames = c.lastNames;
         i.product = "AC 35";
@@ -19,15 +25,20 @@ public class TravelInsuranceGenerator : BaseGenerator
         i.errorNumber = 0;
 
         i.documentType = "Travel Insurance";
+
+        GameController.Instance.travelInsurance = i;
         
 
         return i;
 
     }
 
-    public TravelInsurance GenerateFakeTravelInsurance(TravelInsurance insurance)
+    public override TravelInsurance GenerateFake()
     {
         TravelInsurance i = new TravelInsurance();
+
+        TravelInsurance insurance = GameController.Instance.travelInsurance;
+
         i.firstNames = insurance.firstNames;
         i.lastNames = insurance.lastNames;
         i.product = insurance.product;
@@ -39,9 +50,6 @@ public class TravelInsuranceGenerator : BaseGenerator
         i.agencyNumber = insurance.agencyNumber;
     
         i.documentType = "Travel Insurance";
-
-
-       
 
         i.errorNumber = UnityEngine.Random.Range(1, 3);
         List<String> data = new List<String>() {"firstNames", "lastNames", "time", "passportNumber"};

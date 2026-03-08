@@ -1,88 +1,46 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
-public class VisaController : DocumentController
+public class VisaController : DocumentController<Visa>
 {
     [Header("UI References")]
-   //Need to set UI References to Visa UI once done
-
-
+    public TextMeshProUGUI names;
+    public TextMeshProUGUI nationality;
+    public TextMeshProUGUI sex;
+    public TextMeshProUGUI dateOfBirth;
+    public TextMeshProUGUI validDate;
+    public TextMeshProUGUI expiryDate;
+    public TextMeshProUGUI passportNumber;
+    public TextMeshProUGUI placeOfExpedition;
+    public TextMeshProUGUI numberOfEntries;
+    public TextMeshProUGUI type;
+    public TextMeshProUGUI documentNumber;
+    public Image photo;
     public Visa visa;
-    bool previousPlayerInRange;
-    PlayerControl player;
 
 
-
-    void Start()
+    public override void updateText()
     {
         documentType = "Visa";
-        player = FindAnyObjectByType<PlayerControl>();
+        placeOfExpedition.text = document.placeOfExpedition;
+        type.text = document.type;
+        names.text = document.lastNames + ", " + document.firstNames;
+        sex.text = document.sex;
+        dateOfBirth.text = document.dateOfBirth.ToShortDateString();
+        validDate.text = document.validDate.ToShortDateString();
+        expiryDate.text = document.expireDate.ToShortDateString();
+        nationality.text = document.nationality;
+        passportNumber.text = document.passportNumber.ToString();
+        documentNumber.text = document.documentNumber;
 
+        Sprite sprite = Sprite.Create(
+            document.photo,
+            new Rect(0, 0, document.photo.width, document.photo.height),
+            new Vector2(0.5f, 0.5f)
+        );
+
+        photo.sprite = sprite;
     }
-
-    void Update()
-    {
-        /*if (panel.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            closeVisa();
-        }
-        */
-
-        bool active = player.currentInteractable == this;
-
-        if (active != previousPlayerInRange)
-        {
-            if (active)
-            {
-                animator.Play("Open");
-            } else
-            {
-                animator.Play("Close");
-            }
-
-            previousPlayerInRange = active;
-        }
-    }
-            
-    
-
-    public override void Interact() 
-    {
-        openVisa();
-        StartCoroutine(InteractionCooldown());
-
-    }
-
-    public void openVisa() {
-        /*
-        PlayerControl p = FindAnyObjectByType<PlayerControl>();
-        p.moveSpeed = 0;
-        p.inAction = true;
-            
-        panel.SetActive(true);
-        */
-        Debug.Log($"Name: {visa.firstNames} {visa.passportNumber}");
-    }
-
-    public void closeVisa()
-    {
-        /*
-        PlayerControl p = FindAnyObjectByType<PlayerControl>();
-        p.moveSpeed = 8;
-        p.inAction = false;
-            
-        panel.SetActive(false);
-        */
-        
-    }
-
-
-    public void assignVisa(Visa v)
-    {
-        visa = v;
-    }
-    
-
+          
 }
