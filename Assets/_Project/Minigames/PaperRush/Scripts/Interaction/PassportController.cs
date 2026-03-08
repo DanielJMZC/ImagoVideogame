@@ -19,48 +19,79 @@ public class PassportController : DocumentController
 
 
     public Passport passport;
+    bool previousPlayerInRange;
+    PlayerControl player;
+
+
     void Start()
     {
         documentType = "Passport";
+        firstNames.text = passport.firstNames;
+        lastNames.text = passport.lastNames;
+        sex.text = passport.sex;
+        dateOfBirth.text = passport.dateOfBirth.ToShortDateString();
+        issueDate.text = passport.issueDate.ToShortDateString();
+        expiryDate.text = passport.expiryDate.ToShortDateString();
+        passportNumber.text = passport.passportNumber.ToString();
+        Sprite sprite = Sprite.Create(
+            passport.photo,
+            new Rect(0, 0, passport.photo.width, passport.photo.height),
+            new Vector2(0.5f, 0.5f)
+        );
+
+        photo.sprite = sprite;
+        player = FindAnyObjectByType<PlayerControl>();
+
+        
     }
 
     void Update()
     {
-        if (interactableInRange == true)
+       if (panel.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            if (Keyboard.current.fKey.isPressed)
-            {
-                firstNames.text = passport.firstNames;
-                lastNames.text = passport.lastNames;
-                sex.text = passport.sex;
-                dateOfBirth.text = passport.dateOfBirth.ToShortDateString();
-                issueDate.text = passport.issueDate.ToShortDateString();
-                expiryDate.text = passport.expiryDate.ToShortDateString();
-                passportNumber.text = passport.passportNumber.ToString();
-                Sprite sprite = Sprite.Create(
-                    passport.photo,
-                    new Rect(0, 0, passport.photo.width, passport.photo.height),
-                    new Vector2(0.5f, 0.5f)
-                );
-
-                photo.sprite = sprite;
-            
-                PlayerControl p = FindAnyObjectByType<PlayerControl>();
-                p.moveSpeed = 0;
-                p.inAction = true;
-                
-                panel.SetActive(true);
-            }
-
-            if (Keyboard.current.escapeKey.isPressed)
-            {
-                panel.SetActive(false);
-
-                PlayerControl p = FindAnyObjectByType<PlayerControl>();
-                p.moveSpeed = 8;
-                p.inAction = false;
-            }
+            closePassport();
         }
+
+        bool active = player.currentInteractable == this;
+
+        if (active != previousPlayerInRange)
+        {
+                if (active)
+                {
+                    animator.Play("Open");
+                } else
+                {
+                    animator.Play("Close");
+                }
+
+            previousPlayerInRange = active;
+        }
+       
+    }
+
+    public override void Interact() 
+    {
+        openPassport();
+        StartCoroutine(InteractionCooldown());
+    }
+
+    public void openPassport() {
+        PlayerControl p = FindAnyObjectByType<PlayerControl>();
+        p.moveSpeed = 0;
+        p.inAction = true;
+            
+        panel.SetActive(true);
+        
+    }
+
+    public void closePassport()
+    {
+        PlayerControl p = FindAnyObjectByType<PlayerControl>();
+        p.moveSpeed = 8;
+        p.inAction = false;
+            
+        panel.SetActive(false);
+        
     }
 
     public void assignPassport(Passport p)
