@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class fxManager : MonoBehaviour
 {
+    [Header("Audio Sources")]
     public AudioClip win;
     public AudioClip lose;
     public AudioClip pageFlip;
     public AudioClip paperSlide;
-
     private AudioSource music;
     public AudioSource footsteps;
 
+    [HideInInspector]
     public Boolean footstepsPlaying;
 
     void Start()

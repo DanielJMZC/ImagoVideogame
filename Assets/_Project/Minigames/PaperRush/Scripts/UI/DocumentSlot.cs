@@ -6,7 +6,9 @@ public class DocumentSlot : MonoBehaviour, IDropHandler
 {
     public bool isLocked = false;
     [SerializeField] public object storedDocument;
-    
+
+
+    [Header("Document Information")]
     public string documentType;
 
     public Image slotImage;

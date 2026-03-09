@@ -2,27 +2,34 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    [Header("Timer")]
     public int timeSeconds;
     protected float time;
+
+    [Header("UI References")]
     public TextMeshProUGUI timerText; 
     public TextMeshProUGUI date;
     public TextMeshProUGUI points;
-
     public GameObject fade;
     public GameObject objetives;
     public GameObject endUI;
     public GameObject mainUI;
+    public GameObject GameStartUI;
+
+    [Header("Controllers")]
+    public CharacterController notebook;
+
 
     void Start()
     {
         time = timeSeconds;
         DateTime day = GameController.Instance.character.calendarDate;
         date.text = day.ToString("MMMM dd, yyyy");
-        StartCoroutine(MatchTime());
-
+        notebook.updateText();
         
     }
 
@@ -69,12 +76,35 @@ public class UIController : MonoBehaviour
     }
     public void GameEndUI(int _points)
     {
+        points.text = _points.ToString();
+        StartCoroutine(GameEndUIRoutine(5));
+    }
+
+    IEnumerator GameEndUIRoutine(int second)
+    {
         fade.SetActive(true);
         objetives.SetActive(false);
         endUI.SetActive(true);
         mainUI.SetActive(false);
+        yield return new WaitForSeconds(second);
 
-        points.text = _points.ToString();
+        UnityEditor.EditorApplication.isPlaying = false;
+        
+    }
 
+    public void GameStart()
+    {
+       StartCoroutine(GameStartRoutine(3));
+    }
+
+    IEnumerator GameStartRoutine(int second)
+    
+    {
+        GameController.Instance.fxManager.PauseMusic();
+        GameStartUI.SetActive(true);
+        yield return new WaitForSeconds(second);
+        GameStartUI.SetActive(false);
+        GameController.Instance.fxManager.ResumeMusic();
+        StartCoroutine(MatchTime());
     }
 }

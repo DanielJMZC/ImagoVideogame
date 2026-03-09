@@ -19,16 +19,17 @@ public class GameController : MonoBehaviour
     public GameObject travelInsurancePrefab;
     public GameObject acceptanceLetterPrefab;
 
+    //Cambiar a 5 despues 
     [Header ("Count")]
-    [Range(0, 5)]
+    [Range(0, 55)]
     public int fakePassports;
-    [Range(0, 5)]
+    [Range(0, 55)]
     public int fakeVisas;
-    [Range(0, 5)]
+    [Range(0, 55)]
     public int fakePlaneTickets;
-    [Range(0, 5)]
+    [Range(0, 55)]
     public int fakeTravelInsurance;
-    [Range(0, 5)]
+    [Range(0, 55)]
     public int fakeAcceptanceLetter;
 
     [Header ("Documents")]
@@ -39,16 +40,17 @@ public class GameController : MonoBehaviour
     public PlaneTicket returnTicket;
     public TravelInsurance travelInsurance;
     public AcceptanceLetter acceptanceLetter;
-    public PlayerControl player;
 
+    [Header("Controllers")]
+    public PlayerControl player;
     public static GameController Instance;
     public UIController uiController;
     public fxManager fxManager;
-    public List<SpawnController> allSpawns;
 
+    protected List<SpawnController> allSpawns;
     protected int points;
     protected Dictionary<string, bool> documentStatus;
-    public int typeOfDocuments;
+    protected int typeOfDocuments;
     
 
     
@@ -99,6 +101,8 @@ public class GameController : MonoBehaviour
         SpawnDocument<TravelInsuranceController, TravelInsurance>(travelInsurancePrefab, () => travelInsuranceGenerator.GenerateFake(), fakeTravelInsurance);
         SpawnDocument<AcceptanceLetterController, AcceptanceLetter>(acceptanceLetterPrefab, () => acceptanceLetterGenerator.Generate(), 1);
         SpawnDocument<AcceptanceLetterController, AcceptanceLetter>(acceptanceLetterPrefab, () => acceptanceLetterGenerator.GenerateFake(), fakeAcceptanceLetter);
+
+        uiController.GameStart();
     }
 
     public void SpawnDocument<TController, TDocument>(GameObject prefab, System.Func<TDocument> generateDocument, int count)
@@ -108,7 +112,7 @@ public class GameController : MonoBehaviour
             if (allSpawns.Count == 0)
             {
                 return;
-            }
+            } 
 
             int n = Random.Range(0, allSpawns.Count);
             SpawnController spawn = allSpawns[n];

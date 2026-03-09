@@ -6,6 +6,8 @@ public abstract class DocumentController<TDocument> : DocumentControllerBase
 {
     public string documentType;
 
+
+    [Header("Objects")]
     public GameObject panel;
     public Animator animator;
 

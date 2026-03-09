@@ -5,10 +5,10 @@ using System;
 
 public class PlayerControl : MonoBehaviour
 {
+    [Header ("Starting Attributes")]
     public float moveSpeed;
     private float xInput, yInput;
     private float xInputLast, yInputLast;
-
     public float xStart, yStart;
 
 
@@ -21,8 +21,10 @@ public class PlayerControl : MonoBehaviour
     public Interactable currentInteractable;
 
 
+    [Header ("Interact Hitbox")]
     public CapsuleCollider2D interactHitbox;
 
+    [HideInInspector]
     public Animator animatorController;
 
 
