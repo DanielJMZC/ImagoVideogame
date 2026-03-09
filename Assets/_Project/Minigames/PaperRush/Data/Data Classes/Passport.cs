@@ -10,5 +10,4 @@ public class Passport: Document
     public DateTime issueDate;
     public DateTime expiryDate;
     public int passportNumber;
-    public int errorNumber;
 }

@@ -23,8 +23,9 @@ public class PlaneTicket: Document
 
     public string scanCode;
 
+    public Boolean isReturning;
+
     public int flightNumber;
 
-    public int errorNumber;
 
 }

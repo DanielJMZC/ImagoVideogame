@@ -34,12 +34,20 @@ public class CharacterGenerator : MonoBehaviour
 
         c.lastNames = nameDatabase.lastNames[Random.Range(0, nameDatabase.lastNames.Count)];
 
+        int n = 0;
         if (c.sex == "H")
         {
-            c.photo = photoDatabase.malePhotos[Random.Range(0, photoDatabase.malePhotos.Count)];
-        } else
-        {
-            c.photo = photoDatabase.femalePhotos[Random.Range(0, photoDatabase.femalePhotos.Count)];
+            n = Random.Range(0, photoDatabase.malePhotos.Count);
+            c.photo = photoDatabase.malePhotos[n];
+            GameObject Player = GameController.Instance.player.gameObject;
+            Player.GetComponent<SpriteRenderer>().sprite = photoDatabase.maleSprites[n];
+            Player.GetComponent<Animator>().runtimeAnimatorController = photoDatabase.maleAnimatorOverrides[n];
+        } else {
+            n = Random.Range(0, photoDatabase.femalePhotos.Count);
+            c.photo = photoDatabase.femalePhotos[n];
+            GameObject Player = GameController.Instance.player.gameObject;
+            Player.GetComponent<SpriteRenderer>().sprite = photoDatabase.femaleSprites[n];
+            Player.GetComponent<Animator>().runtimeAnimatorController = photoDatabase.femaleAnimatorOverrides[n];
         }
 
         c.nationality = "UK";

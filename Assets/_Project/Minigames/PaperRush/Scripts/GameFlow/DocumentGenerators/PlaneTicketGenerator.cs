@@ -21,6 +21,8 @@ public class PlaneTicketGenerator : BaseGenerator<PlaneTicket>
             p.originShort = "LDN";
             p.destinationAirport = "El Dorado";
             p.originAirport = "Londres-Heathrow";
+
+            p.isReturning = false;
         } else
         {
             p.origin = "Bogota";
@@ -29,6 +31,8 @@ public class PlaneTicketGenerator : BaseGenerator<PlaneTicket>
             p.destinationShort = "LDN";
             p.originAirport = "El Dorado";
             p.destinationAirport = "Londres-Heathrow";
+
+            p.isReturning = true;
         }
 
         int ASCII = UnityEngine.Random.Range(65, 71);
@@ -78,7 +82,6 @@ public class PlaneTicketGenerator : BaseGenerator<PlaneTicket>
             }
         p.errorNumber = 0;
 
-
         p.documentType = "Plane Ticket";
 
         if (GameController.Instance.arrivalTicket == null) {
@@ -115,6 +118,13 @@ public class PlaneTicketGenerator : BaseGenerator<PlaneTicket>
         p.errorNumber = UnityEngine.Random.Range(1, 3);
         p.planeClass = "Economia";
         p.scanCode = "";
+
+        if (UnityEngine.Random.value > 0.5f) {
+            p.isReturning = true;
+        } else
+        {
+            p.isReturning = false;
+        }
 
         while (p.scanCode.Length <= 50)
         {
@@ -154,7 +164,7 @@ public class PlaneTicketGenerator : BaseGenerator<PlaneTicket>
                 break;
 
                 case "destination":
-                    string destination =  destinationDatabase.destinations[UnityEngine.Random.Range(0, destinationDatabase.destinations.Count)];
+                    string destination = destinationDatabase.destinations[UnityEngine.Random.Range(0, destinationDatabase.destinations.Count)];
                     string[] parts = destination.Split(", ");
                     
                     if (UnityEngine.Random.value > 0.5f)

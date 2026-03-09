@@ -34,6 +34,8 @@ public class VisaGenerator : BaseGenerator<Visa>
         v.photo = c.photo;
         v.errorNumber = 0;
 
+        v.documentType = "Visa";
+
         GameController.Instance.visa = v;
 
 
@@ -61,6 +63,7 @@ public class VisaGenerator : BaseGenerator<Visa>
         v.validDate = visa.validDate;
         v.expireDate = visa.expireDate;
         v.photo = visa.photo;
+        v.documentType = "Visa";
 
         v.errorNumber = UnityEngine.Random.Range(1, 4);
 

@@ -12,6 +12,5 @@ public class AcceptanceLetter: Document
     public string program;
     public string signature;
    
-    public int errorNumber;
 
 }

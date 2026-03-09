@@ -2,30 +2,41 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class DocumentController<TDocument> : Interactable
+public abstract class DocumentController<TDocument> : DocumentControllerBase
 {
     public string documentType;
+
     public GameObject panel;
     public Animator animator;
 
     public TDocument document;
 
     bool previousPlayerInRange;
-    public  void close()
+
+    public override object GetDocument()
+    {
+        return document;
+    }
+    public override void close()
     {
         PlayerControl p = GameController.Instance.player;
         p.moveSpeed = 8;
         p.inAction = false;
             
         panel.SetActive(false);
+        GameController.Instance.uiController.isFading(false);
+
     }
-    public void open()
+    public override void open()
     {
         PlayerControl p = GameController.Instance.player;
         p.moveSpeed = 0;
         p.inAction = true;
+        GameController.Instance.fxManager.pageFlipSound();
             
         panel.SetActive(true);
+        GameController.Instance.uiController.isFading(true);
+
     }
     public void assign(TDocument document)
     {

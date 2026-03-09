@@ -244,10 +244,10 @@ TextureImporter:
       name: TopDownHouse_FurnitureState1_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 259
-        width: 22
-        height: 25
+        x: 6
+        y: 260
+        width: 20
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,10 +266,10 @@ TextureImporter:
       name: TopDownHouse_FurnitureState1_1
       rect:
         serializedVersion: 2
-        x: 31
-        y: 257
-        width: 15
-        height: 29
+        x: 32
+        y: 258
+        width: 13
+        height: 27
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1102,9 +1102,9 @@ TextureImporter:
       name: TopDownHouse_FurnitureState1_39
       rect:
         serializedVersion: 2
-        x: 97
+        x: 96
         y: 53
-        width: 79
+        width: 80
         height: 43
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1164,6 +1164,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TopDownHouse_FurnitureState1_42
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 77
+        width: 29
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93a2b749fa24e460a85cfaaf8d43bea4
+      internalID: -1797402896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -1215,6 +1237,7 @@ TextureImporter:
       TopDownHouse_FurnitureState1_4: -2909096876751415182
       TopDownHouse_FurnitureState1_40: -1101462823
       TopDownHouse_FurnitureState1_41: 1775083890
+      TopDownHouse_FurnitureState1_42: -1797402896
       TopDownHouse_FurnitureState1_5: 2427700795184512329
       TopDownHouse_FurnitureState1_6: -6503336491285589323
       TopDownHouse_FurnitureState1_7: -1244099573194075809

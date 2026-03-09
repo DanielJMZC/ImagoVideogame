@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c465ca47a81a4b5d8b37d34bf07e3bf, type: 3}
+  m_Name: Photos
+  m_EditorClassIdentifier: Project.PaperRush::PhotoDatabaseSO
+  malePhotos:
+  - {fileID: 2800000, guid: 80d77a52166134f96959f7e479c2ac2f, type: 3}
+  - {fileID: 2800000, guid: 5074a5224e4214ee8a915b2ead354417, type: 3}
+  femalePhotos:
+  - {fileID: 2800000, guid: c2860f6a723ca40a188fae4ac457d060, type: 3}
+  - {fileID: 2800000, guid: 019832d57ed174930b998862bf138776, type: 3}
+  neutralPhotos: []
+  maleSprites:
+  - {fileID: -7715902427486114116, guid: dd7ef4dbb758445f9a68455c1dec0687, type: 3}
+  - {fileID: 1063745061124070376, guid: 2d7a0601dc5134cde97c773d50ce2473, type: 3}
+  femaleSprites:
+  - {fileID: -1275391637157308820, guid: 399a9ab58d7314763b7f22b6cdcc02cc, type: 3}
+  - {fileID: 8547691330552646725, guid: 04a1882b501b84032a2bc5aed9710f9a, type: 3}
+  maleAnimatorOverrides:
+  - {fileID: 22100000, guid: c0b15bd6008b849819f69732ccb82598, type: 2}
+  - {fileID: 22100000, guid: af2525c95392347719097b8c81110ba6, type: 2}
+  femaleAnimatorOverrides:
+  - {fileID: 22100000, guid: 6b224b952a50f42bf8f254a86ff4de47, type: 2}
+  - {fileID: 22100000, guid: d96763b693074443f9f97b911c70a215, type: 2}

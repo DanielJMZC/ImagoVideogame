@@ -36,6 +36,7 @@ public class PlaneTicketController : DocumentController<PlaneTicket>
         destinationTime.text = document.arrivalTime.ToString("HH:mm");
         date.text = document.departureTime.ToShortDateString();
         flight.text = document.flightNumber.ToString("");
+        airport.text = document.destinationAirport;
         passangerName.text = document.firstNames + " " + document.lastNames;
         seat.text = document.seat;
         planeClass.text = document.planeClass;

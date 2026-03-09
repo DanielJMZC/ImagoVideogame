@@ -2049,8 +2049,9 @@ GameObject:
   - component: {fileID: 9139959378619833273}
   - component: {fileID: 7871367325080746878}
   - component: {fileID: 9177455325118168575}
+  - component: {fileID: 3897234954186595806}
   m_Layer: 5
-  m_Name: PlaneTicketFrame
+  m_Name: TravelInsuranceFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2123,6 +2124,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3897234954186595806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5604454413065287689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2bf341a433644628a741c4f392c5c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Project.PaperRush::DocumentUIController
+  documentController: {fileID: 7666042019484859680}
+  prefabSprite: {fileID: -1038823041853978630, guid: 9a755504e1e4f4a28a9c66b0f515c183, type: 3}
+  dragScale: 0.25
 --- !u!1 &5937699713455672090
 GameObject:
   m_ObjectHideFlags: 0
