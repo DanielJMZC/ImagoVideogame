@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9393c66e2189437fb04cadb2ac08c92, type: 3}
+  m_Name: Destination
+  m_EditorClassIdentifier: Project.PaperRush::DestinationDatabase
+  destinations:
+  - Mexico City, MEX, Mexico City
+  - 'New York, NYC, John F. Kennedy '
+  - 'Miami, MIA, Miami '
+  - 'Los Angeles, LAX, Los Angeles '
+  - 'Toronto, YTO, Toronto Pearson '
+  - "Montreal, YMQ, Montr\xE9al\u2013Trudeau "
+  - "Madrid, MAD, Adolfo Su\xE1rez "
+  - 'Barcelona, BCN, El Prat '
+  - London, LON, London Heathrow
+  - Paris, PAR, Charles de Gaulle
+  - "San Jos\xE9, SJO, Juan Santamar\xEDa "
+  - 'Panama City, PTY, Tocumen '
+  - Managua, MGA, Augusto C. Sandino
+  - 'Quito, UIO, Mariscal Sucre '
+  - "Guayaquil, GYE, Jos\xE9 Joaqu\xEDn "
+  - "Lima, LIM, Jorge Ch\xE1vez "
+  - 'Buenos Aires, BUE, Ministro Pistarini '
+  - "Santiago, SCL, Arturo Merino Ben\xEDtez "
+  - "S\xE3o Paulo, SAO, S\xE3o Paulo/Guarulhos "
+  - "Caracas, CCS, Sim\xF3n Bol\xEDvar "

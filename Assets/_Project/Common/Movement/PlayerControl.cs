@@ -23,7 +23,7 @@ public class PlayerControl : MonoBehaviour
 
     public CapsuleCollider2D interactHitbox;
 
-    Animator animatorController;
+    public Animator animatorController;
 
 
     Rigidbody2D rb;

@@ -11,7 +11,5 @@ public class TravelInsurance: Document
     public int passportNumber;
     public int agencyNumber;
 
-    public int errorNumber;
-
 
 }

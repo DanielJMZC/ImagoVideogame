@@ -18,6 +18,4 @@ public class Visa: Document
     public DateTime validDate;
     public Texture2D photo;
 
-    public int errorNumber;
-
 }
