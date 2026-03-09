@@ -31830,11 +31830,11 @@ MonoBehaviour:
   planeTicketPrefab: {fileID: 1255866051395290886, guid: 08fdfc75d82fa480eb72a39458e02d8d, type: 3}
   travelInsurancePrefab: {fileID: 9091725152142916268, guid: 0c24895f9c85548b790d1fcd08b36400, type: 3}
   acceptanceLetterPrefab: {fileID: 1628212037385306571, guid: 11882d91090aa47d0999fd351bc03f99, type: 3}
-  fakePassports: 0
-  fakeVisas: 0
-  fakePlaneTickets: 5
-  fakeTravelInsurance: 0
-  fakeAcceptanceLetter: 0
+  fakePassports: 3
+  fakeVisas: 3
+  fakePlaneTickets: 3
+  fakeTravelInsurance: 3
+  fakeAcceptanceLetter: 3
   player: {fileID: 594057137}
   uiController: {fileID: 601348618}
   fxManager: {fileID: 889603620}

@@ -19,3 +19,15 @@ MonoBehaviour:
   - {fileID: 2800000, guid: c2860f6a723ca40a188fae4ac457d060, type: 3}
   - {fileID: 2800000, guid: 019832d57ed174930b998862bf138776, type: 3}
   neutralPhotos: []
+  maleSprites:
+  - {fileID: -7715902427486114116, guid: dd7ef4dbb758445f9a68455c1dec0687, type: 3}
+  - {fileID: 1063745061124070376, guid: 2d7a0601dc5134cde97c773d50ce2473, type: 3}
+  femaleSprites:
+  - {fileID: -1275391637157308820, guid: 399a9ab58d7314763b7f22b6cdcc02cc, type: 3}
+  - {fileID: 8547691330552646725, guid: 04a1882b501b84032a2bc5aed9710f9a, type: 3}
+  maleAnimatorOverrides:
+  - {fileID: 22100000, guid: c0b15bd6008b849819f69732ccb82598, type: 2}
+  - {fileID: 22100000, guid: af2525c95392347719097b8c81110ba6, type: 2}
+  femaleAnimatorOverrides:
+  - {fileID: 22100000, guid: 6b224b952a50f42bf8f254a86ff4de47, type: 2}
+  - {fileID: 22100000, guid: d96763b693074443f9f97b911c70a215, type: 2}
