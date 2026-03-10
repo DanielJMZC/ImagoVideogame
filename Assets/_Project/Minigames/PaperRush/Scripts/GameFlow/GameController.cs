@@ -20,6 +20,8 @@ public class GameController : MonoBehaviour
     public GameObject travelInsurancePrefab;
     public GameObject acceptanceLetterPrefab;
 
+    public GameEnd gameEndController;
+
     //Cambiar a 5 despues 
     [Header ("Count")]
     [Range(0, 55)]
@@ -44,8 +46,7 @@ public class GameController : MonoBehaviour
 
     protected List<SpawnController> allSpawns;
     protected int points;
-    protected Dictionary<string, bool> documentStatus;
-    protected int documentSlotCount;
+    public int documentSlotCount;
     
     void Awake()
     {
@@ -71,16 +72,17 @@ public class GameController : MonoBehaviour
     {
         points = 0;
         documentSlotCount = 6;
+
         player = FindAnyObjectByType<PlayerControl>();
         allSpawns = new List<SpawnController>(FindObjectsByType<SpawnController>(FindObjectsSortMode.None));
-        
-        documentStatus = new Dictionary<string, bool>();
-        documentStatus["Passport"] = false;
-        documentStatus["Visa"] = false;
-        documentStatus["Arrival Ticket"] = false;
-        documentStatus["Return Ticket"] = false;
-        documentStatus["Travel Insurance"] = false;
-        documentStatus["Acceptance Letter"] = false;
+
+        gameEndController.documentSubmitted = new Dictionary<documentType, KeyValuePair<Document, int>?>();
+        gameEndController.documentSubmitted[documentType.Passport] = null;
+        gameEndController.documentSubmitted[documentType.Visa] = null;
+        gameEndController.documentSubmitted[documentType.ArrivalTicket] = null;
+        gameEndController.documentSubmitted[documentType.ReturnTicket] = null;
+        gameEndController.documentSubmitted[documentType.TravelInsurance] = null;
+        gameEndController.documentSubmitted[documentType.AcceptanceLetter] = null;
 
         SpawnDocument<PassportController, Passport>(passportPrefab, () => passportGenerator.Generate(), 1);
         SpawnDocument<PassportController, Passport>(passportPrefab, () => passportGenerator.GenerateFake(), fakePassports);
@@ -140,7 +142,7 @@ public class GameController : MonoBehaviour
         return documents.OfType<TDocument>().FirstOrDefault();
     }
 
-    public void HandleDocumentDropped(Document doc)
+    public void HandleDocumentDropped(documentType type, Document doc)
     {
         documentSlotCount--;
 
@@ -150,10 +152,23 @@ public class GameController : MonoBehaviour
             {
                 if (document == doc)
                 {
-                    points +=15;
                     break;
                 }
             } 
+
+            if (doc.errorNumber == 1)
+            {
+                doc.maxPoints = 10;
+    
+            } else if (doc.errorNumber == 2)
+            {
+                doc.maxPoints = 5;
+            } else if (doc.errorNumber >= 3)
+            {
+                doc.maxPoints = 0;
+            }
+
+            gameEndController.documentSubmitted[type] = new KeyValuePair<Document, int>(doc, doc.errorNumber);
         }
  
         if (documentSlotCount <= 0)
@@ -162,22 +177,10 @@ public class GameController : MonoBehaviour
         }
     }
 
-
-
     public void EndGame()
     {
 
-        if (points < 60)
-        {
-            fxManager.loseSound();
-        } else
-        {
-            fxManager.winSound();
-        }
-
-        uiController.GameEndUI(points);
-
-
+        gameEndController.startEnd(); 
 
     }
 

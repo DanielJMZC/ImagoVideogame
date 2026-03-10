@@ -7,8 +7,10 @@ public abstract class DocumentController<TDocument> : DocumentControllerBase whe
     [Header("Objects")]
     public GameObject panel;
     public Animator animator;
-
+    public Animator endGameAnimator;
     public TDocument document;
+
+    public bool isInteractable = true;
 
     bool previousPlayerInRange;
 
@@ -44,6 +46,7 @@ public abstract class DocumentController<TDocument> : DocumentControllerBase whe
     public void assign(TDocument document)
     {
         this.document = document;
+        endGameAnimator.enabled = false;
         updateText();
     }
 
@@ -68,27 +71,29 @@ public abstract class DocumentController<TDocument> : DocumentControllerBase whe
 
     }
      void Update()
-        {
-        if (panel.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            close();
-        }
-        
-        PlayerControl p = GameController.Instance.player;
-
-        bool active = p.currentInteractable == this;
-
-        if (active != previousPlayerInRange)
-        {
-            if (active)
+    {
+        if (isInteractable) {
+            if (panel.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
             {
-                animator.Play("Open");
-            } else
-            {
-                animator.Play("Close");
+                close();
             }
+            
+            PlayerControl p = GameController.Instance.player;
 
-            previousPlayerInRange = active;
+            bool active = p.currentInteractable == this;
+
+            if (active != previousPlayerInRange)
+            {
+                if (active)
+                {
+                    animator.Play("Open");
+                } else
+                {
+                    animator.Play("Close");
+                }
+
+                previousPlayerInRange = active;
+            }
         }
     }
 

@@ -10,8 +10,8 @@ public class DocumentUIController : MonoBehaviour, IBeginDragHandler, IDragHandl
 {
 
     private RectTransform rectTransform;
-    private Canvas canvas;
-    private CanvasGroup canvasGroup;
+    public Canvas canvas;
+    public CanvasGroup canvasGroup;
     private Vector2 originalPosition;
 
 
@@ -19,11 +19,14 @@ public class DocumentUIController : MonoBehaviour, IBeginDragHandler, IDragHandl
     public DocumentControllerBase documentController;
     public Sprite prefabSprite;
 
+    public bool isInteractable;
+
     public float dragScale = 0.1f; 
     private Vector3 originalScale;
 
     private void Awake()
     {
+        isInteractable = true;
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
@@ -36,32 +39,38 @@ public class DocumentUIController : MonoBehaviour, IBeginDragHandler, IDragHandl
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        originalPosition = rectTransform.anchoredPosition;
-        canvasGroup.blocksRaycasts = false;
-        canvasGroup.alpha = 0.5f;
-        originalScale = rectTransform.localScale;
-        rectTransform.localScale = originalScale * dragScale;
-        GameController.Instance.fxManager.paperSlideSound();
+        if (isInteractable) {
+            originalPosition = rectTransform.anchoredPosition;
+            canvasGroup.blocksRaycasts = false;
+            canvasGroup.alpha = 0.5f;
+            originalScale = rectTransform.localScale;
+            rectTransform.localScale = originalScale * dragScale;
+            GameController.Instance.fxManager.paperSlideSound();
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvas.transform as RectTransform,
-            eventData.position,
-            canvas.worldCamera,
-            out Vector2 localPointerPosition
-        );
+        if (isInteractable) {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvas.transform as RectTransform,
+                eventData.position,
+                canvas.worldCamera,
+                out Vector2 localPointerPosition
+            );
 
-        rectTransform.anchoredPosition = localPointerPosition;
+            rectTransform.anchoredPosition = localPointerPosition;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        rectTransform.localScale = originalScale;
-        canvasGroup.blocksRaycasts = true;
-        rectTransform.anchoredPosition = originalPosition;
-        canvasGroup.alpha = 1f;
+        if(isInteractable) {
+            rectTransform.localScale = originalScale;
+            canvasGroup.blocksRaycasts = true;
+            rectTransform.anchoredPosition = originalPosition;
+            canvasGroup.alpha = 1f;
+        }
 
     }
 

@@ -51,7 +51,7 @@ public class TravelInsuranceGenerator : BaseGenerator<TravelInsurance>
     
         i.type = documentType.TravelInsurance;
 
-        i.errorNumber = UnityEngine.Random.Range(1, 3);
+        i.errorNumber = UnityEngine.Random.Range(1, 4);
         List<String> data = new List<String>() {"firstNames", "lastNames", "time", "passportNumber"};
         int errors = i.errorNumber;
         int possibleErrors = 4;
@@ -88,6 +88,7 @@ public class TravelInsuranceGenerator : BaseGenerator<TravelInsurance>
             possibleErrors--;
             data.Remove(select);
         }
+
 
         return i;
     }
