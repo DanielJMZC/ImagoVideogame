@@ -1,0 +1,6 @@
+﻿<Solution>
+  <Project Path="Project.PaperRush.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Project.Common.csproj" />
+  <Project Path="Project.Camaleon.csproj" />
+</Solution>
