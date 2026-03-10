@@ -7,6 +7,3 @@ public class DestinationDatabase : ScriptableObject
     public List<string> destinations;
 }
 
-
-//DialogueDatabase.dialogue[0]
-//DialogueDatabase.choice[0]
