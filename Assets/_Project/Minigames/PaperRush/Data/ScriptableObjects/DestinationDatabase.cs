@@ -6,3 +6,4 @@ public class DestinationDatabase : ScriptableObject
 {
     public List<string> destinations;
 }
+

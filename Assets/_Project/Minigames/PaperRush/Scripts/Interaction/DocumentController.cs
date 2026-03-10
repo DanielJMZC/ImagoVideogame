@@ -41,6 +41,7 @@ public abstract class DocumentController<TDocument> : DocumentControllerBase whe
         GameController.Instance.uiController.isFading(true);
         hideBook();
 
+
     }
 
     public void assign(TDocument document)
