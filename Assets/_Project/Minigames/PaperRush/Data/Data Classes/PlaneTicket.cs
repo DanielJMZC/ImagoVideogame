@@ -1,12 +1,15 @@
 using System;
 using UnityEngine;
 
+public enum TicketType
+{
+    Arrival, Return
+}
 public class PlaneTicket: Document
 {
     public string destination;
     public string destinationShort;
     public string destinationAirport;
-
     public string origin;
     public string originShort;
     public string originAirport;
@@ -22,10 +25,16 @@ public class PlaneTicket: Document
     public string planeClass;
 
     public string scanCode;
-
-    public Boolean isReturning;
-
     public int flightNumber;
 
+}
 
+public class ArrivalTicket : PlaneTicket
+{
+    
+}
+
+public class ReturnTicket : PlaneTicket
+{
+    
 }

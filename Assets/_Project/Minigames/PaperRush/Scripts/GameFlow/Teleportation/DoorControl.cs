@@ -4,12 +4,15 @@ using UnityEngine.InputSystem;
 
 public class DoorControl : Interactable
 {
+
+    [Header("Teleport Position")]
     public float positionX;
     public float positionY;
 
+    [Header("Animated Icon")]
     public Animator animator;
-    Vector3 teleportLocation;
 
+    Vector3 teleportLocation;
     bool previousPlayerInRange;
     PlayerControl player;
 

@@ -10,21 +10,21 @@ public class AcceptanceLetterGenerator : BaseGenerator<AcceptanceLetter>
     {
        AcceptanceLetter l = new AcceptanceLetter();
 
-       Character c = GameController.Instance.character;
-       PlaneTicket arrival = GameController.Instance.arrivalTicket;
-       PlaneTicket departure = GameController.Instance.returnTicket;
+       Character c = GameController.Instance.Retrieve<Character>();
+       PlaneTicket arrival = GameController.Instance.Retrieve<ArrivalTicket>();
+       PlaneTicket departure = GameController.Instance.Retrieve<ReturnTicket>();
 
         l.firstNames = c.firstNames;
         l.lastNames = c.lastNames;
         l.startDate = arrival.arrivalTime;
         l.endDate = departure.departureTime;
         l.sendDate = c.calendarDate.AddMonths(-1);
-        l.documentType = "Acceptance Letter";
+        l.type = documentType.AcceptanceLetter;
         l.subject = "Aceptación al Programa de Prácticas AWAQ Campus Internship";
         l.program = "Programa de Prácticas AWAQ Campus Internship (ACI)";
         l.signature = "Equipo AWAQ";
 
-        GameController.Instance.acceptanceLetter = l;
+        GameController.Instance.Add(l);
       
         return l;
     }
@@ -33,7 +33,7 @@ public class AcceptanceLetterGenerator : BaseGenerator<AcceptanceLetter>
     {
         AcceptanceLetter l = new AcceptanceLetter();
 
-        AcceptanceLetter letter = GameController.Instance.acceptanceLetter;
+        AcceptanceLetter letter = GameController.Instance.Retrieve<AcceptanceLetter>();
 
         l.firstNames = letter.firstNames;
         l.lastNames = letter.lastNames;
@@ -41,7 +41,7 @@ public class AcceptanceLetterGenerator : BaseGenerator<AcceptanceLetter>
         l.endDate = letter.endDate;
         l.sendDate = letter.sendDate;
 
-        l.documentType = "Acceptance Letter";
+        l.type = documentType.AcceptanceLetter;
 
         l.errorNumber = UnityEngine.Random.Range(1, 3);
         List<String> data = new List<String>() {"firstNames", "lastNames", "date", "program"};

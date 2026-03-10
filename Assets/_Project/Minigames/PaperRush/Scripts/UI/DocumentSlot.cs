@@ -1,14 +1,24 @@
+using System;
+using JetBrains.Annotations;
+using Mono.Cecil.Cil;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+public enum documentType
+{
+    Passport, Visa, ArrivalTicket, ReturnTicket, TravelInsurance, AcceptanceLetter
+}
+
 public class DocumentSlot : MonoBehaviour, IDropHandler
 {
     public bool isLocked = false;
-    [SerializeField] public object storedDocument;
-    
-    public string documentType;
+    [SerializeField] public Document storedDocument;
 
+    public documentType documentType;
+   
+    [Header("Document Information")]
     public Image slotImage;
 
 
@@ -26,8 +36,21 @@ public class DocumentSlot : MonoBehaviour, IDropHandler
         slotImage.enabled = true;
         draggedUI.documentController.close();
         GameObject.Destroy(draggedUI.documentController.gameObject);
+      
+        Debug.Log("Document: " + storedDocument);
+        Debug.Log("Type Document:" + storedDocument.type);
+        Debug.Log("Slot:" + documentType);
 
-        GameController.Instance.AssignedDocument(documentType, storedDocument);
+        if (documentType != storedDocument.type)
+        {
+            Debug.Log("Not Passed");
+            GameController.Instance.HandleDocumentDropped(null);
+        } else
+        {
+            Debug.Log("Passed");
+
+            GameController.Instance.HandleDocumentDropped(storedDocument);
+        }
 
         isLocked = true;
     }

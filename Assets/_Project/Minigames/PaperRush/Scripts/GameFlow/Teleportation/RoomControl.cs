@@ -3,6 +3,7 @@ using UnityEngine;
 public class RoomControl : MonoBehaviour
 {
 
+    [Header("Teleport Position")]
     public float positionX;
     public float positionY;
     

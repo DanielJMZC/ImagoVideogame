@@ -8,15 +8,15 @@ public class VisaGenerator : BaseGenerator<Visa>
     {
         Visa v = new Visa();
 
-        Character c = GameController.Instance.character;
-        Passport p = GameController.Instance.passport;
+        Character c = GameController.Instance.Retrieve<Character>();
+        Passport p = GameController.Instance.Retrieve<Passport>();
 
         v.firstNames = c.firstNames;
         v.lastNames = c.lastNames;
         v.placeOfExpedition = "BTA. VISAS";
         v.numberOfEntries = "Múltiples";
         v.documentNumber = "VA" + UnityEngine.Random.Range(100000, 10000000);
-        v.type = "V - Titular Principal";
+        v.typeVisa = "V - Titular Principal";
         v.sex = c.sex;
         v.dateOfBirth = c.dateOfBirth;
         v.passportNumber = p.passportNumber;
@@ -34,9 +34,9 @@ public class VisaGenerator : BaseGenerator<Visa>
         v.photo = c.photo;
         v.errorNumber = 0;
 
-        v.documentType = "Visa";
+        v.type = documentType.Visa;
 
-        GameController.Instance.visa = v;
+        GameController.Instance.Add(v);
 
 
         return v;
@@ -46,15 +46,15 @@ public class VisaGenerator : BaseGenerator<Visa>
     {
         Visa v = new Visa();
 
-        Visa visa = GameController.Instance.visa;
-        Character c = GameController.Instance.character;
+        Visa visa = GameController.Instance.Retrieve<Visa>();
+        Character c = GameController.Instance.Retrieve<Character>();
 
         v.firstNames = visa.firstNames;
         v.lastNames = visa.lastNames;
         v.placeOfExpedition = visa.placeOfExpedition;
         v.numberOfEntries = visa.numberOfEntries;
         v.documentNumber = visa.documentNumber;
-        v.type = visa.type;
+        v.typeVisa = visa.typeVisa;
         v.sex = visa.sex;
         v.dateOfBirth = visa.dateOfBirth;
         v.passportNumber = visa.passportNumber;
@@ -63,8 +63,7 @@ public class VisaGenerator : BaseGenerator<Visa>
         v.validDate = visa.validDate;
         v.expireDate = visa.expireDate;
         v.photo = visa.photo;
-        v.documentType = "Visa";
-
+        v.type = documentType.Visa;
         v.errorNumber = UnityEngine.Random.Range(1, 4);
 
         List<String> data = new List<String>() {"firstNames", "lastNames", "sex", "dateOfBirth", "validDate", "expiryDate", "photo", "passportNumber"};

@@ -2,10 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class DocumentController<TDocument> : DocumentControllerBase
+public abstract class DocumentController<TDocument> : DocumentControllerBase where TDocument : Document
 {
-    public string documentType;
-
+    [Header("Objects")]
     public GameObject panel;
     public Animator animator;
 
@@ -13,7 +12,7 @@ public abstract class DocumentController<TDocument> : DocumentControllerBase
 
     bool previousPlayerInRange;
 
-    public override object GetDocument()
+    public override Document GetDocument()
     {
         return document;
     }
@@ -22,9 +21,11 @@ public abstract class DocumentController<TDocument> : DocumentControllerBase
         PlayerControl p = GameController.Instance.player;
         p.moveSpeed = 8;
         p.inAction = false;
+        GameController.Instance.fxManager.pageFlipSound();
             
         panel.SetActive(false);
         GameController.Instance.uiController.isFading(false);
+        unhideBook();
 
     }
     public override void open()
@@ -36,18 +37,17 @@ public abstract class DocumentController<TDocument> : DocumentControllerBase
             
         panel.SetActive(true);
         GameController.Instance.uiController.isFading(true);
+        hideBook();
 
     }
+
     public void assign(TDocument document)
     {
         this.document = document;
         updateText();
     }
 
-    public virtual void updateText()
-    {
-        documentType = "None";
-    }
+    public abstract void updateText();
 
     public void setVisible(Boolean isVisible)
     {
@@ -61,16 +61,14 @@ public abstract class DocumentController<TDocument> : DocumentControllerBase
             renderer.enabled = true;
         }   
     }
-
     public override void Interact() 
     {
         open();
         StartCoroutine(InteractionCooldown());
 
     }
-
      void Update()
-    {
+        {
         if (panel.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             close();
@@ -93,5 +91,17 @@ public abstract class DocumentController<TDocument> : DocumentControllerBase
             previousPlayerInRange = active;
         }
     }
+
+    public void hideBook()
+    {
+        GameController.Instance.uiController.book.gameObject.SetActive(false);
+    }
+
+    public void unhideBook()
+    {
+        GameController.Instance.uiController.book.gameObject.SetActive(true);
+    }
+
+
    
 }

@@ -14,6 +14,8 @@ public class DocumentUIController : MonoBehaviour, IBeginDragHandler, IDragHandl
     private CanvasGroup canvasGroup;
     private Vector2 originalPosition;
 
+
+    [Header("Document Information")]
     public DocumentControllerBase documentController;
     public Sprite prefabSprite;
 
