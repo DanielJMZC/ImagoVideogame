@@ -7,7 +7,7 @@ public class Visa: Document
 
     public string numberOfEntries;
     public string documentNumber;
-    public string type;
+    public string typeVisa;
 
     public string nationality;
     public int passportNumber;

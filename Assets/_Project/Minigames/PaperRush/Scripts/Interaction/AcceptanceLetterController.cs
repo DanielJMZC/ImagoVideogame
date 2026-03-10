@@ -21,7 +21,6 @@ public class AcceptanceLetterController : DocumentController<AcceptanceLetter>
 
     public override void updateText()
     {
-        documentType = "Acceptance Letter";
         sendDate.text = document.sendDate.ToShortDateString();
         internName.text = document.firstNames + " " + document.lastNames;
         internName2.text = document.firstNames + " " + document.lastNames;

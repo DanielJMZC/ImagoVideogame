@@ -27,7 +27,6 @@ public class PlaneTicketController : DocumentController<PlaneTicket>
 
     public override void updateText()
     {
-        documentType = "Plane Ticket";
         originShort.text = document.originShort;
         destinationShort.text = document.destinationShort;
         origin.text = document.origin;

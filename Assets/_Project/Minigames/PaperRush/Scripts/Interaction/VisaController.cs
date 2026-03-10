@@ -14,7 +14,7 @@ public class VisaController : DocumentController<Visa>
     public TextMeshProUGUI passportNumber;
     public TextMeshProUGUI placeOfExpedition;
     public TextMeshProUGUI numberOfEntries;
-    public TextMeshProUGUI type;
+    public TextMeshProUGUI typeVisa;
     public TextMeshProUGUI documentNumber;
     public Image photo;
     public Visa visa;
@@ -22,9 +22,8 @@ public class VisaController : DocumentController<Visa>
 
     public override void updateText()
     {
-        documentType = "Visa";
         placeOfExpedition.text = document.placeOfExpedition;
-        type.text = document.type;
+        typeVisa.text = document.typeVisa;
         names.text = document.lastNames + ", " + document.firstNames;
         sex.text = document.sex;
         dateOfBirth.text = document.dateOfBirth.ToShortDateString();

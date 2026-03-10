@@ -15,7 +15,6 @@ public class TravelInsuranceController : DocumentController<TravelInsurance>
 
     public override void updateText()
     {
-        documentType = "Travel Insurance";
         agencyNumber.text = document.agencyNumber.ToString();
         issueDate.text = document.issueDate.ToShortDateString();
         startDate.text = document.startDate.ToShortDateString();

@@ -19,6 +19,7 @@ public class UIController : MonoBehaviour
     public GameObject endUI;
     public GameObject mainUI;
     public GameObject GameStartUI;
+    public Button book;
 
     [Header("Controllers")]
     public CharacterController notebook;
@@ -27,10 +28,9 @@ public class UIController : MonoBehaviour
     void Start()
     {
         time = timeSeconds;
-        DateTime day = GameController.Instance.character.calendarDate;
+        DateTime day = GameController.Instance.Retrieve<Character>().calendarDate;
         date.text = day.ToString("MMMM dd, yyyy");
         notebook.updateText();
-        
     }
 
      IEnumerator MatchTime()
@@ -77,7 +77,7 @@ public class UIController : MonoBehaviour
     public void GameEndUI(int _points)
     {
         points.text = _points.ToString();
-        StartCoroutine(GameEndUIRoutine(5));
+        StartCoroutine(GameEndUIRoutine(10));
     }
 
     IEnumerator GameEndUIRoutine(int second)
@@ -100,7 +100,6 @@ public class UIController : MonoBehaviour
     IEnumerator GameStartRoutine(int second)
     
     {
-        GameController.Instance.fxManager.PauseMusic();
         GameStartUI.SetActive(true);
         yield return new WaitForSeconds(second);
         GameStartUI.SetActive(false);

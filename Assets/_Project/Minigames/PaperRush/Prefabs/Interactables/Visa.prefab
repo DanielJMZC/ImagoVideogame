@@ -566,7 +566,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b27e116ee0f64497844d2e2a9ec3d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.PaperRush::VisaController
-  documentType: Visa
   panel: {fileID: 3539155169473611612}
   animator: {fileID: 4832309058527819402}
   names: {fileID: 3602130710785580685}
@@ -578,7 +577,7 @@ MonoBehaviour:
   passportNumber: {fileID: 8291054687043287253}
   placeOfExpedition: {fileID: 1724177243574881493}
   numberOfEntries: {fileID: 3610609523002495450}
-  type: {fileID: 7734771729225678817}
+  typeVisa: {fileID: 7734771729225678817}
   documentNumber: {fileID: 8110915698801317764}
   photo: {fileID: 465747668714045201}
 --- !u!1 &2339924827038545627

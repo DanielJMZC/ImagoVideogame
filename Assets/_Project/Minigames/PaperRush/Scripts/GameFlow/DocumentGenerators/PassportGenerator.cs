@@ -6,7 +6,7 @@ public class PassportGenerator : BaseGenerator<Passport>
 {
     public override Passport Generate()
     {
-        Character c = GameController.Instance.character;
+        Character c = GameController.Instance.Retrieve<Character>();
         Passport p = new Passport();
 
         p.firstNames = c.firstNames;
@@ -30,9 +30,9 @@ public class PassportGenerator : BaseGenerator<Passport>
 
         p.errorNumber = 0;
 
-        p.documentType = "Passport";
+        p.type = documentType.Passport;
 
-        GameController.Instance.passport = p;
+        GameController.Instance.Add(p);
 
         return p;
 
@@ -42,8 +42,8 @@ public class PassportGenerator : BaseGenerator<Passport>
     {
         Passport p = new Passport();
         
-        Character c = GameController.Instance.character;
-        Passport passport = GameController.Instance.passport;
+        Character c = GameController.Instance.Retrieve<Character>();
+        Passport passport = GameController.Instance.Retrieve<Passport>();
 
         p.firstNames = passport.firstNames;
         p.lastNames = passport.lastNames;
@@ -55,7 +55,7 @@ public class PassportGenerator : BaseGenerator<Passport>
         p.expiryDate = passport.expiryDate;
         p.passportNumber = passport.passportNumber;
 
-        p.documentType = "Passport";
+        p.type = documentType.Passport;
 
         p.errorNumber = UnityEngine.Random.Range(1, 4);
         List<String> data = new List<String>() {"firstNames", "lastNames", "sex", "dateOfBirth", "issueDate", "expiryDate", "photo"};

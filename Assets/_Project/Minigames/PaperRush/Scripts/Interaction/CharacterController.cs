@@ -8,11 +8,10 @@ public class CharacterController : DocumentController<Character>
     public TextMeshProUGUI nationality;
     public TextMeshProUGUI sex;
     public Image photo;
-    public Image book;
 
     public override void updateText()
     {
-        Character c = GameController.Instance.character;
+        Character c = GameController.Instance.Retrieve<Character>();
         fullName.text = c.firstNames + " " + c.lastNames;
         birthDate.text = c.dateOfBirth.ToString("MMMM dd, yyyy");
 
@@ -41,15 +40,5 @@ public class CharacterController : DocumentController<Character>
         photo.sprite = sprite;
         
     }
-
-    public void hideBook()
-    {
-        book.enabled = false;
-    }
-
-    public void unhideBook()
-    {
-        book.enabled = true;
-    }
-    
+ 
 }

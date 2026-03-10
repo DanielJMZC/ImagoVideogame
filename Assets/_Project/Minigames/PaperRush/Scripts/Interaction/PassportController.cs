@@ -18,7 +18,6 @@ public class PassportController : DocumentController<Passport>
 
     public override void updateText()
     {
-        documentType = "Passport";
         firstNames.text = document.firstNames;
         lastNames.text = document.lastNames;
         sex.text = document.sex;

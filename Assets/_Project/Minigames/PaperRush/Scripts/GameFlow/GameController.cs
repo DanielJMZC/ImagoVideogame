@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Mono.Cecil.Cil;
+using System.Linq;
 
 public class GameController : MonoBehaviour
 {
@@ -33,13 +34,7 @@ public class GameController : MonoBehaviour
     public int fakeAcceptanceLetter;
 
     [Header ("Documents")]
-    public Character character;
-    public Passport passport;
-    public Visa visa;
-    public PlaneTicket arrivalTicket;
-    public PlaneTicket returnTicket;
-    public TravelInsurance travelInsurance;
-    public AcceptanceLetter acceptanceLetter;
+    public List<Document> documents = new List<Document>();
 
     [Header("Controllers")]
     public PlayerControl player;
@@ -50,12 +45,8 @@ public class GameController : MonoBehaviour
     protected List<SpawnController> allSpawns;
     protected int points;
     protected Dictionary<string, bool> documentStatus;
-    protected int typeOfDocuments;
+    protected int documentSlotCount;
     
-
-    
-
-
     void Awake()
     {
         if (Instance == null)
@@ -64,9 +55,9 @@ public class GameController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        if (character == null)
+        if (Retrieve<Character>() == null)
         {
-            character = characterGenerator.Generate();
+            Instance.Add(characterGenerator.Generate());
         }
 
         if (uiController == null)
@@ -79,7 +70,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         points = 0;
-        typeOfDocuments = 6;
+        documentSlotCount = 6;
         player = FindAnyObjectByType<PlayerControl>();
         allSpawns = new List<SpawnController>(FindObjectsByType<SpawnController>(FindObjectsSortMode.None));
         
@@ -106,7 +97,8 @@ public class GameController : MonoBehaviour
     }
 
     public void SpawnDocument<TController, TDocument>(GameObject prefab, System.Func<TDocument> generateDocument, int count)
-    where TController: DocumentController<TDocument>
+    where TController: DocumentController<TDocument> 
+    where TDocument : Document
     {
         for (int i = 0; i < count; i++) {
             if (allSpawns.Count == 0)
@@ -138,128 +130,42 @@ public class GameController : MonoBehaviour
             allSpawns.RemoveAt(n);
         }
     }
-
-    public void AssignedDocument(string typeObject, object doc)
+    public void Add(Document doc)
     {
-        Document document = doc as Document;
-        string type = typeObject;
+        documents.Add(doc);
+    }
 
-        if (document.documentType != type)
+    public TDocument Retrieve<TDocument>() where TDocument : Document
+    {
+        return documents.OfType<TDocument>().FirstOrDefault();
+    }
+
+    public void HandleDocumentDropped(Document doc)
+    {
+        documentSlotCount--;
+
+        if (doc != null)
         {
-            typeOfDocuments--;
-            if (typeOfDocuments == 0)
+            foreach (Document document in Instance.documents)
             {
-                EndGame();
+                if (document == doc)
+                {
+                    points +=15;
+                    break;
+                }
             } 
-
-            return;
         }
-
-        bool isCorrect = false;
-
-        switch (type)
-        {
-            case "Passport":
-                Passport passport = document as Passport;
-                if (passport == this.passport)
-                {
-                    isCorrect = true;
-                    Debug.Log(type + " True");
-                }
-
-            break;
-
-            case "Visa":
-                Visa visa = document as Visa;
-                if (visa == this.visa)
-                {
-                    isCorrect = true;
-                    Debug.Log(type + " True");
-                }
-            break;
-
-            case "Plane Ticket":
-                PlaneTicket ticket = document as PlaneTicket;
-                if (!ticket.isReturning)
-                {
-                    if (arrivalTicket == ticket)
-                    {
-                        isCorrect = true;
-                        type = "Arrival Ticket";
-                    }
-                } else if (returnTicket == ticket)
-                {
-                        isCorrect = true;
-                        type = "Return Ticket";
-
-                }
-
-            break;
-
-            case "Travel Insurance":
-                TravelInsurance insurance = document as TravelInsurance;
-                if (insurance == travelInsurance)
-                {
-                    isCorrect = true;
-                    Debug.Log(type + " True");
-                }
-            break;
-
-            case "Acceptance Letter":
-                AcceptanceLetter letter = document as AcceptanceLetter;
-                if (letter == acceptanceLetter)
-                {
-                    isCorrect = true;
-                    Debug.Log(type + " True");
-                } 
-
-            break;
-        }
-
-        documentStatus[type] = isCorrect;
-
-        typeOfDocuments--;
-        Debug.Log(typeOfDocuments);
-        if (typeOfDocuments == 0)
+ 
+        if (documentSlotCount <= 0)
         {
             EndGame();
         }
-             
     }
+
+
 
     public void EndGame()
     {
-
-        if (documentStatus["Passport"])
-        {
-            points += 15;
-        }
-
-        if (documentStatus["Visa"])
-        {
-            points += 15;
-        }
-
-        if (documentStatus["Arrival Ticket"])
-        {
-            points += 15;
-        }
-
-        if (documentStatus["Return Ticket"])
-        {
-            points += 15;
-        }
-
-        if (documentStatus["Travel Insurance"])
-        {
-            points += 15;
-        }
-
-        if (documentStatus ["Acceptance Letter"])
-        {
-            points += 15;
-        }
-        Debug.Log(points);
 
         if (points < 60)
         {

@@ -8,10 +8,10 @@ public class TravelInsuranceGenerator : BaseGenerator<TravelInsurance>
     {
         TravelInsurance i = new TravelInsurance();
 
-        Character c = GameController.Instance.character;
-        PlaneTicket arrival = GameController.Instance.arrivalTicket;
-        PlaneTicket departure = GameController.Instance.returnTicket;
-        Passport p = GameController.Instance.passport;
+        Character c = GameController.Instance.Retrieve<Character>();
+        PlaneTicket arrival = GameController.Instance.Retrieve<ArrivalTicket>();
+        PlaneTicket departure = GameController.Instance.Retrieve<PlaneTicket>();
+        Passport p = GameController.Instance.Retrieve<Passport>();
 
         i.firstNames = c.firstNames;
         i.lastNames = c.lastNames;
@@ -24,9 +24,9 @@ public class TravelInsuranceGenerator : BaseGenerator<TravelInsurance>
         i.agencyNumber = UnityEngine.Random.Range(1000, 10000);
         i.errorNumber = 0;
 
-        i.documentType = "Travel Insurance";
+        i.type = documentType.TravelInsurance;
 
-        GameController.Instance.travelInsurance = i;
+        GameController.Instance.Add(i);
         
 
         return i;
@@ -37,7 +37,7 @@ public class TravelInsuranceGenerator : BaseGenerator<TravelInsurance>
     {
         TravelInsurance i = new TravelInsurance();
 
-        TravelInsurance insurance = GameController.Instance.travelInsurance;
+        TravelInsurance insurance = GameController.Instance.Retrieve<TravelInsurance>();
 
         i.firstNames = insurance.firstNames;
         i.lastNames = insurance.lastNames;
@@ -49,7 +49,7 @@ public class TravelInsuranceGenerator : BaseGenerator<TravelInsurance>
         i.passportNumber = insurance.passportNumber;
         i.agencyNumber = insurance.agencyNumber;
     
-        i.documentType = "Travel Insurance";
+        i.type = documentType.TravelInsurance;
 
         i.errorNumber = UnityEngine.Random.Range(1, 3);
         List<String> data = new List<String>() {"firstNames", "lastNames", "time", "passportNumber"};

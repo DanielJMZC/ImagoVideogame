@@ -54,6 +54,7 @@ public class fxManager : MonoBehaviour
     {
         if (!music.isPlaying)
         {
+
             music.Play();
         }
     }
