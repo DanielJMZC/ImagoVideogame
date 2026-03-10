@@ -568,6 +568,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Project.PaperRush::VisaController
   panel: {fileID: 3539155169473611612}
   animator: {fileID: 4832309058527819402}
+  endGameAnimator: {fileID: 7394052142309879911}
+  isInteractable: 1
   names: {fileID: 3602130710785580685}
   nationality: {fileID: 1920407372464109519}
   sex: {fileID: 1163337699873969075}
@@ -1246,7 +1248,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2675627829821425913}
@@ -2443,6 +2445,7 @@ GameObject:
   - component: {fileID: 253370072731910152}
   - component: {fileID: 6730909610289547638}
   - component: {fileID: 2944188653355069173}
+  - component: {fileID: 7394052142309879911}
   m_Layer: 5
   m_Name: VisaFrame
   m_TagString: Untagged
@@ -2521,9 +2524,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2bf341a433644628a741c4f392c5c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.PaperRush::DocumentUIController
+  canvas: {fileID: 0}
+  canvasGroup: {fileID: 0}
   documentController: {fileID: 61893551277942582}
   prefabSprite: {fileID: -1767770408186030703, guid: 9a755504e1e4f4a28a9c66b0f515c183, type: 3}
+  isInteractable: 1
   dragScale: 0.25
+--- !u!95 &7394052142309879911
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6688164259910394399}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 0aa81d5935c234800b859f9193f891b1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6886023262259315631
 GameObject:
   m_ObjectHideFlags: 0

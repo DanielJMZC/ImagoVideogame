@@ -145,16 +145,40 @@ public class PlaneTicketGenerator : BaseGenerator<PlaneTicket>
     {
         Character c = GameController.Instance.Retrieve<Character>();
         PlaneTicket ticket = GameController.Instance.Retrieve<ArrivalTicket>();
+        
+        PlaneTicket p;
+        if (UnityEngine.Random.value > 0.5f)
+        {
+            p = new ArrivalTicket();
+            p.type = documentType.ArrivalTicket;
+        } else
+        {
+            p = new ReturnTicket();
+            p.type = documentType.ReturnTicket;
+        }
 
-        PlaneTicket p = new PlaneTicket();
         p.firstNames = ticket.firstNames;
         p.lastNames = ticket.lastNames;
-        p.destination = ticket.destination;
-        p.destinationShort = ticket.destinationShort;
-        p.origin = ticket.origin;
-        p.originShort = ticket.originShort;
-        p.destinationAirport = ticket.destinationAirport;
-        p.originAirport = ticket.originAirport;
+
+        if (p.type == documentType.ArrivalTicket)
+        {
+            p.destination = ticket.destination;
+            p.destinationShort = ticket.destinationShort;
+            p.origin = ticket.origin;
+            p.originShort = ticket.originShort;
+            p.destinationAirport = ticket.destinationAirport;
+            p.originAirport = ticket.originAirport;
+                
+        } else
+        {
+            p.destination = ticket.origin;
+            p.destinationShort = ticket.originShort;
+            p.origin = ticket.destination;
+            p.originShort = ticket.destinationShort;
+            p.originAirport = ticket.destinationAirport;
+            p.destinationAirport = ticket.originAirport;
+        }
+    
         p.seat = ticket.seat;
         p.departureTime = ticket.departureTime;
         p.arrivalTime = ticket.arrivalTime;
@@ -180,7 +204,7 @@ public class PlaneTicketGenerator : BaseGenerator<PlaneTicket>
             }
         }
 
-        p.errorNumber = UnityEngine.Random.Range(1, 3);
+        p.errorNumber = UnityEngine.Random.Range(1, 4);
         List<String> data = new List<String>() {"firstNames", "lastNames", "destination", "time"};
         int errors = p.errorNumber;
         int possibleErrors = 4;
@@ -204,7 +228,7 @@ public class PlaneTicketGenerator : BaseGenerator<PlaneTicket>
                     string destination = destinationDatabase.destinations[UnityEngine.Random.Range(0, destinationDatabase.destinations.Count)];
                     string[] parts = destination.Split(", ");
                     
-                    if (UnityEngine.Random.value > 0.5f)
+                    if (p.type == documentType.ArrivalTicket)
                     {
                         p.destination = parts[0];
                         p.destinationShort = parts[1];
@@ -219,8 +243,8 @@ public class PlaneTicketGenerator : BaseGenerator<PlaneTicket>
                         p.originAirport = parts[2];
                     }
 
-
                 break;
+
                 case "time":
                     p.departureTime = fakeDate(p.departureTime);
                     p.gateTime = fakeDate(p.departureTime.AddMinutes(-30));
@@ -232,6 +256,8 @@ public class PlaneTicketGenerator : BaseGenerator<PlaneTicket>
             data.Remove(select);
         }
 
+
         return p;
+ 
     }
 }

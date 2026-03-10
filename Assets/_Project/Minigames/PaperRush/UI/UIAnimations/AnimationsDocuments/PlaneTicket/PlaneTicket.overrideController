@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PlaneTicket
+  m_Controller: {fileID: 9100000, guid: 0c77a0da33d4844b6b6fb9e5f07a7fb2, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: a674d6849f7994026a8f293903f68acd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a7dada5d190f648fb9816df667cab004, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6b6bca9cc972d4fbe82b1dd7be2abee3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0e1513aa34b2d4ce3a0c5e84fdb28cb4, type: 2}

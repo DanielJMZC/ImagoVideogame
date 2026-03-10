@@ -43,7 +43,7 @@ public class AcceptanceLetterGenerator : BaseGenerator<AcceptanceLetter>
 
         l.type = documentType.AcceptanceLetter;
 
-        l.errorNumber = UnityEngine.Random.Range(1, 3);
+        l.errorNumber = UnityEngine.Random.Range(1, 4);
         List<String> data = new List<String>() {"firstNames", "lastNames", "date", "program"};
         int errors = l.errorNumber;
         int possibleErrors = 4;

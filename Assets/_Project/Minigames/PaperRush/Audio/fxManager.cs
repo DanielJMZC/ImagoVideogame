@@ -11,6 +11,11 @@ public class fxManager : MonoBehaviour
     private AudioSource music;
     public AudioSource footsteps;
 
+    public AudioClip MaxPoints;
+    public AudioClip LessPoints;
+    public AudioClip LesserPoints;
+    public AudioClip NoPoints;
+
     [HideInInspector]
     public Boolean footstepsPlaying;
 
@@ -22,13 +27,31 @@ public class fxManager : MonoBehaviour
 
     public void winSound()
     {
-        PauseMusic();
-        AudioSource.PlayClipAtPoint(win, Camera.main.transform.position, 0.25f);
+        AudioSource.PlayClipAtPoint(win, Camera.main.transform.position, 0.5f);
+    }
+
+    public void maxPoints()
+    {
+        AudioSource.PlayClipAtPoint(MaxPoints, Camera.main.transform.position, 0.5f);
+    }
+
+    public void lessPoints()
+    {
+        AudioSource.PlayClipAtPoint(LessPoints, Camera.main.transform.position, 0.5f);
+    }
+
+    public void lesserPoints()
+    {
+        AudioSource.PlayClipAtPoint(LesserPoints, Camera.main.transform.position, 0.5f);
+    }
+
+    public void noPoints()
+    {
+        AudioSource.PlayClipAtPoint(NoPoints, Camera.main.transform.position, 0.5f);
     }
 
     public void loseSound()
     {
-        PauseMusic();
         AudioSource.PlayClipAtPoint(lose, Camera.main.transform.position, 0.25f);
     }
 

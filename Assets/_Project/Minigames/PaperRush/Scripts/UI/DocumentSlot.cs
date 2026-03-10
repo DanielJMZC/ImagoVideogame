@@ -36,22 +36,15 @@ public class DocumentSlot : MonoBehaviour, IDropHandler
         slotImage.enabled = true;
         draggedUI.documentController.close();
         GameObject.Destroy(draggedUI.documentController.gameObject);
-      
-        Debug.Log("Document: " + storedDocument);
-        Debug.Log("Type Document:" + storedDocument.type);
-        Debug.Log("Slot:" + documentType);
 
-        if (documentType != storedDocument.type)
-        {
-            Debug.Log("Not Passed");
-            GameController.Instance.HandleDocumentDropped(null);
+        if (documentType == storedDocument.type) {
+
+                GameController.Instance.HandleDocumentDropped(documentType, storedDocument);
         } else
         {
-            Debug.Log("Passed");
-
-            GameController.Instance.HandleDocumentDropped(storedDocument);
+            GameController.Instance.HandleDocumentDropped(documentType, null);
         }
 
-        isLocked = true;
+            isLocked = true;
     }
 }

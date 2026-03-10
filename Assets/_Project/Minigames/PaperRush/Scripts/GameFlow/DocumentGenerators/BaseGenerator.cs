@@ -29,9 +29,7 @@ public abstract class BaseGenerator<TDocument> : MonoBehaviour
             }
         }
         
-        return newName;
-
-                
+        return newName;              
     }
 
     public string fakeLastNames(string name)
@@ -117,11 +115,9 @@ public abstract class BaseGenerator<TDocument> : MonoBehaviour
 
     public DateTime fakeDate(DateTime date)
     {
-        DateTime fakeDate = new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second);
+        DateTime dateTemplate = new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second);
 
-        fakeDate.AddYears(-1);
-        fakeDate.AddMonths(-(UnityEngine.Random.Range(1, 7)));
-        fakeDate.AddDays(-(UnityEngine.Random.Range(1, 28)));
+        DateTime fakeDate = dateTemplate.AddYears(-1).AddMonths(-(UnityEngine.Random.Range(1, 7))).AddDays(-(UnityEngine.Random.Range(1, 28)));
 
         return fakeDate;
     }

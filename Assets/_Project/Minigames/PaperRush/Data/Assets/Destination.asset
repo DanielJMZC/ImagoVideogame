@@ -21,7 +21,7 @@ MonoBehaviour:
   - "Montreal, YMQ, Montr\xE9al\u2013Trudeau "
   - "Madrid, MAD, Adolfo Su\xE1rez "
   - 'Barcelona, BCN, El Prat '
-  - London, LON, London Heathrow
+  - "Caracas, CCS, Sim\xF3n Bol\xEDvar"
   - Paris, PAR, Charles de Gaulle
   - "San Jos\xE9, SJO, Juan Santamar\xEDa "
   - 'Panama City, PTY, Tocumen '
@@ -32,4 +32,3 @@ MonoBehaviour:
   - 'Buenos Aires, BUE, Ministro Pistarini '
   - "Santiago, SCL, Arturo Merino Ben\xEDtez "
   - "S\xE3o Paulo, SAO, S\xE3o Paulo/Guarulhos "
-  - "Caracas, CCS, Sim\xF3n Bol\xEDvar "

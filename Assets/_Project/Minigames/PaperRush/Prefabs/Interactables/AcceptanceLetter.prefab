@@ -841,9 +841,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce6906d83ff340c28e5dc24ec0f3ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.PaperRush::AcceptanceLetterController
-  documentType: Acceptance Letter
   panel: {fileID: 6276947647120540425}
   animator: {fileID: 3310574474917184702}
+  endGameAnimator: {fileID: 4105269343024552952}
+  isInteractable: 1
   sendDate: {fileID: 798826272711123384}
   internName: {fileID: 5114802138401360591}
   subject: {fileID: 1182613345058047245}
@@ -1980,7 +1981,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4865696548275453012}
@@ -2078,6 +2079,7 @@ GameObject:
   - component: {fileID: 2062773583456254660}
   - component: {fileID: 4978053610177959578}
   - component: {fileID: 6032950207923970958}
+  - component: {fileID: 4105269343024552952}
   m_Layer: 5
   m_Name: AcceptanceLetterFrame
   m_TagString: Untagged
@@ -2164,9 +2166,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2bf341a433644628a741c4f392c5c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.PaperRush::DocumentUIController
+  canvas: {fileID: 0}
+  canvasGroup: {fileID: 0}
   documentController: {fileID: 5169952608508359182}
   prefabSprite: {fileID: 2762278503595733111, guid: 9ae34abee64ef45f1ae747c815714879, type: 3}
+  isInteractable: 1
   dragScale: 0.25
+--- !u!95 &4105269343024552952
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099940105024952652}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 0d73acef53fed407191a78b5fb85e8a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6276947647120540425
 GameObject:
   m_ObjectHideFlags: 0

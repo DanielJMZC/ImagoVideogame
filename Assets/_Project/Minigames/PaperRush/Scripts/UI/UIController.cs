@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,10 +14,11 @@ public class UIController : MonoBehaviour
     [Header("UI References")]
     public TextMeshProUGUI timerText; 
     public TextMeshProUGUI date;
-    public TextMeshProUGUI points;
+    public TextMeshProUGUI newPoints;
+
     public GameObject fade;
     public GameObject objetives;
-    public GameObject endUI;
+    public GameObject newEndUI;
     public GameObject mainUI;
     public GameObject GameStartUI;
     public Button book;
@@ -29,7 +31,8 @@ public class UIController : MonoBehaviour
     {
         time = timeSeconds;
         DateTime day = GameController.Instance.Retrieve<Character>().calendarDate;
-        date.text = day.ToString("MMMM dd, yyyy");
+        CultureInfo spanishCulture = new CultureInfo("es-ES");
+        date.text = day.ToString("dd 'de' MMMM 'de' yyyy", spanishCulture);
         notebook.updateText();
     }
 
@@ -74,24 +77,7 @@ public class UIController : MonoBehaviour
             objetives.SetActive(true);
         }
     }
-    public void GameEndUI(int _points)
-    {
-        points.text = _points.ToString();
-        StartCoroutine(GameEndUIRoutine(10));
-    }
-
-    IEnumerator GameEndUIRoutine(int second)
-    {
-        fade.SetActive(true);
-        objetives.SetActive(false);
-        endUI.SetActive(true);
-        mainUI.SetActive(false);
-        yield return new WaitForSeconds(second);
-
-        UnityEditor.EditorApplication.isPlaying = false;
-        
-    }
-
+   
     public void GameStart()
     {
        StartCoroutine(GameStartRoutine(3));
@@ -105,5 +91,14 @@ public class UIController : MonoBehaviour
         GameStartUI.SetActive(false);
         GameController.Instance.fxManager.ResumeMusic();
         StartCoroutine(MatchTime());
+
+    }
+
+    public void Finale()
+    {
+        fade.SetActive(true);
+        objetives.SetActive(false);
+        newEndUI.SetActive(true);
+        mainUI.SetActive(false);
     }
 }
