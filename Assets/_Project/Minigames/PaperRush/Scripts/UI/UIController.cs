@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -10,6 +12,8 @@ public class UIController : MonoBehaviour
     [Header("Timer")]
     public int timeSeconds;
     protected float time;
+    protected bool isPaused = false;
+    protected int helpIndex = 0;
 
     [Header("UI References")]
     public TextMeshProUGUI timerText; 
@@ -21,11 +25,17 @@ public class UIController : MonoBehaviour
     public GameObject newEndUI;
     public GameObject mainUI;
     public GameObject GameStartUI;
-    public Button book;
+    public GameObject helpUI;
+    public List<GameObject> helpPage = new List<GameObject>();
 
     [Header("Controllers")]
     public CharacterController notebook;
 
+    [Header("Buttons")]
+    public Button book;
+    public Button mainMenu;
+    public Button help;
+    public Animator homeButton;
 
     void Start()
     {
@@ -47,10 +57,24 @@ public class UIController : MonoBehaviour
             GameController.Instance.EndGame();
         } else
         {
-            StartCoroutine(MatchTime());
+            if (isPaused == false)
+            {
+                StartCoroutine(MatchTime());
+            }
         }
 
        
+    }
+
+    public void pauseTime()
+    {
+        isPaused = true;
+    }
+
+    public void unpauseTime()
+    {
+        isPaused = false;
+        StartCoroutine(MatchTime());
     }
 
     void UpdateTimerUI()
@@ -91,6 +115,50 @@ public class UIController : MonoBehaviour
         GameStartUI.SetActive(false);
         GameController.Instance.fxManager.ResumeMusic();
         StartCoroutine(MatchTime());
+
+    }
+
+    public void homeClick()
+    {
+        homeButton.Play("Click");
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void helpClick()
+    {
+        pauseTime();
+        helpUI.SetActive(true);
+        helpPage[helpIndex].SetActive(true);
+        homeButton.gameObject.SetActive(false);
+        help.gameObject.SetActive(false);
+        GameController.Instance.fxManager.pageFlipSound();
+
+    }
+    
+
+    public void helpNext()
+    {
+        helpPage[helpIndex].SetActive(false);
+        helpIndex++;
+        helpPage[helpIndex].SetActive(true);
+        GameController.Instance.fxManager.pageFlipSound();
+    }
+
+    public void helpBack()
+    {
+        helpPage[helpIndex].SetActive(false);
+        helpIndex--;
+        helpPage[helpIndex].SetActive(true);
+        GameController.Instance.fxManager.pageFlipSound();
+    }
+
+    public void closeHelp()
+    {
+        helpUI.SetActive(false);
+        unpauseTime();
+        homeButton.gameObject.SetActive(true);
+        help.gameObject.SetActive(true);
+        GameController.Instance.fxManager.pageFlipSound();
 
     }
 

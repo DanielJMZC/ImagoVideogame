@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PlaneTicketController : DocumentController<PlaneTicket>
+public class PlaneTicketController : DocumentControllerBase
 {
     
      [Header("UI References")]
@@ -27,6 +27,8 @@ public class PlaneTicketController : DocumentController<PlaneTicket>
 
     public override void updateText()
     {
+        PlaneTicket document = documentBase as PlaneTicket;
+
         originShort.text = document.originShort;
         destinationShort.text = document.destinationShort;
         origin.text = document.origin;

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class PassportController : DocumentController<Passport>
+public class PassportController : DocumentControllerBase
 {
     [Header("UI References")]
     public TextMeshProUGUI firstNames;
@@ -14,10 +14,11 @@ public class PassportController : DocumentController<Passport>
     public TextMeshProUGUI passportNumber;
     public Image photo;
 
-    public Passport passport;
 
     public override void updateText()
     {
+        Passport document = documentBase as Passport;
+
         firstNames.text = document.firstNames;
         lastNames.text = document.lastNames;
         sex.text = document.sex;

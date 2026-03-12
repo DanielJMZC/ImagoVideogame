@@ -39,10 +39,11 @@ public class DocumentSlot : MonoBehaviour, IDropHandler
 
         if (documentType == storedDocument.type) {
 
-                GameController.Instance.HandleDocumentDropped(documentType, storedDocument);
+            GameController.Instance.HandleDocumentDropped(documentType, storedDocument);
         } else
         {
-            GameController.Instance.HandleDocumentDropped(documentType, null);
+            storedDocument.errorType = documentError.MismatchDocument;
+            GameController.Instance.HandleDocumentDropped(documentType, storedDocument);
         }
 
             isLocked = true;

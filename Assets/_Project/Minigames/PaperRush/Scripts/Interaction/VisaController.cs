@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-public class VisaController : DocumentController<Visa>
+public class VisaController : DocumentControllerBase
 {
     [Header("UI References")]
     public TextMeshProUGUI names;
@@ -22,6 +22,8 @@ public class VisaController : DocumentController<Visa>
 
     public override void updateText()
     {
+        Visa document = documentBase as Visa;
+
         placeOfExpedition.text = document.placeOfExpedition;
         typeVisa.text = document.typeVisa;
         names.text = document.lastNames + ", " + document.firstNames;
