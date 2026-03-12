@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VisaGenerator : BaseGenerator<Visa>
+public class VisaGenerator : BaseGenerator
 {
-    public override Visa Generate()
+    public override Document Generate()
     {
         Visa v = new Visa();
 
@@ -32,9 +32,9 @@ public class VisaGenerator : BaseGenerator<Visa>
         v.validDate = c.calendarDate.AddMonths(-1);
         v.expireDate = c.calendarDate.AddMonths(11);
         v.photo = c.photo;
-        v.errorNumber = 0;
 
         v.type = documentType.Visa;
+        v.errorType = documentError.None;
 
         GameController.Instance.Add(v);
 
@@ -42,7 +42,7 @@ public class VisaGenerator : BaseGenerator<Visa>
         return v;
     }
 
-    public override Visa GenerateFake()
+    public override Document GenerateFake()
     {
         Visa v = new Visa();
 
@@ -59,30 +59,33 @@ public class VisaGenerator : BaseGenerator<Visa>
         v.dateOfBirth = visa.dateOfBirth;
         v.passportNumber = visa.passportNumber;
         v.nationality = visa.nationality;
-
         v.validDate = visa.validDate;
         v.expireDate = visa.expireDate;
         v.photo = visa.photo;
         v.type = documentType.Visa;
-        v.errorNumber = UnityEngine.Random.Range(1, 4);
 
+        int errors = UnityEngine.Random.Range(1, 4);
         List<String> data = new List<String>() {"firstNames", "lastNames", "sex", "dateOfBirth", "validDate", "expiryDate", "photo", "passportNumber"};
-        int errors = v.errorNumber;
-        int possibleErrors = 8;
+        v.errorType = assignError(errors);
+
 
         while (errors != 0)
         {
             errors--;
-            int selectNumber = UnityEngine.Random.Range(0,possibleErrors);
+            int selectNumber = UnityEngine.Random.Range(0,data.Count);
             string select = data[selectNumber];
 
             switch(select) {
                 case "firstNames":
                     v.firstNames = fakeFirstNames(v.firstNames);
+                    v.documentErrors.Add("firstNames");
+
                 break;
 
                 case "lastNames":
                     v.lastNames = fakeLastNames(v.lastNames);
+                    v.documentErrors.Add("lastNames");
+
                 break;
 
                 case "sex":
@@ -95,32 +98,38 @@ public class VisaGenerator : BaseGenerator<Visa>
                     {
                         v.nationality = "Británica";
                     }
+
+                    v.documentErrors.Add("sex");
                 break;
 
                 case "dateofBirth":
                     v.dateOfBirth = fakeDateOfBirth(v.dateOfBirth);
+                    v.documentErrors.Add("dateOfBirth");
                 break;
 
                 case "issueDate":
                     v.validDate = fakeIssueDate(v.validDate);
+                    v.documentErrors.Add("issueDate");
 
                 break;
 
                 case "expiryDate":
                     v.expireDate = fakeExpiryDate(v.expireDate);
+                    v.documentErrors.Add("expiryDate");
 
                 break;
 
                 case "photo":
                     v.photo = fakePhoto(v.photo);
+                    v.documentErrors.Add("photo");
                 break;
 
                 case "passportNumber":
                     v.passportNumber = fakePassportNumber(v.passportNumber);
+                    v.documentErrors.Add("passportNumber");
                 break;
             }
 
-            possibleErrors--;
             data.Remove(select);
         }
 

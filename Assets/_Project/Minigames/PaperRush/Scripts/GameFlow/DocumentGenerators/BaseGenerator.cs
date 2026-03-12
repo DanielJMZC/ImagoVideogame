@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
 
-public abstract class BaseGenerator<TDocument> : MonoBehaviour
+public abstract class BaseGenerator : MonoBehaviour
 {
     public NameDatabaseSO nameDatabase;
     public PhotoDatabaseSO photoDatabase;
 
-    public abstract TDocument Generate();
+    public abstract Document Generate();
 
-    public abstract TDocument GenerateFake();
+    public abstract Document GenerateFake();
 
     public string fakeFirstNames(string name)
     {
@@ -159,4 +159,21 @@ public abstract class BaseGenerator<TDocument> : MonoBehaviour
 
         return number;
     }
+
+    public documentError assignError(int error)
+    {
+        if (error == 1)
+        {
+            return documentError.ErrorInFieldOne;
+        } else if (error == 2)
+        {
+            return documentError.ErrorInFieldTwo;
+        } else 
+        {
+            return documentError.ErrorInFieldThree;
+        }
+        
+    }
+
+
 }

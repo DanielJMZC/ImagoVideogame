@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-public class TravelInsuranceController : DocumentController<TravelInsurance>
+public class TravelInsuranceController : DocumentControllerBase
 {
     [Header("UI References")]
     public TextMeshProUGUI agencyNumber;
@@ -15,6 +15,8 @@ public class TravelInsuranceController : DocumentController<TravelInsurance>
 
     public override void updateText()
     {
+        TravelInsurance document = documentBase as TravelInsurance;
+
         agencyNumber.text = document.agencyNumber.ToString();
         issueDate.text = document.issueDate.ToShortDateString();
         startDate.text = document.startDate.ToShortDateString();

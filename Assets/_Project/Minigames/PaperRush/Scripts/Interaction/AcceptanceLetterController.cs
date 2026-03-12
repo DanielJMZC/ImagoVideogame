@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-public class AcceptanceLetterController : DocumentController<AcceptanceLetter>
+public class AcceptanceLetterController : DocumentControllerBase
 {
     [Header("UI References")]
     public TextMeshProUGUI sendDate;
@@ -21,10 +21,13 @@ public class AcceptanceLetterController : DocumentController<AcceptanceLetter>
 
     public override void updateText()
     {
+        AcceptanceLetter document = documentBase as AcceptanceLetter;
+
         sendDate.text = document.sendDate.ToShortDateString();
         internName.text = document.firstNames + " " + document.lastNames;
         internName2.text = document.firstNames + " " + document.lastNames;
         subject.text = document.subject;
+        Debug.Log("Program Assigned");
         program.text = document.program;
         startDate.text = document.startDate.ToShortDateString();
         endDate.text = document.endDate.ToShortDateString();

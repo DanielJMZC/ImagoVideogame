@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AcceptanceLetterGenerator : BaseGenerator<AcceptanceLetter>
+public class AcceptanceLetterGenerator : BaseGenerator
 {
 
     public LetterDatabase letterDatabase;
-    public override AcceptanceLetter Generate()
+    public override Document Generate()
     {
        AcceptanceLetter l = new AcceptanceLetter();
 
@@ -20,6 +20,7 @@ public class AcceptanceLetterGenerator : BaseGenerator<AcceptanceLetter>
         l.endDate = departure.departureTime;
         l.sendDate = c.calendarDate.AddMonths(-1);
         l.type = documentType.AcceptanceLetter;
+        l.errorType = documentError.None;
         l.subject = "Aceptación al Programa de Prácticas AWAQ Campus Internship";
         l.program = "Programa de Prácticas AWAQ Campus Internship (ACI)";
         l.signature = "Equipo AWAQ";
@@ -29,7 +30,7 @@ public class AcceptanceLetterGenerator : BaseGenerator<AcceptanceLetter>
         return l;
     }
 
-    public override AcceptanceLetter GenerateFake()
+    public override Document GenerateFake()
     {
         AcceptanceLetter l = new AcceptanceLetter();
 
@@ -40,32 +41,39 @@ public class AcceptanceLetterGenerator : BaseGenerator<AcceptanceLetter>
         l.startDate = letter.startDate;
         l.endDate = letter.endDate;
         l.sendDate = letter.sendDate;
-
         l.type = documentType.AcceptanceLetter;
+        l.subject = "Aceptación al Programa de Prácticas AWAQ Campus Internship";
+        l.program = "Programa de Prácticas AWAQ Campus Internship (ACI)";
+        l.signature = "Equipo AWAQ";
 
-        l.errorNumber = UnityEngine.Random.Range(1, 4);
+        int errors = UnityEngine.Random.Range(1, 4);
         List<String> data = new List<String>() {"firstNames", "lastNames", "date", "program"};
-        int errors = l.errorNumber;
-        int possibleErrors = 4;
+        l.errorType = assignError(errors);
 
         while (errors != 0)
         {
             errors--;
-            int selectNumber = UnityEngine.Random.Range(0,possibleErrors);
+            int selectNumber = UnityEngine.Random.Range(0,data.Count);
             string select = data[selectNumber];
 
             switch(select) {
                 case "firstNames":
                     l.firstNames = fakeFirstNames(l.firstNames);
+                    l.documentErrors.Add("firstNames");
+
                 break;
 
                 case "lastNames":
                     l.lastNames = fakeLastNames(l.lastNames);
+                    l.documentErrors.Add("lastNames");
+
                 break;
 
                 case "date":
                     l.startDate = fakeDate(l.startDate);
                     l.endDate = l.startDate.AddMonths(4);
+                    l.documentErrors.Add("date");
+
                 break;
 
                 case "program":
@@ -75,12 +83,14 @@ public class AcceptanceLetterGenerator : BaseGenerator<AcceptanceLetter>
                     l.subject = parts[0];
                     l.program = parts[1];
                     l.signature = parts[2];
+
+                    l.documentErrors.Add("program");
+
             
                 break;
 
             }
 
-            possibleErrors--;
             data.Remove(select);
         }
 

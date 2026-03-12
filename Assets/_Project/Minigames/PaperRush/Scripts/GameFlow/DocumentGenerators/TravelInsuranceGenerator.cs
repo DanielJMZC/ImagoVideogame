@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TravelInsuranceGenerator : BaseGenerator<TravelInsurance>
+public class TravelInsuranceGenerator : BaseGenerator
 {
-    public override TravelInsurance Generate()
+    public override Document Generate()
     {
         TravelInsurance i = new TravelInsurance();
 
@@ -22,9 +22,9 @@ public class TravelInsuranceGenerator : BaseGenerator<TravelInsurance>
         i.insuranceNumber = "560 " + (UnityEngine.Random.Range(1000000, 10000000)).ToString() + " 05E";
         i.passportNumber = p.passportNumber;
         i.agencyNumber = UnityEngine.Random.Range(1000, 10000);
-        i.errorNumber = 0;
 
         i.type = documentType.TravelInsurance;
+        i.errorType = documentError.None;
 
         GameController.Instance.Add(i);
         
@@ -33,7 +33,7 @@ public class TravelInsuranceGenerator : BaseGenerator<TravelInsurance>
 
     }
 
-    public override TravelInsurance GenerateFake()
+    public override Document GenerateFake()
     {
         TravelInsurance i = new TravelInsurance();
 
@@ -48,44 +48,49 @@ public class TravelInsuranceGenerator : BaseGenerator<TravelInsurance>
         i.insuranceNumber = insurance.insuranceNumber;
         i.passportNumber = insurance.passportNumber;
         i.agencyNumber = insurance.agencyNumber;
-    
         i.type = documentType.TravelInsurance;
 
-        i.errorNumber = UnityEngine.Random.Range(1, 4);
+        int errors = UnityEngine.Random.Range(1, 4);
         List<String> data = new List<String>() {"firstNames", "lastNames", "time", "passportNumber"};
-        int errors = i.errorNumber;
-        int possibleErrors = 4;
+        i.errorType = assignError(errors);
+
 
         while (errors != 0)
         {
             errors--;
-            int selectNumber = UnityEngine.Random.Range(0,possibleErrors);
+            int selectNumber = UnityEngine.Random.Range(0,data.Count);
             string select = data[selectNumber];
 
             switch(select) {
                 case "firstNames":
                     i.firstNames = fakeFirstNames(i.firstNames);
+                    i.documentErrors.Add("firstNames");
+
                 break;
 
                 case "lastNames":
                     i.lastNames = fakeLastNames(i.lastNames);
+                    i.documentErrors.Add("lastNames");
+
 
                 break;
                 case "time":
-                i.startDate = fakeDate(i.startDate);
-                i.endDate = i.startDate.AddMonths(UnityEngine.Random.Range(1, 4));
-                i.issueDate = i.startDate.AddDays(-21);
+                    i.startDate = fakeDate(i.startDate);
+                    i.endDate = i.startDate.AddMonths(UnityEngine.Random.Range(1, 4));
+                    i.issueDate = i.startDate.AddDays(-21);
+                    i.documentErrors.Add("time");
+
 
                 break;
 
                 case "passportNumber":
 
-                i.passportNumber = fakePassportNumber(i.passportNumber);
+                    i.passportNumber = fakePassportNumber(i.passportNumber);
+                    i.documentErrors.Add("passportNumber");
 
                 break;  
             }
 
-            possibleErrors--;
             data.Remove(select);
         }
 
