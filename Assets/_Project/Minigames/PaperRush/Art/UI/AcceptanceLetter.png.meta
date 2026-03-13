@@ -3,8 +3,8 @@ guid: 566b7194114f34d1598ab7daf04da0d8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2979123527260854781
-    second: "Screenshot 2026-03-11 at 9.10.35\u202Fp.m._0"
+      213: -6577911872022150136
+    second: AcceptanceLetter_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Screenshot 2026-03-11 at 9.10.35\u202Fp.m._0"
+      name: AcceptanceLetter_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1028
-        height: 1337
+        width: 484
+        height: 628
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df954606019f75920800000000000000
-      internalID: 2979123527260854781
+      spriteID: 8048b40f00096b4a0800000000000000
+      internalID: -6577911872022150136
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Screenshot 2026-03-11 at 9.10.35\u202Fp.m._0": 2979123527260854781
+      AcceptanceLetter_0: -6577911872022150136
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

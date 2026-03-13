@@ -10,6 +10,7 @@ public class fxManager : MonoBehaviour
     public AudioClip paperSlide;
     private AudioSource music;
     public AudioSource footsteps;
+    public AudioClip writeClip;
 
     public AudioClip MaxPoints;
     public AudioClip LessPoints;
@@ -32,7 +33,7 @@ public class fxManager : MonoBehaviour
 
     public void maxPoints()
     {
-        AudioSource.PlayClipAtPoint(MaxPoints, Camera.main.transform.position, 0.5f);
+        AudioSource.PlayClipAtPoint(MaxPoints, Camera.main.transform.position, 0.25f);
     }
 
     public void lessPoints()
@@ -48,6 +49,11 @@ public class fxManager : MonoBehaviour
     public void noPoints()
     {
         AudioSource.PlayClipAtPoint(NoPoints, Camera.main.transform.position, 0.5f);
+    }
+
+    public void write()
+    {
+        AudioSource.PlayClipAtPoint(writeClip, Camera.main.transform.position, 0.25f);
     }
 
     public void loseSound()

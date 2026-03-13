@@ -160,8 +160,6 @@ public class GameController : MonoBehaviour
     {
         documentSlotCount--;
 
-        Debug.Log(doc);
-
         gameEndController.documentSubmitted[type] = doc;
  
         if (documentSlotCount <= 0)

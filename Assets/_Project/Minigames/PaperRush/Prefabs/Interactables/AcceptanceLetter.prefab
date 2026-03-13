@@ -846,6 +846,7 @@ MonoBehaviour:
   endGameAnimator: {fileID: 4105269343024552952}
   isInteractable: 1
   previousPlayerInRange: 0
+  errorTags: []
   sendDate: {fileID: 798826272711123384}
   internName: {fileID: 5114802138401360591}
   subject: {fileID: 1182613345058047245}
@@ -1468,7 +1469,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AWAQ Campus Internship
+  m_text: "Carta de Aceptaci\xF3n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b2b8608bdb995461eb69aef4473d5de1, type: 2}
   m_sharedMaterial: {fileID: -1219066655236931863, guid: b2b8608bdb995461eb69aef4473d5de1, type: 2}

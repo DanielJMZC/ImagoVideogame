@@ -56,16 +56,14 @@ public abstract class DocumentControllerBase: Interactable
         
     }
 
-    public virtual void showErrors(Document document)
+    public void showErrors(Document document)
     {
         int j = 0;
         string previous = "";
-        Debug.Log(document);
         foreach(var tag in errorTags)
         {
             if (document.documentErrors.Contains(tag.errorType))
             {
-                Debug.Log(tag.errorType);
                 if (tag.errorType != previous)
                 {
                     j++;
@@ -84,16 +82,12 @@ public abstract class DocumentControllerBase: Interactable
 
      public void hide()
     {
-        GameController.Instance.uiController.book.gameObject.SetActive(false);
-        GameController.Instance.uiController.mainMenu.gameObject.SetActive(false);
-        GameController.Instance.uiController.help.gameObject.SetActive(false);
+        GameController.Instance.uiController.mainUI.SetActive(false);
     }
 
     public void unhide()
     {
-        GameController.Instance.uiController.book.gameObject.SetActive(true);
-        GameController.Instance.uiController.mainMenu.gameObject.SetActive(true);
-        GameController.Instance.uiController.help.gameObject.SetActive(true);
+        GameController.Instance.uiController.mainUI.SetActive(true);
     }
 
     public void setVisible(bool isVisible)

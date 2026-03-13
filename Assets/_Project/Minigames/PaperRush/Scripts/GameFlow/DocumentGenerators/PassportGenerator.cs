@@ -83,7 +83,7 @@ public class PassportGenerator : BaseGenerator
 
                 break;
 
-                case "dateofBirth":
+                case "dateOfBirth":
                     p.dateOfBirth = fakeDateOfBirth(p.dateOfBirth);
                     p.documentErrors.Add("dateOfBirth");
 
