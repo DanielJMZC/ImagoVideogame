@@ -102,14 +102,14 @@ public class VisaGenerator : BaseGenerator
                     v.documentErrors.Add("sex");
                 break;
 
-                case "dateofBirth":
+                case "dateOfBirth":
                     v.dateOfBirth = fakeDateOfBirth(v.dateOfBirth);
                     v.documentErrors.Add("dateOfBirth");
                 break;
 
-                case "issueDate":
+                case "validDate":
                     v.validDate = fakeIssueDate(v.validDate);
-                    v.documentErrors.Add("issueDate");
+                    v.documentErrors.Add("validDate");
 
                 break;
 

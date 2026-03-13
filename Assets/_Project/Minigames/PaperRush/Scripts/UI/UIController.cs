@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -35,8 +36,8 @@ public class UIController : MonoBehaviour
     public Button book;
     public Button mainMenu;
     public Button help;
-    public Animator homeButton;
 
+    public Button home;
     void Start()
     {
         time = timeSeconds;
@@ -44,6 +45,14 @@ public class UIController : MonoBehaviour
         CultureInfo spanishCulture = new CultureInfo("es-ES");
         date.text = day.ToString("dd 'de' MMMM 'de' yyyy", spanishCulture);
         notebook.updateText();
+    }
+
+    void Update()
+    {
+        if (helpUI.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                closeHelp();
+            }
     }
 
      IEnumerator MatchTime()
@@ -120,7 +129,6 @@ public class UIController : MonoBehaviour
 
     public void homeClick()
     {
-        homeButton.Play("Click");
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -129,9 +137,13 @@ public class UIController : MonoBehaviour
         pauseTime();
         helpUI.SetActive(true);
         helpPage[helpIndex].SetActive(true);
-        homeButton.gameObject.SetActive(false);
+        home.gameObject.SetActive(false);
         help.gameObject.SetActive(false);
+        book.gameObject.SetActive(false);
+        mainMenu.gameObject.SetActive(false);
         GameController.Instance.fxManager.pageFlipSound();
+        GameController.Instance.player.animatorController.SetBool("Moving", false);
+
 
     }
     
@@ -156,8 +168,10 @@ public class UIController : MonoBehaviour
     {
         helpUI.SetActive(false);
         unpauseTime();
-        homeButton.gameObject.SetActive(true);
+        home.gameObject.SetActive(true);
         help.gameObject.SetActive(true);
+        book.gameObject.SetActive(true);
+        mainMenu.gameObject.SetActive(true);
         GameController.Instance.fxManager.pageFlipSound();
 
     }

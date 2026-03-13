@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public Animator buttonAnimator;
     public void startGame()
     {
         SceneManager.LoadScene("MainGame");
@@ -11,7 +10,11 @@ public class MainMenu : MonoBehaviour
 
     public void click()
     {
-        buttonAnimator.Play("Click");
         startGame();
+    }
+
+    public void exit()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }

@@ -27,7 +27,6 @@ public class AcceptanceLetterController : DocumentControllerBase
         internName.text = document.firstNames + " " + document.lastNames;
         internName2.text = document.firstNames + " " + document.lastNames;
         subject.text = document.subject;
-        Debug.Log("Program Assigned");
         program.text = document.program;
         startDate.text = document.startDate.ToShortDateString();
         endDate.text = document.endDate.ToShortDateString();

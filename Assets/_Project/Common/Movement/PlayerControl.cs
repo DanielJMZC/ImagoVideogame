@@ -44,6 +44,13 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (inAction)
+        {
+            xInput = 0;
+            yInput = 0;
+            rb.linearVelocity = new Vector2(0, 0);
+            UpdateAnimation(PlayerAnimation.idle);
+        }
         if (!inAction) {
             xInput = 0;
             if(Keyboard.current.aKey.isPressed)
@@ -90,10 +97,8 @@ public class PlayerControl : MonoBehaviour
             }
 
             UpdatePlayerAnimation();
-        }
-        
+        }   
     }
-
     void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(xInput * moveSpeed, yInput * moveSpeed);

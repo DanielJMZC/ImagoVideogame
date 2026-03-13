@@ -76,7 +76,7 @@ public class TravelInsuranceGenerator : BaseGenerator
                 break;
                 case "time":
                     i.startDate = fakeDate(i.startDate);
-                    i.endDate = i.startDate.AddMonths(UnityEngine.Random.Range(1, 4));
+                    i.endDate = i.startDate.AddMonths(4);
                     i.issueDate = i.startDate.AddDays(-21);
                     i.documentErrors.Add("time");
 

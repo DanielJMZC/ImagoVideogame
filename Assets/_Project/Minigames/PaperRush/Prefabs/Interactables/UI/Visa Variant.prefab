@@ -1834,7 +1834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 61893551277942582, guid: 2cd720f58d58b4ed9a6f48ebb8c562c3, type: 3}
       propertyPath: errorTags.Array.data[4].errorType
-      value: issueDate
+      value: validDate
       objectReference: {fileID: 0}
     - target: {fileID: 61893551277942582, guid: 2cd720f58d58b4ed9a6f48ebb8c562c3, type: 3}
       propertyPath: errorTags.Array.data[5].errorType

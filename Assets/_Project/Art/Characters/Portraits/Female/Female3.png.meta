@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9e650c320411a47c6bbe91c5ddcd1042
+guid: 1fa6d0609667c417aaf5c273ff178833
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9162999352007644751
-    second: Pasaporte_0
+      213: 2072814792981799639
+    second: Female3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pasaporte_0
+      name: Female3_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 551
-        height: 670
+        width: 600
+        height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b9237213ac76d080800000000000000
-      internalID: -9162999352007644751
+      spriteID: 7d2eadc621e14cc10800000000000000
+      internalID: 2072814792981799639
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Pasaporte_0: -9162999352007644751
+      Female3_0: 2072814792981799639
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

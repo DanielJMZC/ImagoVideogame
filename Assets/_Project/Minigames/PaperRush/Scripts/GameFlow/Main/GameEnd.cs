@@ -44,6 +44,7 @@ public class GameEnd : MonoBehaviour
         listIndex = 0;
         GameController.Instance.player.moveSpeed = 0;
         GameController.Instance.player.inAction = true;
+        GameController.Instance.player.animatorController.SetBool("Moving", false);
         GameController.Instance.fxManager.PauseMusic();
         GameController.Instance.uiController.Finale();
         StartCoroutine(animatingSequentially());
@@ -129,19 +130,18 @@ public class GameEnd : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             Document doc = documentSubmitted[types[listIndex]];
-            Debug.Log(doc);
             yield return StartCoroutine(AnimateDocument(documentPrefabs[doc.type], doc));
         }
 
         if (points <= 60)
         {
             GameController.Instance.fxManager.loseSound();
+            yield return new WaitForSeconds(10);
         } else
         {
             GameController.Instance.fxManager.winSound();
+            yield return new WaitForSeconds(5);
         }
-
-        yield return new WaitForSeconds(5);
 
         SceneManager.LoadScene("MainMenu");
 
