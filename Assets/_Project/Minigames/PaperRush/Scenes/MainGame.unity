@@ -15389,6 +15389,7 @@ GameObject:
   - component: {fileID: 594057136}
   - component: {fileID: 594057135}
   - component: {fileID: 594057134}
+  - component: {fileID: 594057139}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -15510,14 +15511,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380def4b79ef34f34a2de624909ee448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.Common::PlayerControl
-  moveSpeed: 8
-  xStart: 0
-  yStart: -1
-  moving: 0
-  inAction: 0
-  currentInteractable: {fileID: 0}
-  interactHitbox: {fileID: 2015441194}
-  animatorController: {fileID: 0}
 --- !u!212 &594057138
 SpriteRenderer:
   serializedVersion: 2
@@ -15577,6 +15570,26 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 1
+--- !u!114 &594057139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594057132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d29b8474ba5e3b48ad4d7f6d6fc64c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Project.Common::PlayerControl
+  moveSpeed: 5
+  xStart: 0
+  yStart: 0
+  moving: 0
+  inAction: 0
+  currentInteractable: {fileID: 0}
+  interactHitbox: {fileID: 2015441194}
+  animatorController: {fileID: 0}
 --- !u!1 &594663492
 GameObject:
   m_ObjectHideFlags: 0
@@ -43844,7 +43857,7 @@ MonoBehaviour:
   fakePlaneTickets: 5
   fakeTravelInsurance: 5
   fakeAcceptanceLetter: 5
-  player: {fileID: 594057137}
+  player: {fileID: 594057139}
   uiController: {fileID: 601348618}
   fxManager: {fileID: 889603620}
   documentSlotCount: 0
