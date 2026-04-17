@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 7593425}
   - component: {fileID: 7593424}
   - component: {fileID: 7593426}
+  - component: {fileID: 7593427}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -308,14 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380def4b79ef34f34a2de624909ee448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.Common::PlayerControl
-  moveSpeed: 5
-  xStart: 0
-  yStart: 0
-  moving: 0
-  inAction: 0
-  currentInteractable: {fileID: 0}
-  interactHitbox: {fileID: 2070122956}
-  animatorController: {fileID: 0}
 --- !u!50 &7593424
 Rigidbody2D:
   serializedVersion: 5
@@ -402,6 +395,26 @@ CapsuleCollider2D:
   m_Offset: {x: 0.000000059604645, y: -0.75507915}
   m_Size: {x: 0.6773404, y: 0.6773417}
   m_Direction: 0
+--- !u!114 &7593427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7593419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4732fdea690c440bde596cb5887e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Project.Dudas::PlayerControl
+  moveSpeed: 5
+  xStart: 0
+  yStart: 0
+  moving: 0
+  inAction: 0
+  currentInteractable: {fileID: 0}
+  interactHitbox: {fileID: 2070122956}
+  animatorController: {fileID: 0}
 --- !u!1 &11401562
 GameObject:
   m_ObjectHideFlags: 0
@@ -3496,7 +3509,7 @@ MonoBehaviour:
       patron: 
   panelCorrecto: {fileID: 143943972}
   panelIncorrecto: {fileID: 817499876}
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
   textoPuntuacion: {fileID: 118178909}
   TextCalificacion: {fileID: 3538858}
   bpm: 55
@@ -4839,7 +4852,7 @@ MonoBehaviour:
   canvasConfirmacion: {fileID: 1412294909}
   playerTarget: {fileID: 980490767}
   cameraTarget: {fileID: 318791504}
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
 --- !u!61 &110021426
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6682,7 +6695,7 @@ MonoBehaviour:
   canvasConfirmacion: {fileID: 1412294909}
   playerTarget: {fileID: 882930505}
   cameraTarget: {fileID: 1840307496}
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
 --- !u!61 &221816356
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13033,7 +13046,7 @@ MonoBehaviour:
       patron: 
   panelCorrecto: {fileID: 647152110}
   panelIncorrecto: {fileID: 823272356}
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
   textoPuntuacion: {fileID: 750127702}
   TextCalificacion: {fileID: 363699884}
   bpm: 60
@@ -14006,7 +14019,7 @@ MonoBehaviour:
   canvasConfirmacion: {fileID: 1412294909}
   playerTarget: {fileID: 882930505}
   cameraTarget: {fileID: 1840307496}
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
 --- !u!61 &526359790
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33953,7 +33966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f52f59b174855b4e857d0eeef19bd33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.Common::NPCGuide
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
   dialogos:
   - "\xA1Hola, c\xF3mo est\xE1s! Bienvenido a la estaci\xF3n de investigaci\xF3n
     de AWAQ."
@@ -34614,7 +34627,7 @@ MonoBehaviour:
   canvasConfirmacion: {fileID: 1412294909}
   playerTarget: {fileID: 882930505}
   cameraTarget: {fileID: 1840307496}
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
 --- !u!61 &770665022
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41998,7 +42011,7 @@ MonoBehaviour:
       patron: 
   panelCorrecto: {fileID: 1672181664}
   panelIncorrecto: {fileID: 181636541}
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
   textoPuntuacion: {fileID: 2011723858}
   TextCalificacion: {fileID: 1277259440}
   bpm: 74
@@ -42505,7 +42518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5417c7b98b2f9e542944fd83453bafa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.Common::NPCTrivia
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
   dialogos:
   - "Hay algo que me da vueltas en la cabeza\u2026\n"
   - "Muchas organizaciones hablan de ayudar al planeta, pero\u2026"
@@ -44104,7 +44117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5417c7b98b2f9e542944fd83453bafa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.Common::NPCTrivia
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
   dialogos:
   - "Oye\u2026 escuch\xE9 sobre algo llamado AWAQ, pero no entend\xED bien qu\xE9
     es\u2026"
@@ -47662,7 +47675,7 @@ MonoBehaviour:
   canvasConfirmacion: {fileID: 1412294909}
   playerTarget: {fileID: 102025185}
   cameraTarget: {fileID: 1102774385}
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
 --- !u!61 &1494253314
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70538,7 +70551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5417c7b98b2f9e542944fd83453bafa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.Common::NPCTrivia
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
   dialogos:
   - "Estaba viendo oportunidades de voluntariado y encontr\xE9 algo interesante\u2026"
   - "Hablan de estaciones biol\xF3gicas y trabajo en campo, pero\u2026"
@@ -70888,7 +70901,7 @@ MonoBehaviour:
   canvasConfirmacion: {fileID: 1412294909}
   playerTarget: {fileID: 245593705}
   cameraTarget: {fileID: 860357567}
-  player: {fileID: 7593423}
+  player: {fileID: 7593427}
 --- !u!61 &1987370492
 BoxCollider2D:
   m_ObjectHideFlags: 0
