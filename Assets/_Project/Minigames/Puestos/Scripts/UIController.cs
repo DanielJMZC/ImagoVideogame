@@ -1,28 +1,30 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
+using System.Collections;
+using System.Text;
 
 public class UIController : MonoBehaviour
 {
-    // PUNTOS
     public TextMeshProUGUI amountPoints;
     string amountText = "Puntos: ";
     int currentScore = 0;
 
-    // TIMER
     public TextMeshProUGUI timerText;
-    float tiempo = 100f; // 2 minutos (puedes cambiar a 180 si quieres 3)
+    float tiempo = 120f;
 
-    // PANTALLA ROJA (parpadeo)
     public UnityEngine.UI.Image pantallaRoja;
     bool parpadeoActivo = false;
     float timerParpadeo = 0f;
 
+    bool alreadySent = false;
+
     void Start()
     {
+        PlayerPrefs.SetInt("player_id", 1);
         ActiveScore();
 
-        // MODIFIQUE ALGO AQUI 👉 asegurar que el rojo inicia apagado
         if (pantallaRoja != null)
         {
             pantallaRoja.gameObject.SetActive(false);
@@ -31,7 +33,6 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        // ================= TIMER =================
         if (tiempo > 0)
         {
             tiempo -= Time.deltaTime;
@@ -47,37 +48,26 @@ public class UIController : MonoBehaviour
 
         timerText.text = minutos.ToString("00") + ":" + segundos.ToString("00");
 
-        // ================= FIN DEL JUEGO =================
-        if (tiempo == 0)
+        if (tiempo == 0 && !alreadySent)
         {
-            Debug.Log("Tiempo terminado");
+            alreadySent = true;
 
-            parpadeoActivo = false;
+            int playerId = PlayerPrefs.GetInt("player_id", 1);
 
-            if (pantallaRoja != null)
-            {
-                pantallaRoja.enabled = false;
-            }
-            PlayerPrefs.SetInt("ScoreFinal", currentScore);
-            SceneManager.LoadScene("End");
-            // opcional:
-            // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(EndGameFlow(playerId, currentScore));
         }
 
-        // ================= ACTIVAR PARPADEO =================
         if (tiempo <= 60 && tiempo > 0)
         {
             parpadeoActivo = true;
 
-            // MODIFIQUE ALGO AQUI 👉 activar objeto rojo
             if (pantallaRoja != null)
             {
                 pantallaRoja.gameObject.SetActive(true);
             }
         }
 
-        // ================= PARPADEO =================
-        if (parpadeoActivo)
+        if (parpadeoActivo && pantallaRoja != null)
         {
             timerParpadeo += Time.deltaTime;
 
@@ -89,7 +79,51 @@ public class UIController : MonoBehaviour
         }
     }
 
-    // ================= SCORE =================
+    IEnumerator EndGameFlow(int playerId, int puntos)
+    {
+        yield return SendFinalScore(playerId, puntos);
+
+        PlayerPrefs.SetInt("ScoreFinal", puntos);
+        SceneManager.LoadScene("End");
+    }
+
+    IEnumerator SendFinalScore(int playerId, int puntos)
+    {
+        // URL de mi API
+        string url = "http://127.0.0.1:5000/players/add-currency";
+
+        // Creamos el JSON.
+        string json = "{\"player_id\":" + playerId + ",\"puntos\":" + puntos + "}";
+
+        Debug.Log("JSON ENVIADO: " + json);
+
+        // Aquí utilizamos la API haciendo una Petición HTTP POST!! 
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+
+        // Para enviar el JSON lo convertimos a bytes.
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+
+        // Adjuntamos correctamente los datos al request.
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        // Llamamos correctamente al API.
+        yield return request.SendWebRequest();
+
+        // Recibimos respuesta de la API.
+        Debug.Log("RESPUESTA RAW: " + request.downloadHandler.text);
+
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Error POST: " + request.error);
+        }
+        else
+        {
+            Debug.Log("OK API: " + request.downloadHandler.text);
+        }
+    }
+
     public void ActiveScore()
     {
         amountPoints.text = amountText + "--";

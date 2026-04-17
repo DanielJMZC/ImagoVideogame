@@ -9,14 +9,10 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public int id;
 
-    // dónde estaba originalmente (lado derecho)
     public Transform spawnPoint;
-
-    //  la siguiente nota (nota 3)
     public GameObject nextNote;
-
-    // la nota anterior
     public GameObject previousNote;
+
     [SerializeField] private Texture2D handCursor;
 
     private void Awake()
@@ -28,61 +24,52 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public void OnPointerEnter(PointerEventData eventData)
     {
         transform.localScale = Vector3.one * 1.05f;
-
-        // no funciona for some reaosn
         Cursor.SetCursor(handCursor, Vector2.zero, CursorMode.Auto);
-        canvasGroup.alpha = 1f;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         transform.localScale = Vector3.one;
-
-        // volver a cursor normal
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        canvasGroup.alpha = 1f;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = false;
         transform.SetAsLastSibling();
+
         transform.localScale = Vector3.one * 1.15f;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector3 worldPoint;
-
-        RectTransformUtility.ScreenPointToWorldPointInRectangle(
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
             eventData.position,
             eventData.pressEventCamera,
-            out worldPoint
+            out Vector2 localPoint
         );
 
-        rectTransform.position = worldPoint;
+        rectTransform.anchoredPosition = localPoint;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
         transform.localScale = Vector3.one;
     }
 
-    //  esto se llama cuando se coloca correctamente
     public void OnPlacedCorrectly()
     {
-        // aparece la siguiente nota en el mismo lugar
         if (nextNote != null && spawnPoint != null)
         {
             nextNote.SetActive(true);
-            nextNote.GetComponent<RectTransform>().position = spawnPoint.position;
-        }
-        //hi
 
-        
+            RectTransform rt = nextNote.GetComponent<RectTransform>();
+            rt.SetParent(spawnPoint.parent, false);
+            rt.anchoredPosition = spawnPoint.GetComponent<RectTransform>().anchoredPosition;
+        }
+
         canvasGroup.blocksRaycasts = false;
         this.enabled = false;
     }
@@ -93,34 +80,30 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         foreach (DragDrop note in allNotes)
         {
-            // if not first bye
             if (note.previousNote != null)
             {
                 note.gameObject.SetActive(false);
-
-                note.enabled = false; 
-                note.canvasGroup.blocksRaycasts = false; 
+                note.canvasGroup.blocksRaycasts = false;
+                note.enabled = false;
             }
             else
             {
-                //  Nota inicial (nota 1)
                 note.gameObject.SetActive(true);
 
-                // back to spawn
                 if (note.spawnPoint != null)
                 {
-                    note.GetComponent<RectTransform>().position = note.spawnPoint.position;
+                    RectTransform rt = note.GetComponent<RectTransform>();
+
+                    rt.SetParent(note.spawnPoint.parent, false); 
+                    rt.anchoredPosition = note.spawnPoint.GetComponent<RectTransform>().anchoredPosition;
                 }
-
             }
-            //  vuelve a ser usable como al inicio
-                note.enabled = true;
-                note.canvasGroup.blocksRaycasts = true;
 
-                note.transform.SetAsLastSibling();
+            
+            note.transform.SetAsLastSibling();
+
+            note.enabled = true;
+            note.canvasGroup.blocksRaycasts = true;
         }
-        
     }
-
-   
 }
