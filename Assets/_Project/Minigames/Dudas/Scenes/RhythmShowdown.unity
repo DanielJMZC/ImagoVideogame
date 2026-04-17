@@ -42507,9 +42507,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Project.Common::NPCTrivia
   player: {fileID: 7593423}
   dialogos:
-  - 'HOOOOOPEEEEE
-
-'
+  - "Hay algo que me da vueltas en la cabeza\u2026\n"
+  - "Muchas organizaciones hablan de ayudar al planeta, pero\u2026"
+  - "\xBFCu\xE1l es realmente su objetivo?"
+  - "\xBFDe verdad hacen una diferencia o solo dicen hacerlo?"
+  - "\xBFSabes por qu\xE9 hacen todo esto?"
   guideUI: {fileID: 522868859}
   trivia: {fileID: 468717035}
 --- !u!61 &1196056357
@@ -44104,9 +44106,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Project.Common::NPCTrivia
   player: {fileID: 7593423}
   dialogos:
-  - 'Tuputamadre
-
-'
+  - "Oye\u2026 escuch\xE9 sobre algo llamado AWAQ, pero no entend\xED bien qu\xE9
+    es\u2026"
+  - "\xBFEs una empresa o algo m\xE1s?"
+  - "Dicen que trabajan con la naturaleza, pero\u2026 \xBFqu\xE9 hacen exactamente?"
+  - "\xBFInvestigan? \xBFAyudan? No me queda claro\u2026"
+  - "\xBFT\xFA sabes de qu\xE9 se trata realmente?"
   guideUI: {fileID: 1130680025}
   trivia: {fileID: 1170560729}
 --- !u!61 &1314441779
@@ -70535,8 +70540,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Project.Common::NPCTrivia
   player: {fileID: 7593423}
   dialogos:
-  - I wanna tell you something very nice
-  - I hate you
+  - "Estaba viendo oportunidades de voluntariado y encontr\xE9 algo interesante\u2026"
+  - "Hablan de estaciones biol\xF3gicas y trabajo en campo, pero\u2026"
+  - "\xBFQu\xE9 se hace realmente en esos lugares?"
+  - "\xBFEs solo investigaci\xF3n o hay m\xE1s cosas involucradas?"
+  - "\xBFT\xFA sabes c\xF3mo funcionan esas experiencias?"
   guideUI: {fileID: 347864945}
   trivia: {fileID: 34452040}
 --- !u!61 &1963572855
