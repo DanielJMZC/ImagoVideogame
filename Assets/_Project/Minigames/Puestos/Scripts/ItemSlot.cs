@@ -13,6 +13,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("Item dropped");
+        Debug.Log("test commit");
 
         if (eventData.pointerDrag == null) return;
 
@@ -34,7 +35,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             dragged.NotPlacedCorrectly(eventData);
             CameraShake.instance.Shake(0.2f, 5f);
         }
-
         draggedRect.SetParent(transform);
 
         draggedRect.anchorMin = new Vector2(0.5f, 0.5f);
