@@ -9,7 +9,9 @@ public class MonedasManager : MonoBehaviour
 
     private string url = "http://localhost:5000/users/monedas/1";
 
-    void Update()
+    private int monedasFallback = 0;
+
+    void Start()
     {
         StartCoroutine(GetMonedas());
     }
@@ -24,15 +26,16 @@ public class MonedasManager : MonoBehaviour
         {
             string json = request.downloadHandler.text;
 
-            Debug.Log(json);
-
             Monedas data = JsonUtility.FromJson<Monedas>(json);
 
-            textoMonedas.text = "Monedas: " +data.monedas.ToString();
+            monedasFallback = data.monedas; 
         }
         else
         {
-            Debug.LogError("Error: " + request.error);
+            Debug.LogWarning("Usando monedas locales (sin conexión)");
         }
+
+
+        textoMonedas.text = "Monedas: " + monedasFallback;
     }
 }
