@@ -281,7 +281,7 @@ public class TriviaRitmo : MonoBehaviour
         MostrarPregunta();
     }
 
-    void EndGame()
+    public void EndGame()
     {
         canvas.SetActive(false);
         audioSource.Stop();

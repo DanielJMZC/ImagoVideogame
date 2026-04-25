@@ -27,18 +27,25 @@ public class Interactable : MonoBehaviour
     {
         if (collider.CompareTag("InteractPlayer"))
         {
-            teclaF.SetActive(true);
+            if (teclaF != null)
+            {
+                teclaF.SetActive(true);
+            }
+
             PlayerControl player = collider.GetComponentInParent<PlayerControl>();
             player.SetInteractable(this);
         }
-        
     }
+
 
     void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.CompareTag("InteractPlayer"))
         {
-            teclaF.SetActive(false);
+            if (teclaF != null)
+            {
+                teclaF.SetActive(false);
+            }
 
             PlayerControl player = collider.GetComponentInParent<PlayerControl>();
 
@@ -52,6 +59,7 @@ public class Interactable : MonoBehaviour
             }
         }
     }
+
 
     public IEnumerator InteractionCooldown()
     {
