@@ -25,6 +25,14 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             ui.AddPoints(points);
             dragged.OnPlacedCorrectly();
             sfxSource.PlayOneShot(correctSound);
+
+            draggedRect.SetParent(transform);
+
+            draggedRect.anchorMin = new Vector2(0.5f, 0.5f);
+            draggedRect.anchorMax = new Vector2(0.5f, 0.5f);
+            draggedRect.pivot = new Vector2(0.5f, 0.5f);
+
+            draggedRect.anchoredPosition = Vector2.zero;
         }
         else
         {
@@ -34,13 +42,5 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             dragged.NotPlacedCorrectly(eventData);
             CameraShake.instance.Shake(0.2f, 5f);
         }
-
-        draggedRect.SetParent(transform);
-
-        draggedRect.anchorMin = new Vector2(0.5f, 0.5f);
-        draggedRect.anchorMax = new Vector2(0.5f, 0.5f);
-        draggedRect.pivot = new Vector2(0.5f, 0.5f);
-
-        draggedRect.anchoredPosition = Vector2.zero;
     }
 }
