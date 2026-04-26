@@ -15,6 +15,6 @@ public class MainMenu : MonoBehaviour
 
     public void exit()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        SceneManager.LoadScene("IndoorHouses");
     }
 }

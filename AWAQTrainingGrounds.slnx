@@ -2,4 +2,6 @@
   <Project Path="Project.PaperRush.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Project.Common.csproj" />
+   <Project Path="Project.Dudas.csproj" />
+  <Project Path="Puestos.Project.csproj" />
 </Solution>
