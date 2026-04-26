@@ -52,6 +52,9 @@ public class TriviaRitmo : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip musica;
 
+    public AudioClip sfxCorrect;
+    public AudioClip sfxFalse;
+
     private bool juegoActivo = false;
 
 
@@ -122,6 +125,7 @@ public class TriviaRitmo : MonoBehaviour
     void ActivarJuego()
     {
         juegoActivo = true;
+        MusicManager.Instance.PauseMusic();
     }
 
     void Update()
@@ -222,11 +226,15 @@ public class TriviaRitmo : MonoBehaviour
             correctas++;
             puntuacionRespuesta = combopuntuacion;
 
+            SFXManager.Instance.PlaySFX(sfxCorrect);
+
             StartCoroutine(MostrarFeedback(panelCorrecto));
         }
         else
         {
             incorrectas++;
+
+            SFXManager.Instance.PlaySFX(sfxFalse);
 
             StartCoroutine(MostrarFeedback(panelIncorrecto));
         }
@@ -358,6 +366,8 @@ public class TriviaRitmo : MonoBehaviour
 
         int monedas = puntuacion / 10;
         textoMonedas.text = "Monedas: " + monedas;
+
+        MusicManager.Instance.ResumeMusic();
     }
 
     void CerrarResumen()

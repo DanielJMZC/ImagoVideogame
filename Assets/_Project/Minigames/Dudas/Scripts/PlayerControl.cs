@@ -31,6 +31,8 @@ public class PlayerControl : MonoBehaviour
     Rigidbody2D rb;
     void Start()
     {
+        MusicManager.Instance.ResumeMusic();
+
         rb = GetComponent<Rigidbody2D>();
         animatorController = GetComponent<Animator>();
         

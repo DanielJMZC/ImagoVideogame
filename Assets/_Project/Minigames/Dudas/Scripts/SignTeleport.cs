@@ -9,6 +9,8 @@ public class SignTeleport : Interactable
 
     public PlayerControl player;
 
+    public AudioClip sfx;
+
     public void Start()
     {
         canvasConfirmacion.SetActive(false);
@@ -16,6 +18,8 @@ public class SignTeleport : Interactable
 
     public override void Interact()
     {
+         SFXManager.Instance.PlaySFX(sfx);
+
         interactionLocked = true;
         player.inAction = true;
 
@@ -33,6 +37,7 @@ public class SignTeleport : Interactable
 
     public void ConfirmTeleport()
     {
+         SFXManager.Instance.PlaySFX(sfx);
         player.transform.position = playerTarget.position;
 
         if (Camera.main != null)
@@ -52,11 +57,13 @@ public class SignTeleport : Interactable
 
     public void CancelTeleport()
     {
+        SFXManager.Instance.PlaySFX(sfx);
         CloseUI();
     }
 
     void CloseUI()
     {
+
         canvasConfirmacion.SetActive(false);
         interactionLocked = false;
         player.inAction = false;

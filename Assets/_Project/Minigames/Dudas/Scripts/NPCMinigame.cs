@@ -31,6 +31,7 @@ public class NPCMinigame : NPCBase
 
     public void GotoScene()
     {
+        MusicManager.Instance.PauseMusic();
         SceneManager.LoadScene(Scene);
     }
 

@@ -15,6 +15,8 @@ public class GuideUI : MonoBehaviour
 
     private NPCBase currentNPC;
 
+    public AudioClip sfx;
+
 
     void Start()
     {
@@ -44,6 +46,7 @@ public class GuideUI : MonoBehaviour
     void NextLine()
     {
         index++;
+        SFXManager.Instance.PlaySFX(sfx);
 
         if (index < dialogos.Length)
         {
