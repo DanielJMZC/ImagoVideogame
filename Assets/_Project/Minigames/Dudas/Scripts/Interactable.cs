@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+
+    public GameObject teclaF;
+
     public static bool interactionLocked = false;
 
     public virtual void Interact()
@@ -24,20 +27,39 @@ public class Interactable : MonoBehaviour
     {
         if (collider.CompareTag("InteractPlayer"))
         {
+            if (teclaF != null)
+            {
+                teclaF.SetActive(true);
+            }
+
             PlayerControl player = collider.GetComponentInParent<PlayerControl>();
             player.SetInteractable(this);
         }
-        
     }
+
 
     void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.CompareTag("InteractPlayer"))
         {
+            if (teclaF != null)
+            {
+                teclaF.SetActive(false);
+            }
+
             PlayerControl player = collider.GetComponentInParent<PlayerControl>();
-            player.ClearInteractable(this);
+
+            if (player != null)
+            {
+                player.ClearInteractable(this);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerControl no encontrado en el padre");
+            }
         }
     }
+
 
     public IEnumerator InteractionCooldown()
     {

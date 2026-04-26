@@ -73,9 +73,6 @@ public class TriviaRitmo : MonoBehaviour
     private int miss = 0;
 
 
-
-
-
     void Start()
     {
         canvas.SetActive(false);
@@ -118,6 +115,8 @@ public class TriviaRitmo : MonoBehaviour
         GenerarPatrones();
         MostrarPregunta();
         inputUI.MostrarPatron(inputJugador);
+
+        Debug.Log("Canvas usado: " + canvas.name);
     }
 
     void ActivarJuego()
@@ -282,7 +281,7 @@ public class TriviaRitmo : MonoBehaviour
         MostrarPregunta();
     }
 
-    void EndGame()
+    public void EndGame()
     {
         canvas.SetActive(false);
         audioSource.Stop();
@@ -367,6 +366,8 @@ public class TriviaRitmo : MonoBehaviour
         Debug.Log("Cerrado");
         Interactable.interactionLocked = false;
         player.inAction = false;
+        NPCTrivia.currentNPC = null;
+
     }
 
     IEnumerator MostrarFeedback(GameObject panel)
@@ -375,7 +376,7 @@ public class TriviaRitmo : MonoBehaviour
         yield return new WaitForSeconds(1f);
         panel.SetActive(false);
     }
-    
+
 
     IEnumerator EnviarMonedas(int userId, int monedas)
     {
@@ -384,7 +385,7 @@ public class TriviaRitmo : MonoBehaviour
         string json = JsonUtility.ToJson(new MonedasRequest(userId, monedas));
 
         UnityWebRequest request = new UnityWebRequest(url, "POST");
-        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
 
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
@@ -395,11 +396,19 @@ public class TriviaRitmo : MonoBehaviour
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("Monedas enviadas correctamente");
-            Debug.Log(request.downloadHandler.text);
+
+
+            PlayerPrefs.SetInt("MonedasPendientes", 0);
         }
         else
         {
-            Debug.LogError("Error al enviar monedas: " + request.error);
+            Debug.LogWarning("No se pudo enviar. Guardando localmente...");
+
+            int pendientes = PlayerPrefs.GetInt("MonedasPendientes", 0);
+            pendientes += monedas;
+            PlayerPrefs.SetInt("MonedasPendientes", pendientes);
+
+            Debug.Log("Monedas pendientes: " + pendientes);
         }
     }
 }
