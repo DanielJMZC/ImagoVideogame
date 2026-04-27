@@ -19,7 +19,9 @@ public class TriviaRitmo : MonoBehaviour
 
 
     [Header("Preguntas")]
+    public int npcId;
     public List<Pregunta> preguntas;
+
     public GameObject panelCorrecto;
     public GameObject panelIncorrecto;
 
@@ -51,6 +53,9 @@ public class TriviaRitmo : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip musica;
+
+    public AudioClip sfxCorrect;
+    public AudioClip sfxFalse;
 
     private bool juegoActivo = false;
 
@@ -119,9 +124,30 @@ public class TriviaRitmo : MonoBehaviour
         Debug.Log("Canvas usado: " + canvas.name);
     }
 
+    public void StartGameFromAPI()
+    {
+        StartCoroutine(
+            DialogService.Instance.GetPreguntas(npcId, (result) =>
+            {
+                if (result != null)
+                {
+                    preguntas = result;
+
+                    StartGame(); 
+                }
+                else
+                {
+                    Debug.LogError("No se pudieron cargar preguntas");
+                }
+            })
+        );
+    }
+
+
     void ActivarJuego()
     {
         juegoActivo = true;
+        MusicManager.Instance.PauseMusic();
     }
 
     void Update()
@@ -222,11 +248,15 @@ public class TriviaRitmo : MonoBehaviour
             correctas++;
             puntuacionRespuesta = combopuntuacion;
 
+            SFXManager.Instance.PlaySFX(sfxCorrect);
+
             StartCoroutine(MostrarFeedback(panelCorrecto));
         }
         else
         {
             incorrectas++;
+
+            SFXManager.Instance.PlaySFX(sfxFalse);
 
             StartCoroutine(MostrarFeedback(panelIncorrecto));
         }
@@ -289,8 +319,11 @@ public class TriviaRitmo : MonoBehaviour
 
         Debug.Log("Juego terminado. Puntuación: " + puntuacion);
 
-        int monedas = puntuacion / 10;
-        StartCoroutine(EnviarMonedas(1, monedas));
+        int monedas = puntuacion;
+
+        int userId = PlayerPrefs.GetInt("user_id", 1);
+
+        StartCoroutine(EnviarMonedas(userId, monedas));
 
         MostrarResumen();
     }
@@ -312,7 +345,7 @@ public class TriviaRitmo : MonoBehaviour
     {
         Pregunta p = preguntas[preguntaActual];
 
-        textoPregunta.text = p.pregunta;
+        textoPregunta.text = p.enunciado;
 
         for (int i = 0; i < p.respuestas.Count; i++)
         {
@@ -356,8 +389,10 @@ public class TriviaRitmo : MonoBehaviour
         textoMiss.text = "Fallas: " + miss;
         textoPuntuacionFinal.text = "Puntuación Final: " + puntuacion;
 
-        int monedas = puntuacion / 10;
+        int monedas = puntuacion;
         textoMonedas.text = "Monedas: " + monedas;
+
+        MusicManager.Instance.ResumeMusic();
     }
 
     void CerrarResumen()
@@ -367,6 +402,8 @@ public class TriviaRitmo : MonoBehaviour
         Interactable.interactionLocked = false;
         player.inAction = false;
         NPCTrivia.currentNPC = null;
+
+        MonedasManager.Instance.getMonedas();
 
     }
 

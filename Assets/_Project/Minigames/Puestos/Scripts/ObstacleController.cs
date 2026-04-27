@@ -66,17 +66,23 @@ public class ObstacleController : MonoBehaviour
         obstacle.gameObject.SetActive(true);
 
         float screenWidth = Screen.width;
+        Vector3 currentScale = obstacle.localScale;
+        float absScaleX = Mathf.Abs(currentScale.x);
 
         // RANDOM: izquierda → derecha o derecha → izquierda
         if (Random.value > 0.5f)
         {
             startPos = new Vector2(-screenWidth, 0);
             endPos = new Vector2(screenWidth, 0);
+            // Mira hacia la derecha
+            obstacle.localScale = new Vector3(absScaleX, currentScale.y, currentScale.z);
         }
         else
         {
             startPos = new Vector2(screenWidth, 0);
             endPos = new Vector2(-screenWidth, 0);
+            // Mira hacia la izquierda (volteado)
+            obstacle.localScale = new Vector3(-absScaleX, currentScale.y, currentScale.z);
         }
 
         obstacle.anchoredPosition = startPos;
