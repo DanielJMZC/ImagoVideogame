@@ -321,11 +321,20 @@ public class TriviaRitmo : MonoBehaviour
 
         int monedas = puntuacion;
 
+        int actuales = PlayerPrefs.GetInt("User_Monedas", 0);
+        actuales += monedas;
+
+        PlayerPrefs.SetInt("User_Monedas", actuales);
+
         int userId = PlayerPrefs.GetInt("user_id", 1);
 
         StartCoroutine(EnviarMonedas(userId, monedas));
 
         MostrarResumen();
+
+        MonedasManager.Instance.RefreshMonedas();
+
+        
     }
 
     void GenerarPatrones()
@@ -403,8 +412,13 @@ public class TriviaRitmo : MonoBehaviour
         player.inAction = false;
         NPCTrivia.currentNPC = null;
 
-        MonedasManager.Instance.getMonedas();
+        if (player == null) Debug.LogError("PLAYER ES NULL");
+        if (MonedasManager.Instance == null) Debug.LogError("MONEDAS MANAGER ES NULL");
 
+        Debug.Log("player: " + player);
+        Debug.Log("MonedasManager: " + MonedasManager.Instance);
+
+        FindAnyObjectByType<MonedasManager>()?.RefreshMonedas();
     }
 
     IEnumerator MostrarFeedback(GameObject panel)
@@ -441,11 +455,6 @@ public class TriviaRitmo : MonoBehaviour
         {
             Debug.LogWarning("No se pudo enviar. Guardando localmente...");
 
-            int pendientes = PlayerPrefs.GetInt("MonedasPendientes", 0);
-            pendientes += monedas;
-            PlayerPrefs.SetInt("MonedasPendientes", pendientes);
-
-            Debug.Log("Monedas pendientes: " + pendientes);
         }
     }
 }
