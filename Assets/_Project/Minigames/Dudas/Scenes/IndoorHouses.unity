@@ -1038,9 +1038,11 @@ MonoBehaviour:
   player: {fileID: 1929404602}
   canvas: {fileID: 224552575}
   guideUI: {fileID: 1611464046}
+  npcId: 5
   Scene: MainMenu
   dialogos:
-  - 'I like Eldergard Von Hrezvelg '
+  - Id: 0
+    Texto: 
 --- !u!1 &524639725
 GameObject:
   m_ObjectHideFlags: 0
@@ -2564,9 +2566,11 @@ MonoBehaviour:
   player: {fileID: 1929404602}
   canvas: {fileID: 1351543915}
   guideUI: {fileID: 1996796107}
+  npcId: 6
   Scene: Rules
   dialogos:
-  - I like tomatoes :)
+  - Id: 0
+    Texto: 
 --- !u!1 &781503384
 GameObject:
   m_ObjectHideFlags: 0
@@ -7774,6 +7778,63 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1001 &1902194505
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1046417917554522867, guid: d497ec2de61c11e4e8364cc4e65f7b09, type: 3}
+      propertyPath: m_Name
+      value: DialogService
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640960092720188707, guid: d497ec2de61c11e4e8364cc4e65f7b09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.55956
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640960092720188707, guid: d497ec2de61c11e4e8364cc4e65f7b09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.68382
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640960092720188707, guid: d497ec2de61c11e4e8364cc4e65f7b09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640960092720188707, guid: d497ec2de61c11e4e8364cc4e65f7b09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640960092720188707, guid: d497ec2de61c11e4e8364cc4e65f7b09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640960092720188707, guid: d497ec2de61c11e4e8364cc4e65f7b09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640960092720188707, guid: d497ec2de61c11e4e8364cc4e65f7b09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640960092720188707, guid: d497ec2de61c11e4e8364cc4e65f7b09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640960092720188707, guid: d497ec2de61c11e4e8364cc4e65f7b09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640960092720188707, guid: d497ec2de61c11e4e8364cc4e65f7b09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d497ec2de61c11e4e8364cc4e65f7b09, type: 3}
 --- !u!114 &1929404602 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 769320761125265564, guid: e298a20a5957d3f409b6496c49d483c1, type: 3}
@@ -8440,3 +8501,4 @@ SceneRoots:
   - {fileID: 1124424173}
   - {fileID: 614058358}
   - {fileID: 1610698979}
+  - {fileID: 1902194505}

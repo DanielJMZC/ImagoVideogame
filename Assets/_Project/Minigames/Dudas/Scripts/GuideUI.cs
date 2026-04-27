@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class GuideUI : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GuideUI : MonoBehaviour
 
     public Sprite sprite;
 
-    private string[] dialogos;
+    private List<Dialogo> dialogos;
     private int index;
 
     private NPCBase currentNPC;
@@ -23,7 +24,7 @@ public class GuideUI : MonoBehaviour
         portrait.sprite = sprite;
     }
 
-    public void StartDialog(string[] lines, NPCBase npc)
+    /*public void StartDialog(string[] lines, NPCBase npc)
     {
         dialogos = lines;
         index = 0;
@@ -31,6 +32,16 @@ public class GuideUI : MonoBehaviour
 
         canvas.SetActive(true);
         dialogText.text = dialogos[index];
+    }*/
+
+    public void StartDialog(List<Dialogo> lines, NPCBase npc)
+    {
+        dialogos = lines;
+        index = 0;
+        currentNPC = npc;
+
+        canvas.SetActive(true);
+        dialogText.text = dialogos[index].Texto;
     }
 
     void Update()
@@ -43,7 +54,7 @@ public class GuideUI : MonoBehaviour
         }
     }
 
-    void NextLine()
+    /*void NextLine()
     {
         index++;
         SFXManager.Instance.PlaySFX(sfx);
@@ -51,6 +62,21 @@ public class GuideUI : MonoBehaviour
         if (index < dialogos.Length)
         {
             dialogText.text = dialogos[index];
+        }
+        else
+        {
+            EndDialog();
+        }
+    }*/
+
+    void NextLine()
+    {
+        index++;
+        SFXManager.Instance.PlaySFX(sfx);
+
+        if (index < dialogos.Count)
+        {
+            dialogText.text = dialogos[index].Texto;
         }
         else
         {

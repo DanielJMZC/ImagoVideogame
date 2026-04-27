@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class NPCTrivia : NPCBase
 {
@@ -9,12 +10,13 @@ public class NPCTrivia : NPCBase
     public static NPCTrivia currentNPC;
 
     [TextArea]
-    public string[] dialogos;
+    public List<Dialogo> dialogos;
 
     public GuideUI guideUI;
     public TriviaRitmo trivia;
     public GameObject canvasInstrucciones;
 
+    public int npcId;
 
 
     void Start()
@@ -33,7 +35,15 @@ public class NPCTrivia : NPCBase
         interactionLocked = true;
         player.inAction = true;
 
-        guideUI.StartDialog(dialogos, this);
+        StartCoroutine(
+            DialogService.Instance.GetDialogos(npcId, (result) =>
+            {
+                if (result != null)
+                {
+                    guideUI.StartDialog(result, this);
+                }
+            })
+        );
     }
 
 
@@ -52,7 +62,7 @@ public class NPCTrivia : NPCBase
         {
             canvasInstrucciones.SetActive(false);
             Debug.Log(gameObject.name + " usa manager: " + trivia.name);
-            trivia.StartGame();
+            trivia.StartGameFromAPI();
         }
     }
 

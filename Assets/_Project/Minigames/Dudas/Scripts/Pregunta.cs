@@ -4,6 +4,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Pregunta
 {
-    public string pregunta;
+    public int id;
+    public string enunciado;
     public List<Respuesta> respuestas;
 }
