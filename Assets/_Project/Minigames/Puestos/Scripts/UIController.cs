@@ -90,6 +90,8 @@ public class UIController : MonoBehaviour
 
         PlayerPrefs.SetInt("User_Monedas", actuales);
 
+        GameWinService.Instance.EnviarGameWin(3, puntos);
+
         SceneManager.LoadScene("End");
     }
 

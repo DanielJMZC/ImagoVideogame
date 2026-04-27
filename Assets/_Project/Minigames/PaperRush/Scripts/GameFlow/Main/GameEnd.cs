@@ -161,6 +161,8 @@ public class GameEnd : MonoBehaviour
 
         PlayerPrefs.SetInt("User_Monedas", actuales);
 
+        GameWinService.Instance.EnviarGameWin(1, points);
+
         SceneManager.LoadScene("MainMenu");
 
     }

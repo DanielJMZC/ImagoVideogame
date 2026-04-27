@@ -333,7 +333,7 @@ public class TriviaRitmo : MonoBehaviour
         MostrarResumen();
 
         MonedasManager.Instance.RefreshMonedas();
-
+        GameWinService.Instance.EnviarGameWin(2, monedas);
         
     }
 
