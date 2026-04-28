@@ -431,7 +431,8 @@ public class TriviaRitmo : MonoBehaviour
 
     IEnumerator EnviarMonedas(int userId, int monedas)
     {
-        string url = "http://127.0.0.1:5530/users/monedas/add";
+        //string url = "http://127.0.0.1:5530/users/monedas/add";
+        string url = "http://10.14.255.43:5530/users/monedas/add";
 
         string json = JsonUtility.ToJson(new MonedasRequest(userId, monedas));
 

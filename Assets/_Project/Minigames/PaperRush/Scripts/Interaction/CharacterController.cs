@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Globalization;
 public class CharacterController : DocumentControllerBase
 {
     public TextMeshProUGUI fullName;
@@ -13,7 +14,7 @@ public class CharacterController : DocumentControllerBase
     {
         Character c = GameController.Instance.Retrieve<Character>();
         fullName.text = c.firstNames + " " + c.lastNames;
-        birthDate.text = c.dateOfBirth.ToString("MMMM dd, yyyy");
+        birthDate.text = c.dateOfBirth.ToString("MMMM dd, yyyy", new CultureInfo("es-ES"));
 
         if (c.sex == "H")
         {

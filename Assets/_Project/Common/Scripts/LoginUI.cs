@@ -29,7 +29,8 @@ public class LoginUI : MonoBehaviour
 
     IEnumerator Login(string correo, string password)
     {
-        string url = "http://127.0.0.1:5530/users/login/videogame";
+        //string url = "http://127.0.0.1:5530/users/login/videogame";
+        string url = "http://10.14.255.43:5530/users/login/videogame";
 
         LoginRequest data = new LoginRequest
         {

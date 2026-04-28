@@ -31,6 +31,17 @@ public abstract class DocumentControllerBase: Interactable
         unhide();
 
     }
+
+    public void closeQuiet()
+    {
+        PlayerControl p = GameController.Instance.player;
+        p.moveSpeed = 8;
+        p.inAction = false;
+            
+        panel.SetActive(false);
+        GameController.Instance.uiController.isFading(false);
+        unhide();
+    }
      public void open()
     {
         PlayerControl p = GameController.Instance.player;

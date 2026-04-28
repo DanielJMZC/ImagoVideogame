@@ -40,6 +40,14 @@ public class GameEnd : MonoBehaviour
         documentPrefabs[documentType.TravelInsurance] = gameObjectPrefabs[4];
         documentPrefabs[documentType.AcceptanceLetter] = gameObjectPrefabs[5];
 
+        foreach (var doc in FindObjectsByType<DocumentControllerBase>(FindObjectsSortMode.None))
+        {
+            if (doc.panel != null && doc.panel.activeInHierarchy)
+            {
+                doc.closeQuiet();
+            }
+        }
+
         points = 0;
         listIndex = 0;
         GameController.Instance.player.moveSpeed = 0;
@@ -168,7 +176,8 @@ public class GameEnd : MonoBehaviour
 
     IEnumerator EnviarMonedas(int userId, int monedas)
     {
-        string url = "http://127.0.0.1:5530/users/monedas/add";
+        //string url = "http://127.0.0.1:5530/users/monedas/add";
+        string url = "http://10.14.255.43:5530/users/monedas/add";
 
         string json = JsonUtility.ToJson(new MonedasRequest(userId, monedas));
 

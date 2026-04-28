@@ -9298,7 +9298,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4096899767789592814, guid: 9e650c320411a47c6bbe91c5ddcd1042, type: 3}
+  m_Sprite: {fileID: -9162999352007644751, guid: 9e650c320411a47c6bbe91c5ddcd1042, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15511,6 +15511,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380def4b79ef34f34a2de624909ee448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.Common::PlayerControl
+  moveSpeed: 0
+  xStart: 0
+  yStart: 0
+  moving: 0
+  inAction: 0
+  currentInteractable: {fileID: 0}
+  interactHitbox: {fileID: 0}
+  animatorController: {fileID: 0}
 --- !u!212 &594057138
 SpriteRenderer:
   serializedVersion: 2
@@ -58380,7 +58388,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4096899767789592814, guid: 9e650c320411a47c6bbe91c5ddcd1042, type: 3}
+  m_Sprite: {fileID: -9162999352007644751, guid: 9e650c320411a47c6bbe91c5ddcd1042, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
