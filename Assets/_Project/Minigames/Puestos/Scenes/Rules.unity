@@ -463,7 +463,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Puestos Compuestos
+  m_text: Task match
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b2b8608bdb995461eb69aef4473d5de1, type: 2}
   m_sharedMaterial: {fileID: -1219066655236931863, guid: b2b8608bdb995461eb69aef4473d5de1, type: 2}

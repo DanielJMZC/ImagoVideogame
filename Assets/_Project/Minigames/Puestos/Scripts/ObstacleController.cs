@@ -18,7 +18,9 @@ public class ObstacleController : MonoBehaviour
     Vector2 startPos;
     Vector2 endPos;
 
-    public UIController ui; // para saber el tiempo
+    public UIController ui;
+    public float yPosition = -280f;
+    public float customScale = 0.6f;
 
     void Start()
     {
@@ -27,7 +29,6 @@ public class ObstacleController : MonoBehaviour
 
     void Update()
     {
-        // ACTIVAR SOLO EN ÚLTIMO MINUTO
         if (ui != null && ui.GetTiempo() <= 60 && ui.GetTiempo() > 0)
         {
             activo = true;
@@ -35,7 +36,6 @@ public class ObstacleController : MonoBehaviour
 
         if (!activo) return;
 
-        // CONTROL DE SPAWN CADA 10 SEGUNDOS
         spawnTimer += Time.deltaTime;
 
         if (spawnTimer >= spawnInterval && !moviendo)
@@ -44,7 +44,6 @@ public class ObstacleController : MonoBehaviour
             StartMovement();
         }
 
-        // MOVIMIENTO
         if (moviendo)
         {
             obstacle.anchoredPosition = Vector2.MoveTowards(
@@ -66,23 +65,18 @@ public class ObstacleController : MonoBehaviour
         obstacle.gameObject.SetActive(true);
 
         float screenWidth = Screen.width;
-        Vector3 currentScale = obstacle.localScale;
-        float absScaleX = Mathf.Abs(currentScale.x);
 
-        // RANDOM: izquierda → derecha o derecha → izquierda
         if (Random.value > 0.5f)
         {
-            startPos = new Vector2(-screenWidth, 0);
-            endPos = new Vector2(screenWidth, 0);
-            // Mira hacia la derecha
-            obstacle.localScale = new Vector3(absScaleX, currentScale.y, currentScale.z);
+            startPos = new Vector2(-screenWidth, yPosition);
+            endPos = new Vector2(screenWidth, yPosition);
+            obstacle.localScale = new Vector3(customScale, customScale, 1f);
         }
         else
         {
-            startPos = new Vector2(screenWidth, 0);
-            endPos = new Vector2(-screenWidth, 0);
-            // Mira hacia la izquierda (volteado)
-            obstacle.localScale = new Vector3(-absScaleX, currentScale.y, currentScale.z);
+            startPos = new Vector2(screenWidth, yPosition);
+            endPos = new Vector2(-screenWidth, yPosition);
+            obstacle.localScale = new Vector3(-customScale, customScale, 1f);
         }
 
         obstacle.anchoredPosition = startPos;
