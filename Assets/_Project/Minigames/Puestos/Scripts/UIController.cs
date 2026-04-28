@@ -8,7 +8,7 @@ using System.Text;
 public class UIController : MonoBehaviour
 {
     public TextMeshProUGUI amountPoints;
-    string amountText = "Puntos: ";
+    string amountText = "Monedas: ";
     int currentScore = 0;
 
     public TextMeshProUGUI timerText;
@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
     public UnityEngine.UI.Image pantallaRoja;
     bool parpadeoActivo = false;
     float timerParpadeo = 0f;
+    public AudioSource musicSource;
 
     bool alreadySent = false;
 
@@ -48,7 +49,7 @@ public class UIController : MonoBehaviour
 
         timerText.text = minutos.ToString("00") + ":" + segundos.ToString("00");
 
-        if (tiempo == 0 && !alreadySent)
+        if ((tiempo == 0 || currentScore >= 90) && !alreadySent)
         {
             alreadySent = true;
 
@@ -60,6 +61,11 @@ public class UIController : MonoBehaviour
         if (tiempo <= 60 && tiempo > 0)
         {
             parpadeoActivo = true;
+
+            if (musicSource != null)
+            {
+                musicSource.pitch = 1.25f;
+            }
 
             if (pantallaRoja != null)
             {
@@ -156,5 +162,10 @@ public class UIController : MonoBehaviour
     public float GetTiempo()
     {
         return tiempo;
+    }
+
+    public void VolverARules()
+    {
+        SceneManager.LoadScene("Rules");
     }
 }
