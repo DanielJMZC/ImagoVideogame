@@ -52,7 +52,7 @@ public class UIController : MonoBehaviour
         {
             alreadySent = true;
 
-            int playerId = PlayerPrefs.GetInt("player_id", 1);
+            int playerId = PlayerPrefs.GetInt("user_id", 1);
 
             StartCoroutine(EndGameFlow(playerId, currentScore));
         }
@@ -84,43 +84,44 @@ public class UIController : MonoBehaviour
         yield return SendFinalScore(playerId, puntos);
 
         PlayerPrefs.SetInt("ScoreFinal", puntos);
+
+        int actuales = PlayerPrefs.GetInt("User_Monedas", 0);
+        actuales += puntos;
+
+        PlayerPrefs.SetInt("User_Monedas", actuales);
+
+        GameWinService.Instance.EnviarGameWin(3, puntos);
+
         SceneManager.LoadScene("End");
     }
 
     IEnumerator SendFinalScore(int playerId, int puntos)
     {
         // URL de mi API
-        string url = "http://127.0.0.1:5000/players/add-currency";
+        string url = "http://127.0.0.1:5000/users/monedas/add";
 
-        // Creamos el JSON.
-        string json = "{\"player_id\":" + playerId + ",\"puntos\":" + puntos + "}";
+        string json = JsonUtility.ToJson(new MonedasRequest(playerId, puntos));
 
-        Debug.Log("JSON ENVIADO: " + json);
-
-        // Aquí utilizamos la API haciendo una Petición HTTP POST!! 
         UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
 
-        // Para enviar el JSON lo convertimos a bytes.
-        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
-
-        // Adjuntamos correctamente los datos al request.
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
 
-        // Llamamos correctamente al API.
         yield return request.SendWebRequest();
 
-        // Recibimos respuesta de la API.
-        Debug.Log("RESPUESTA RAW: " + request.downloadHandler.text);
-
-        if (request.result != UnityWebRequest.Result.Success)
+        if (request.result == UnityWebRequest.Result.Success)
         {
-            Debug.Log("Error POST: " + request.error);
+            Debug.Log("Monedas enviadas correctamente");
+
+
+            PlayerPrefs.SetInt("MonedasPendientes", 0);
         }
         else
         {
-            Debug.Log("OK API: " + request.downloadHandler.text);
+            Debug.LogWarning("No se pudo enviar. Guardando localmente...");
+
         }
     }
 

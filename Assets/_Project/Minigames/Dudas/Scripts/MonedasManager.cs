@@ -1,21 +1,24 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
 
 public class MonedasManager : MonoBehaviour
 {
-
     public static MonedasManager Instance;
-    public Text textoMonedas;
 
+    [Header("API")]
     private string baseUrl = "http://127.0.0.1:5000/users/monedas/";
 
-    private int monedasFallback = 0;
+    [Header("Estado")]
+    private int monedas;
+
+    public int GetMonedas()
+    {
+        return monedas;
+    }
 
     private void Awake()
     {
-
         if (Instance == null)
         {
             Instance = this;
@@ -27,48 +30,49 @@ public class MonedasManager : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
-        StartCoroutine(GetMonedas());
+        StartCoroutine(LoadMonedasFromAPI());
     }
 
-    public void getMonedas()
+    public void RefreshMonedas()
     {
-        StartCoroutine(GetMonedas());
+        StartCoroutine(LoadMonedasFromAPI());
     }
 
-    IEnumerator GetMonedas()
+    IEnumerator LoadMonedasFromAPI()
     {
-  
         int userId = PlayerPrefs.GetInt("user_id", 0);
-
 
         if (userId == 0)
         {
-            Debug.LogError("No hay user_id guardado");
-            textoMonedas.text = "Monedas: 0";
+            Debug.LogError("No hay user_id");
             yield break;
         }
 
         string url = baseUrl + userId;
 
         UnityWebRequest request = UnityWebRequest.Get(url);
-
         yield return request.SendWebRequest();
 
         if (request.result == UnityWebRequest.Result.Success)
         {
-            string json = request.downloadHandler.text;
+            Monedas data = JsonUtility.FromJson<Monedas>(request.downloadHandler.text);
 
-            Monedas data = JsonUtility.FromJson<Monedas>(json);
+            monedas = data.monedas;
 
-            monedasFallback = data.monedas;
+            PlayerPrefs.SetInt("User_Monedas", monedas);
+            PlayerPrefs.Save();
+
+            Debug.Log("Monedas actualizadas: " + monedas);
+            
+            FindAnyObjectByType<MonedasUI>()?.Actualizar();
         }
         else
         {
-            Debug.LogWarning("Usando monedas locales (sin conexión)");
-        }
+            Debug.LogWarning("Error API, usando cache local");
 
-        textoMonedas.text = "Monedas: " + monedasFallback;
+            monedas = PlayerPrefs.GetInt("User_Monedas", 0);
+        }
     }
 }

@@ -10688,7 +10688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a05cba7b1c9cd40a6497ea27164cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.Common::MonedasManager
-  textoMonedas: {fileID: 919874438}
 --- !u!4 &299874137
 Transform:
   m_ObjectHideFlags: 0
@@ -32929,6 +32928,50 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &643782603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 643782605}
+  - component: {fileID: 643782604}
+  m_Layer: 0
+  m_Name: GameWinService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &643782604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643782603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18fc0a23a422ee4da95ef1b34e58e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Services::GameWinService
+--- !u!4 &643782605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643782603}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.47569, y: -20.38135, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &646240983
 GameObject:
   m_ObjectHideFlags: 0
@@ -44447,6 +44490,7 @@ Transform:
   - {fileID: 299874137}
   - {fileID: 1768586765}
   - {fileID: 1623849059}
+  - {fileID: 1441111021}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1240466989
@@ -48126,6 +48170,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437139086}
   m_CullTransparentMesh: 1
+--- !u!1 &1441111020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1441111021}
+  - component: {fileID: 1441111022}
+  m_Layer: 0
+  m_Name: MonedasUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1441111021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441111020}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 26.46727, y: -23.82338, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1220239369}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1441111022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441111020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d063f9c02568bd745adf4866f53e8c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Project.Dudas::MonedasUI
+  textoMonedas: {fileID: 919874438}
 --- !u!1 &1444671586
 GameObject:
   m_ObjectHideFlags: 0
@@ -93580,3 +93669,4 @@ SceneRoots:
   - {fileID: 1220239369}
   - {fileID: 518987887}
   - {fileID: 7592010799820555989}
+  - {fileID: 643782605}

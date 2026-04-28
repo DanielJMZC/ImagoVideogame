@@ -4,4 +4,5 @@
   <Project Path="Puestos.Project.csproj" />
   <Project Path="Project.Dudas.csproj" />
   <Project Path="Project.Common.csproj" />
+  <Project Path="Services.csproj" />
 </Solution>

@@ -16,13 +16,13 @@ public class PatronUI : MonoBehaviour
 
     public void MostrarPatron(List<Direccion> patron)
     {
-        // Limpiar anterior
+      
         foreach (Transform child in contenedor)
         {
             Destroy(child.gameObject);
         }
 
-        // Crear flechas nuevas
+
         foreach (var dir in patron)
         {
             GameObject flecha = Instantiate(flechaPrefab, contenedor);

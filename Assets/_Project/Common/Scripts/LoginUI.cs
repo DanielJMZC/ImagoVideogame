@@ -10,6 +10,7 @@ public class LoginUI : MonoBehaviour
     public TMP_InputField inputPassword;
     public TMP_Text textoError;
 
+
     public void OnLoginButton()
     {
         string correo = inputCorreo.text.Trim();

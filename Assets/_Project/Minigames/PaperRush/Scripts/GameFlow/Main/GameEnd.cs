@@ -6,6 +6,7 @@ using System.Collections;
 using System;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class GameEnd : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class GameEnd : MonoBehaviour
 
     public List<GameObject> gameObjectList = new List<GameObject>();
     public List<TextMeshProUGUI> endText = new List<TextMeshProUGUI>();
-    public List <GameObject> gameObjectPrefabs = new List<GameObject>();
+    public List<GameObject> gameObjectPrefabs = new List<GameObject>();
     public List<documentType> types = new List<documentType>()
     {
         documentType.Passport,
@@ -25,12 +26,12 @@ public class GameEnd : MonoBehaviour
 
     };
 
-    public Dictionary<documentType, GameObject> documentPrefabs = new Dictionary<documentType,GameObject>();
+    public Dictionary<documentType, GameObject> documentPrefabs = new Dictionary<documentType, GameObject>();
 
     public int listIndex;
 
     int points;
-    
+
     public void startEnd()
     {
         documentPrefabs[documentType.Passport] = gameObjectPrefabs[0];
@@ -52,24 +53,25 @@ public class GameEnd : MonoBehaviour
 
     public IEnumerator AnimateDocument(GameObject prefab, Document document)
     {
-        if(document.errorType == documentError.NoDocument)
+        if (document.errorType == documentError.NoDocument)
         {
             checkError(documentError.NoDocument);
             listIndex++;
             yield return new WaitForSeconds(2);
             yield break;
-        } 
+        }
 
-        Vector3 visiblePosition = new Vector3(0f, 2000f, 0f); 
+        Vector3 visiblePosition = new Vector3(0f, 2000f, 0f);
         GameObject docGO = Instantiate(prefab, visiblePosition, Quaternion.identity);
         DocumentControllerBase controller = docGO.GetComponent<DocumentControllerBase>();
         controller.assign(document);
-        
-        if (!(document.errorType == documentError.MismatchDocument)) {
+
+        if (!(document.errorType == documentError.MismatchDocument))
+        {
             controller.showErrors(document);
         }
 
-        yield return StartCoroutine(animate(document.errorType, controller.endGameAnimator, 3));   
+        yield return StartCoroutine(animate(document.errorType, controller.endGameAnimator, 3));
     }
     public IEnumerator animate(documentError error, Animator animator, int seconds)
     {
@@ -83,7 +85,7 @@ public class GameEnd : MonoBehaviour
         animator.SetTrigger("SlideOut");
         yield return new WaitForSeconds(1);
         listIndex++;
-        GameObject.Destroy(animator.gameObject);  
+        GameObject.Destroy(animator.gameObject);
 
     }
 
@@ -92,32 +94,37 @@ public class GameEnd : MonoBehaviour
         gameObjectList[listIndex].SetActive(true);
         if (error == documentError.None)
         {
-            points+=15;
+            points += 15;
             endText[listIndex].text = "¡Documento correcto!";
             GameController.Instance.fxManager.maxPoints();
 
-        } else if (error == documentError.ErrorInFieldOne)
+        }
+        else if (error == documentError.ErrorInFieldOne)
         {
-            points+=10;
+            points += 10;
             endText[listIndex].text = "El documento tiene 1 error";
             GameController.Instance.fxManager.lessPoints();
 
-        } else if (error == documentError.ErrorInFieldTwo)
+        }
+        else if (error == documentError.ErrorInFieldTwo)
         {
-            points+=5;
+            points += 5;
             endText[listIndex].text = "El documento tiene 2 errores";
             GameController.Instance.fxManager.lessPoints();
 
-        } else if (error == documentError.ErrorInFieldThree)
+        }
+        else if (error == documentError.ErrorInFieldThree)
         {
             endText[listIndex].text = "El documento tiene 3 errores";
             GameController.Instance.fxManager.noPoints();
-        } else if (error == documentError.MismatchDocument)
-        { 
+        }
+        else if (error == documentError.MismatchDocument)
+        {
             endText[listIndex].text = "El documento es de otro tipo";
             GameController.Instance.fxManager.noPoints();
 
-        } else
+        }
+        else
         {
             endText[listIndex].text = "El documento no fue encontrando";
             GameController.Instance.fxManager.noPoints();
@@ -137,16 +144,57 @@ public class GameEnd : MonoBehaviour
         {
             GameController.Instance.fxManager.loseSound();
             yield return new WaitForSeconds(10);
-        } else
+        }
+        else
         {
             GameController.Instance.fxManager.winSound();
             yield return new WaitForSeconds(5);
         }
 
+        int userId = PlayerPrefs.GetInt("user_id", 1);
+
+
+        StartCoroutine(EnviarMonedas(userId, points));
+
+        int actuales = PlayerPrefs.GetInt("User_Monedas", 0);
+        actuales += points;
+
+        PlayerPrefs.SetInt("User_Monedas", actuales);
+
+        GameWinService.Instance.EnviarGameWin(1, points);
+
         SceneManager.LoadScene("MainMenu");
 
     }
 
+    IEnumerator EnviarMonedas(int userId, int monedas)
+    {
+        string url = "http://127.0.0.1:5000/users/monedas/add";
+
+        string json = JsonUtility.ToJson(new MonedasRequest(userId, monedas));
+
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Monedas enviadas correctamente");
+
+
+            PlayerPrefs.SetInt("MonedasPendientes", 0);
+        }
+        else
+        {
+            Debug.LogWarning("No se pudo enviar. Guardando localmente...");
+
+        }
+    }
   
 
 }
