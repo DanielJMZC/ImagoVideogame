@@ -33864,6 +33864,36 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2126032818230182633, guid: e298a20a5957d3f409b6496c49d483c1, type: 3}
   m_PrefabInstance: {fileID: 4541493743384986287}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &706476355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706476354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
+  m_CategoryHash: 1.8625731e-11
+  m_labelHash: 6.0416328e-34
+  m_SpriteKey: 0
+  m_SpriteHash: 782449920
+--- !u!114 &706476356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706476354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteLibrary
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: a9aae062b3e8249f088e1d194804fc3b, type: 3}
 --- !u!1 &709452250
 GameObject:
   m_ObjectHideFlags: 0
@@ -44288,6 +44318,57 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.125, y: 2.1875}
   m_EdgeRadius: 0
+--- !u!1 &1197518386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1197518388}
+  - component: {fileID: 1197518387}
+  m_Layer: 0
+  m_Name: SkinManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1197518387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197518386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d334f38d1daf8478f8340f89a96762ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Project.Dudas::SkinManager
+  spriteLibrary: {fileID: 706476356}
+  player1: {fileID: 7108339969198208228, guid: a9aae062b3e8249f088e1d194804fc3b, type: 3}
+  player2: {fileID: 7108339969198208228, guid: 57ced2044b5eb4d22b24dc1a19f95b7f, type: 3}
+  player3: {fileID: 7108339969198208228, guid: 36de0354a8e9c4b9d9f2677e54135a0c, type: 3}
+  player4: {fileID: 7108339969198208228, guid: 939e147fe203c4f8b9b001202a4f7920, type: 3}
+  player5: {fileID: 7108339969198208228, guid: 4dafc57ca37ce4842859e18af2bde56a, type: 3}
+  player6: {fileID: 7108339969198208228, guid: f43452c8ea8c845d297845243b33328d, type: 3}
+--- !u!4 &1197518388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197518386}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.65755, y: -12.78958, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1212556459
 GameObject:
   m_ObjectHideFlags: 0
@@ -93392,6 +93473,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8473109795722130854, guid: e298a20a5957d3f409b6496c49d483c1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6971296177401827160, guid: 1ea6a39fd1fa24967aa3bb5a812dacfa, type: 3}
     - target: {fileID: 8494228853831499338, guid: e298a20a5957d3f409b6496c49d483c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.01
@@ -93435,7 +93520,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2126032818230182633, guid: e298a20a5957d3f409b6496c49d483c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 706476356}
+    - targetCorrespondingSourceObject: {fileID: 2126032818230182633, guid: e298a20a5957d3f409b6496c49d483c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 706476355}
   m_SourcePrefab: {fileID: 100100000, guid: e298a20a5957d3f409b6496c49d483c1, type: 3}
 --- !u!1001 &7175666015821071800
 PrefabInstance:
@@ -93670,3 +93761,4 @@ SceneRoots:
   - {fileID: 518987887}
   - {fileID: 7592010799820555989}
   - {fileID: 643782605}
+  - {fileID: 1197518388}

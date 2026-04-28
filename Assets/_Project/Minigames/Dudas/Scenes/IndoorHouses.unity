@@ -861,6 +861,57 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &293070486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 293070488}
+  - component: {fileID: 293070487}
+  m_Layer: 0
+  m_Name: SkinManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &293070487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293070486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d334f38d1daf8478f8340f89a96762ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Project.Dudas::SkinManager
+  spriteLibrary: {fileID: 1929404603}
+  player1: {fileID: 7108339969198208228, guid: a9aae062b3e8249f088e1d194804fc3b, type: 3}
+  player2: {fileID: 7108339969198208228, guid: 57ced2044b5eb4d22b24dc1a19f95b7f, type: 3}
+  player3: {fileID: 7108339969198208228, guid: 36de0354a8e9c4b9d9f2677e54135a0c, type: 3}
+  player4: {fileID: 7108339969198208228, guid: 939e147fe203c4f8b9b001202a4f7920, type: 3}
+  player5: {fileID: 7108339969198208228, guid: 4dafc57ca37ce4842859e18af2bde56a, type: 3}
+  player6: {fileID: 7108339969198208228, guid: f43452c8ea8c845d297845243b33328d, type: 3}
+--- !u!4 &293070488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293070486}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.65755, y: -12.78958, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &301195804
 GameObject:
   m_ObjectHideFlags: 0
@@ -4765,6 +4816,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8473109795722130854, guid: e298a20a5957d3f409b6496c49d483c1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3396499752536614043, guid: 1ea6a39fd1fa24967aa3bb5a812dacfa, type: 3}
     - target: {fileID: 8494228853831499338, guid: e298a20a5957d3f409b6496c49d483c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.038868666
@@ -4808,7 +4863,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2126032818230182633, guid: e298a20a5957d3f409b6496c49d483c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1929404604}
+    - targetCorrespondingSourceObject: {fileID: 2126032818230182633, guid: e298a20a5957d3f409b6496c49d483c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1929404603}
   m_SourcePrefab: {fileID: 100100000, guid: e298a20a5957d3f409b6496c49d483c1, type: 3}
 --- !u!1 &1475283404 stripped
 GameObject:
@@ -7890,6 +7951,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4732fdea690c440bde596cb5887e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Project.Dudas::PlayerControl
+--- !u!114 &1929404603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475283404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteLibrary
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: a9aae062b3e8249f088e1d194804fc3b, type: 3}
+--- !u!114 &1929404604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475283404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
+  m_CategoryHash: 1.8625731e-11
+  m_labelHash: 5.806635e-19
+  m_SpriteKey: 0
+  m_SpriteHash: 130062389
 --- !u!1 &1953656109
 GameObject:
   m_ObjectHideFlags: 0
@@ -8547,3 +8638,4 @@ SceneRoots:
   - {fileID: 1610698979}
   - {fileID: 1902194505}
   - {fileID: 373156863}
+  - {fileID: 293070488}

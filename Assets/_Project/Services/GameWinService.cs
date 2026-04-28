@@ -6,7 +6,7 @@ public class GameWinService : MonoBehaviour
 {
     public static GameWinService Instance;
 
-    private string url = "http://127.0.0.1:5000/users/gamewin";
+    private string url = "http://127.0.0.1:5530/users/gamewin";
 
     void Awake()
 {

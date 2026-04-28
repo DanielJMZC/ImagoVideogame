@@ -7,7 +7,7 @@ public class MonedasManager : MonoBehaviour
     public static MonedasManager Instance;
 
     [Header("API")]
-    private string baseUrl = "http://127.0.0.1:5000/users/monedas/";
+    private string baseUrl = "http://127.0.0.1:5530/users/monedas/";
 
     [Header("Estado")]
     private int monedas;

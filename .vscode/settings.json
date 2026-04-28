@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "ImagoVideogame.slnx"
+    "dotnet.defaultSolution": "AWAQTrainingGrounds.slnx"
 }
