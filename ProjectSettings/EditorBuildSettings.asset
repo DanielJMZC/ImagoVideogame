@@ -6,11 +6,29 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Project/Common/Scenes/Login.unity
+    guid: d0fd222b38c76c3408a32a1025297965
+  - enabled: 1
+    path: Assets/_Project/Minigames/Dudas/Scenes/RhythmShowdown.unity
+    guid: 670008e02c2acb84b8459700ddedca06
+  - enabled: 1
+    path: Assets/_Project/Minigames/Dudas/Scenes/IndoorHouses.unity
+    guid: 6a33519a08c1ecc4396ff7a0fdae1f45
+  - enabled: 1
     path: Assets/_Project/Minigames/PaperRush/Scenes/MainMenu.unity
     guid: c1793ba1103864512b95a41fb846a4e7
   - enabled: 1
     path: Assets/_Project/Minigames/PaperRush/Scenes/MainGame.unity
     guid: d5f28feb3f9b441d38126937b3269469
+  - enabled: 1
+    path: Assets/_Project/Minigames/Puestos/Scenes/Rules.unity
+    guid: de9597223338d9847999d9ffed085ef9
+  - enabled: 1
+    path: Assets/_Project/Minigames/Puestos/Scenes/Puestos.unity
+    guid: f3f6f67bbd41c3240849763a4e66b38c
+  - enabled: 1
+    path: Assets/_Project/Minigames/Puestos/Scenes/End.unity
+    guid: c28b828180a89174583bed205cf46860
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
