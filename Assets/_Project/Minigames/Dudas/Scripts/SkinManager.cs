@@ -14,7 +14,7 @@ public class SkinManager : MonoBehaviour
     public SpriteLibraryAsset player5;
     public SpriteLibraryAsset player6;
 
-    private string apiUrl = "https://127.0.0.1:5550";
+    private string apiUrl = "http://127.0.0.1:5530";
 
     void Start()
     {
