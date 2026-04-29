@@ -14,8 +14,8 @@ public class SkinManager : MonoBehaviour
     public SpriteLibraryAsset player5;
     public SpriteLibraryAsset player6;
 
-    //private string apiUrl = "http://127.0.0.1:5530";
-    private string apiUrl = "http://10.14.255.43:5530";
+    private string apiUrl = "http://127.0.0.1:5530";
+    //private string apiUrl = "http://10.14.255.43:5530";
 
     void Start()
     {
@@ -79,5 +79,16 @@ public class SkinManager : MonoBehaviour
                 Debug.LogWarning("Invalid skin id: " + skin);
                 break;
         }
+
+        StartCoroutine(ForceRefreshSpriteLibrary());
+    }
+
+    IEnumerator ForceRefreshSpriteLibrary()
+    {
+        spriteLibrary.enabled = false;
+
+        yield return null; // wait 1 frame
+
+        spriteLibrary.enabled = true;
     }
 }
