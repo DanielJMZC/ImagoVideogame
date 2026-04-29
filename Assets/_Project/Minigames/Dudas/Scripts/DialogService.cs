@@ -14,8 +14,8 @@ public class DialogService : MonoBehaviour
 
     public IEnumerator GetDialogos(int npcId, System.Action<List<Dialogo>> callback)
     {
-        string url = $"http://127.0.0.1:5530/npc/{npcId}/dialogos";
-        //string url = $"http://10.14.255.43:5530/npc/{npcId}/dialogos";
+        //string url = $"http://127.0.0.1:5530/npc/{npcId}/dialogos";
+        string url = $"http://10.14.255.43:5530/npc/{npcId}/dialogos";
 
         UnityWebRequest request = UnityWebRequest.Get(url);
         yield return request.SendWebRequest();
@@ -39,8 +39,8 @@ public class DialogService : MonoBehaviour
 
     public IEnumerator GetPreguntas(int npcId, System.Action<List<Pregunta>> callback)
     {
-        string url = $"http://127.0.0.1:5530/npc/{npcId}/preguntas";
-        //string url = $"http://10.14.255.43:5530/npc/{npcId}/preguntas";
+        //string url = $"http://127.0.0.1:5530/npc/{npcId}/preguntas";
+        string url = $"http://10.14.255.43:5530/npc/{npcId}/preguntas";
 
         UnityWebRequest request = UnityWebRequest.Get(url);
         yield return request.SendWebRequest();
